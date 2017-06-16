@@ -29,7 +29,7 @@ public class WindowsNetworkUtils {
 				Process netst_proc = Runtime.getRuntime().exec(netsh_route);
 				netst_proc.waitFor();
 				
-				List<String> lines = readFromInputStream(netst_proc.getInputStream(), null);
+				List<String> lines = readFromInputStream(netst_proc.getInputStream());
 				lines.forEach((line) -> {
 					
 					String [] fields = line.split("\\s+");
@@ -68,22 +68,30 @@ public class WindowsNetworkUtils {
 	    	
 	    }
 	    
+	  public static List<String> readFromInputStream(InputStream input) throws IOException{
+	    	
+	    	return readFromInputStream(input, null);
+	    	
+	    }
+	  
 	  public static List<String> readFromInputStream(InputStream input, String pattern) throws IOException{
 	    	
 	    	List<String> buffer = new ArrayList<>();
 	    	try(BufferedReader br = new BufferedReader(new InputStreamReader(input))){
 	    	String temp;
-	    	if(pattern==null) {
-	    		while((temp=br.readLine())!=null) {
-		    		buffer.add(temp);
+	    	if(pattern!=null) {
+	    		
+	    		Pattern p = Pattern.compile(pattern);
+	    	    while((temp=br.readLine())!=null) {
+	    		  Matcher m = p.matcher(temp);
+	    		   while(m.find()) buffer.add(m.group());
+	    		
 		    	}
 	    	}
 	    	else
 	    	{
-	    	  Pattern p = Pattern.compile(pattern);
-	    	    while((temp=br.readLine())!=null) {
-	    		  Matcher m = p.matcher(temp);
-	    		   while(m.find()) buffer.add(m.group());
+	    		while((temp=br.readLine())!=null) {
+		    		buffer.add(temp);
 	    	}
 	    	}
 	    	}
@@ -91,6 +99,7 @@ public class WindowsNetworkUtils {
 	    	return buffer;
 	    	
 	    }
+	
 	
 	
 }

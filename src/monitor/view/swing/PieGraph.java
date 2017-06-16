@@ -36,8 +36,8 @@ public class PieGraph extends JPanel implements View {
 	
 	private void init() {
 		
-		       JFreeChart chart = new JFreeChart("Current type of traffic",
-				new Font("SansSerif", Font.BOLD, 24), createPiePlot(), true);
+		       JFreeChart chart = new JFreeChart("Current type of traffic. Delay 5 second",
+				new Font("SansSerif", Font.BOLD, 16), createPiePlot(), true);
 				chart.setBackgroundPaint(Color.white);
 				ChartPanel chartPanel = new ChartPanel(chart);
 				chartPanel.setBorder(BorderFactory.createCompoundBorder(
@@ -85,6 +85,12 @@ public class PieGraph extends JPanel implements View {
 		
         throw new UnsupportedOperationException();
 
+	}
+
+	@Override
+	public void addObservation() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

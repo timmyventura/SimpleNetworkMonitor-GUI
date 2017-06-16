@@ -12,10 +12,9 @@ import org.jnetpcap.packet.PcapPacketHandler;
 import monitor.model.Mediator;
 
 
-public class PacketCapture implements Runnable {
+public class PacketCapture implements Capture, Runnable {
 
 	private static final List<Mediator> mediators = new ArrayList<Mediator>();
-	private static final List<PcapIf>   alldevs   = new ArrayList<PcapIf>();
 	private PcapIf device;
 	private Pcap handle;
 	private static final StringBuilder errbuf = new StringBuilder();
@@ -45,31 +44,13 @@ public class PacketCapture implements Runnable {
 	
 	}
 	
-    public List<PcapIf> getDevices() {
-    	
-    	 int r = Pcap.findAllDevs(alldevs, errbuf);  
-	        if (r == Pcap.NOT_OK || alldevs.isEmpty()) {  
-	            System.err.printf("Can't read list of devices, error is %s", errbuf  
-	                .toString());  
-	            return null;  
-	        }  
-	        else
-		return alldevs;
-    }
-    
-    
 
 	public void chooseDevice(PcapIf device) {
 		
 		this.device = device;
 		
 	}
-	
-	public PcapIf getChosenDevice() {
-		
-		return device;
-	}
-		
+
 	public void addMediator(Mediator med) {
 		
 		mediators.add(med);
@@ -80,11 +61,16 @@ public class PacketCapture implements Runnable {
 		return mediators.remove(med);
 	}
 	
+	public List<Mediator> getMediators(){
+		
+		return mediators;
+	}
+	
 	@Override
 	public void run() {
 		
 			if(handle==null) handle = openHandle(device, DEFAULT_SNAPLEN, DEFAULT_FLAG, DEFAULT_TIMEOUT);
-			
+			System.out.println("Cycle");
 			PcapPacketHandler<String> packethandler = (packet, string) ->mediators.forEach(med->med.execute(packet));
 			
 			handle.loop(0, packethandler, null);

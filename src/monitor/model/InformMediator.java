@@ -18,6 +18,11 @@ public class InformMediator implements Model {
 
     }
     
+    public InformMediator() {
+ 	
+    }
+    
+    
     private void init() {
     	
     	graph.setIPToLocalIPField(factory.getLocalIP());
@@ -30,21 +35,28 @@ public class InformMediator implements Model {
     	
     }
     
+    public void setNetworkFactory(NetworkFactory factory) {
+    	
+    	this.factory = factory;
+    }
+    
    	   
 	@Override
 	public void addView(View view) {
 		
-      graph = (InformGraph)view;
-      init();
-      graph.init();
-      
+		if(view instanceof monitor.view.swing.InformGraph) 
+		{
+         graph = (monitor.view.swing.InformGraph)view;
+         init();
+         graph.init();
+		
+		}
       
 
 	}
 
 	@Override
 	public boolean removeView(View view) {
-		// TODO Auto-generated method stub
 		graph = null;
 		
 		return graph==null;

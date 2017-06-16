@@ -41,12 +41,11 @@ public class MainFrame implements Runnable {
 		
 		public static void main(String [] args) {
 			
-			MainFrame mf = new MainFrame();
+
 			
 			 PacketCapture pc = new PacketCapture();
-		       List<PcapIf> interfaces = pc.getDevices();
-		       PcapIf device = interfaces.get(12);
-		        
+
+		       PcapIf device = null;
 		       pc.chooseDevice(device);
 		      
 		       PieMediator pm = new PieMediator();
@@ -56,6 +55,7 @@ public class MainFrame implements Runnable {
 		       MainFrame frame = new MainFrame();
 		      // frame.setShell(new Shell());
 		       SpeedGraph speedgraph = new SpeedGraph(frame.getShell(), SWT.BORDER);
+		       speedgraph.setMaxAge(60000);
 		       PieGraph piegraph = new PieGraph(frame.getShell(), SWT.BORDER);
 		       InformGraph inform = new InformGraph(frame.getShell(), SWT.BORDER);
 		       
@@ -71,22 +71,42 @@ public class MainFrame implements Runnable {
 			   sm.addView((View)frame.getInformGraph());
 			   pm.addView((View)frame.getPieGraph());
 			   im.addView((View)frame.getInformGraph());
-		        
+			   
 			  // mf.showMainFrame();
 			   
-				
+			  // frame.showMainFrame();
 				
 				//NetstatHandler nh = new NetstatHandler();
-				
+				/*
 		        ExecutorService exec = Executors.newFixedThreadPool(4);
-		        exec.execute(mf);
+		       //exec.execute(mf);
 		        exec.execute(pc);
 		        exec.execute(sm);
 		        exec.execute(pm);
+               */
+			   
+			   Display.getDefault().syncExec(new Runnable() {
+				    public void run() {
+				    	frame.showMainFrame();
+				    }
+				});
+		       
+			   Display.getDefault().syncExec(new Runnable() {
+				    public void run() {
+				       pc.run();
+				    }
+				});
+			   Display.getDefault().syncExec(new Runnable() {
+				    public void run() {
+				    	sm.run();
+				    }
+				});
+			   Display.getDefault().syncExec(new Runnable() {
+				    public void run() {
+				       pm.run();
+				    }
+				});
 
-		      
-		       
-		       
 		       
 		}
 		
@@ -202,11 +222,11 @@ public class MainFrame implements Runnable {
 	@Override
 	public void run() {
 		
-		showMainFrame();
+		
 		
 	}
 
-
+	
 
 /*
 	public void setShell(Shell shell) {

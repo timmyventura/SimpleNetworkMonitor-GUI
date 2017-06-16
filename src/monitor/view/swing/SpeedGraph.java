@@ -22,6 +22,8 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.ui.RectangleInsets;
 
+
+import monitor.model.SpeedRate;
 import monitor.view.View;
 
 
@@ -31,7 +33,14 @@ public class SpeedGraph extends JPanel implements View {
 	private static final long serialVersionUID = 1L;
 	private TimeSeries in_rate;
 	private TimeSeries out_rate;
-	private int maxAge;
+	private int maxAge = 60000;
+	
+    public SpeedGraph() {
+		
+		super(new BorderLayout());
+		init();
+		
+	}
 	
 	public SpeedGraph(int maxAge) {
 		
@@ -109,8 +118,8 @@ public class SpeedGraph extends JPanel implements View {
 	private void init() {
 
 		createDataSeries();
-		JFreeChart chart = new JFreeChart("Current speed rate",
-		new Font("SansSerif", Font.BOLD, 24), createXYPlot(), true);
+		JFreeChart chart = new JFreeChart("Current speed rate. Delay 1 second",
+		new Font("SansSerif", Font.BOLD, 16), createXYPlot(), true);
 		chart.setBackgroundPaint(Color.white);
 		ChartPanel chartPanel = new ChartPanel(chart);
 		chartPanel.setPreferredSize(new Dimension(900, 300));
@@ -135,6 +144,32 @@ public class SpeedGraph extends JPanel implements View {
 		
          throw new UnsupportedOperationException();
 		
+	}
+
+	@Override
+	public void addObservation() {
+		
+		
+		
+		/*
+		double input = SpeedRate.SPEED_RATE.getInputSpeed();
+		double output = SpeedRate.SPEED_RATE.getOutputSpeed();
+		*/
+		double input = SpeedRate.Speed.SPEED_RATE.getInputSpeed();
+		double output = SpeedRate.Speed.SPEED_RATE.getOutputSpeed();
+		
+		this.in_rate.add(new Millisecond(), input);
+		   this.in_rate.setKey(String.format("Current inbound speed - %.2f kbits/s", input));
+		   this.out_rate.add(new Millisecond(), output);
+		   this.out_rate.setKey(String.format("Current outbound speed - %.2f kbits/s", output));
+		
+		
+		/*
+		   this.in_rate.add(new Millisecond(), input);
+		   this.in_rate.setKey((((int)(input/1024)==0) ? String.format("Current inbound speed - %.2f kbits/s", input) : String.format("%.2f Mbits/s", input/1024)));
+		   this.out_rate.add(new Millisecond(), output);
+		   this.out_rate.setKey(((int)(output/1024)==0) ? String.format("Current outbound speed - %.2f kbits/s", output) : String.format("%.2f Mbits/s", output/1024));
+		*/
 	}
 
 }

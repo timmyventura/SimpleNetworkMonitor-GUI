@@ -99,22 +99,30 @@ public class LinuxNetworkUtils {
 	    	
 	    }
 	    
+	  public static List<String> readFromInputStream(InputStream input) throws IOException{
+	    	
+	    	return readFromInputStream(input, null);
+	    	
+	    }
+	  
 	  public static List<String> readFromInputStream(InputStream input, String pattern) throws IOException{
 	    	
 	    	List<String> buffer = new ArrayList<>();
 	    	try(BufferedReader br = new BufferedReader(new InputStreamReader(input))){
 	    	String temp;
-	    	if(pattern==null) {
-	    		while((temp=br.readLine())!=null) {
-		    		buffer.add(temp);
+	    	if(pattern!=null) {
+	    		
+	    		Pattern p = Pattern.compile(pattern);
+	    	    while((temp=br.readLine())!=null) {
+	    		  Matcher m = p.matcher(temp);
+	    		   while(m.find()) buffer.add(m.group());
+	    		
 		    	}
 	    	}
 	    	else
 	    	{
-	    	  Pattern p = Pattern.compile(pattern);
-	    	    while((temp=br.readLine())!=null) {
-	    		  Matcher m = p.matcher(temp);
-	    		   if(m.find()) buffer.add(temp);
+	    		while((temp=br.readLine())!=null) {
+		    		buffer.add(temp);
 	    	}
 	    	}
 	    	}

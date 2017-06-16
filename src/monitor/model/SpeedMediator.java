@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 import org.jnetpcap.PcapIf;
 import org.jnetpcap.packet.PcapPacket;
@@ -17,13 +20,14 @@ public class SpeedMediator implements Mediator, Model, Runnable {
 
 	private List<View> views = new ArrayList<View>();
 	
+	private static final Timer timer = new Timer();
     private static final int TIMEOUT = 1000;
 	private static int IN_LEN;
 	private static int OUT_LEN;
 	private static int MAX_IN_LEN;
 	private static int MAX_OUT_LEN;
 	private byte[] dev_mac;
-	
+		
    
     public SpeedMediator(PcapIf net) {
     	
@@ -79,12 +83,14 @@ public class SpeedMediator implements Mediator, Model, Runnable {
 	
     private void sendToView() {
 		
-    	views.forEach(view -> view.addObservation(getInputLength(), getOutputLength(), getMaxInputLength(), getMaxOutputLength()));
+    	
+    	views.forEach(view -> view.addObservation());
+    	//views.forEach(view -> view.addObservation(getInputLength(), getOutputLength(), getMaxInputLength(), getMaxOutputLength()));
      	clear();
 	}
    
     private double getInputLength() {
-    	
+        	
     	return (double)IN_LEN*8/1024;
     }
     
@@ -133,19 +139,27 @@ public class SpeedMediator implements Mediator, Model, Runnable {
 	@Override
 	public void run() {
 		
-           while(true) {
-        	  sendToView();
-        	try {
-				Thread.sleep(TIMEOUT);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				Thread.currentThread().interrupt();
-				run();
+
+		TimerTask task = new TimerTask() {
+			
+			@Override
+			public void run() {
+
+				SpeedRate.Speed.SPEED_RATE.setInputSpeed(getInputLength());
+				SpeedRate.Speed.SPEED_RATE.setOutputSpeed(getOutputLength());
+				SpeedRate.Speed.SPEED_RATE.setMaxInputSpeed(getMaxInputLength());
+				SpeedRate.Speed.SPEED_RATE.setMaxOutputSpeed(getMaxOutputLength());
+				
+				sendToView();
+				
 			}
-        	
-        }
+		};
+		
+		timer.scheduleAtFixedRate(task, 0,  TIMEOUT);
+			
 		
 		
+     
 	}
 
 }

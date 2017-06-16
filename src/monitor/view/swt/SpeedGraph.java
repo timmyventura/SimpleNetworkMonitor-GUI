@@ -32,6 +32,7 @@ public class SpeedGraph extends ChartComposite implements View {
 	private TimeSeries out_rate;
 	private int maxAge;
 	private JFreeChart chart;
+	private static final Millisecond ms = new Millisecond();
 	
 	public SpeedGraph(Composite parent, int style) {
 		super(parent, style);
@@ -131,13 +132,14 @@ public class SpeedGraph extends ChartComposite implements View {
 		setLayoutData(data);
 		*/
 	}
-
+    
 	@Override
 	public void addObservation(double ... param) {
-		
-		   this.in_rate.add(new Millisecond(), param[0]);
+		    
+		    
+		   this.in_rate.add(ms, param[0]);
 		   this.in_rate.setKey(String.format("Current inbound speed - %.2f kbits/s", param[0]));
-		   this.out_rate.add(new Millisecond(), param[1]);
+		   this.out_rate.add(ms, param[1]);
 		   this.out_rate.setKey(String.format("Current outbound speed - %.2f kbits/s", param[1]));
 	}
 

@@ -160,6 +160,11 @@ public class InformGraph extends Composite implements View {
 
     }
     
+    public void repaint() {
+    	
+    	this.redraw();
+    }
+    
     public void setDNSLabelsFields(String [] label) {
     	
          text = label;

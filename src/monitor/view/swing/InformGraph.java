@@ -2,7 +2,6 @@ package monitor.view.swing;
 
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.Map;
 
@@ -11,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+
+import monitor.model.SpeedRate;
 import monitor.view.View;
 
 
@@ -227,7 +228,26 @@ public class InformGraph extends JPanel implements View {
 
 		max_input_speedfield.setText( (((int)(param[2]/1024)==0) ? String.format("%.2f kbits/s", param[2]) : String.format("%.2f Mbits/s", param[2]/1024)));
 		max_output_speedfield.setText(((int)(param[3]/1024)==0) ? String.format("%.2f kbits/s", param[3]) : String.format("%.2f Mbits/s", param[3]/1024));
-			
+		
+		
+		
+	}
+
+	@Override
+	public void addObservation() {
+		
+		/*
+		double input = SpeedRate.SPEED_RATE.getMaxInputSpeed();
+		double output = SpeedRate.SPEED_RATE.getMaxOutputSpeed();
+		*/
+		
+		double input = SpeedRate.Speed.SPEED_RATE.getMaxInputSpeed();
+		double output = SpeedRate.Speed.SPEED_RATE.getMaxOutputSpeed();
+		
+		max_input_speedfield.setText( (((int)(input/1024)==0) ? String.format("%.2f kbits/s", input) : String.format("%.2f Mbits/s", input/1024)));
+		max_output_speedfield.setText(((int)(output/1024)==0) ? String.format("%.2f kbits/s", output) : String.format("%.2f Mbits/s", output/1024));
+		
+		
 	}
 
 }

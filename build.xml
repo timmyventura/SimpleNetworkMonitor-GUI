@@ -1,0 +1,67 @@
+ <project name="SimpleNetworkMonitor" default="dist" basedir=".">
+  <description>
+    This is simple network monitor directory
+  </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="build" location="build/classes"/>
+  <property name="dist" location="dist"/>
+  <property name="classpath" location="lib"/>
+  <property name="nativepath" location="library"/>
+
+
+  <target name="init" depends="clean">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init"
+        description="compile the source">
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}">
+      <exclude name="${src}/monitor/view/swt/*.java"/>
+      <classpath>
+        <pathelement path="${classpath}"/>
+         <fileset dir="lib">
+           <include name="**/*.jar"/>
+         </fileset>
+      </classpath>   
+    </javac>
+  </target>
+
+  <target name="dist" depends="compile"
+        description="generate the distribution">
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}/jar"/>
+
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${dist}/jar/SimpleNetworkMonitor.jar">
+        <fileset dir="${build}">
+           <include name="**/*.class"/>
+           <exclude name="test/*class"/>
+         </fileset>
+      <fileset dir ="${classpath}">
+           <include name="**"/>
+      </fileset>
+      <fileset dir ="${nativepath}">
+           <include name="**"/>
+      </fileset>
+      <manifest>
+         <attribute name="Main-Class" value="monitor.SimpleMonitor"/>
+         <attribute name="Class-Path" value="/lib/"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="clean"
+        description="clean up">
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+</project>
+
+
+

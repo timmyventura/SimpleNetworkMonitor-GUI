@@ -3,7 +3,10 @@ package monitor.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.WeakHashMap;
+import java.util.concurrent.TimeUnit;
 
 import org.jnetpcap.packet.PcapPacket;
 
@@ -14,25 +17,26 @@ public class PieMediator implements Mediator, Model, Runnable {
 	
 	private List<View> views = new ArrayList<View>();
 	private Map<Object, Object> map = new WeakHashMap<>();
-	private PacketVisitor pv;
+	private PacketHandle packetHandler;
 	
+	private static final Timer timer = new Timer();
 	private static final long TIMEOUT = 5000;
 	private static double LOAD = 0.75;
 	private static double LIMIT = Integer.MAX_VALUE*LOAD;
 	
 	public PieMediator() {
 		
-		if(pv==null) pv = new PacketHandler();
+		if(packetHandler==null) packetHandler = new ReturnConcreteApplication();
 	}
 	
-	public void setPacketVisitor(PacketVisitor pv) {
+	public void setPacketVisitor(PacketHandle packetHandle) {
 		
-		this.pv=pv;
+		this.packetHandler=packetHandle;
 	}
 	
-	public PacketVisitor getPacketVisitor() {
+	public PacketHandle getPacketVisitor() {
 		
-		return pv;
+		return packetHandler;
 	}
 	
 	private void addToMap(String service, int length) {
@@ -60,7 +64,7 @@ public class PieMediator implements Mediator, Model, Runnable {
 	@Override
 	public void execute(PcapPacket packet) {
 		
-		addToMap(pv.packetHandle(packet), packet.getCaptureHeader().wirelen());	
+		addToMap(packetHandler.packetHandle(packet), packet.getCaptureHeader().wirelen());	
 		
 	}
 
@@ -86,15 +90,19 @@ public class PieMediator implements Mediator, Model, Runnable {
 	@Override
 	public void run() {
 		
-	  while(true) {
-		    sendToView();
-		try {
-			Thread.sleep(TIMEOUT);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		}
+		
+		TimerTask task = new TimerTask() {
+			
+			@Override
+			public void run() {
+				sendToView();
+				
+			}
+			
+		};
+		
+		  timer.scheduleAtFixedRate(task, 0, TIMEOUT);
+		
 		
 	}
 }
