@@ -1,67 +1,29 @@
- <project name="SimpleNetworkMonitor" default="dist" basedir=".">
-  <description>
-    This is simple network monitor directory
-  </description>
-  <!-- set global properties for this build -->
-  <property name="src" location="src"/>
-  <property name="build" location="build/classes"/>
-  <property name="dist" location="dist"/>
-  <property name="classpath" location="lib"/>
-  <property name="nativepath" location="library"/>
-
-
-  <target name="init" depends="clean">
-    <!-- Create the time stamp -->
-    <tstamp/>
-    <!-- Create the build directory structure used by compile -->
-    <mkdir dir="${build}"/>
-  </target>
-
-  <target name="compile" depends="init"
-        description="compile the source">
-    <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${src}" destdir="${build}">
-      <exclude name="${src}/monitor/view/swt/*.java"/>
-      <classpath>
-        <pathelement path="${classpath}"/>
-         <fileset dir="lib">
-           <include name="**/*.jar"/>
-         </fileset>
-      </classpath>   
-    </javac>
-  </target>
-
-  <target name="dist" depends="compile"
-        description="generate the distribution">
-    <!-- Create the distribution directory -->
-    <mkdir dir="${dist}/jar"/>
-
-    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-    <jar jarfile="${dist}/jar/SimpleNetworkMonitor.jar">
-        <fileset dir="${build}">
-           <include name="**/*.class"/>
-           <exclude name="test/*class"/>
-         </fileset>
-      <fileset dir ="${classpath}">
-           <include name="**"/>
-      </fileset>
-      <fileset dir ="${nativepath}">
-           <include name="**"/>
-      </fileset>
-      <manifest>
-         <attribute name="Main-Class" value="monitor.SimpleMonitor"/>
-         <attribute name="Class-Path" value="/lib/"/>
-      </manifest>
-    </jar>
-  </target>
-
-  <target name="clean"
-        description="clean up">
-    <!-- Delete the ${build} and ${dist} directory trees -->
-    <delete dir="${build}"/>
-    <delete dir="${dist}"/>
-  </target>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project SimpleNetworkMonitor with libraries in sub-folder">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="/root/workspace"/>
+    <property name="dir.jarfile" value="${dir.buildfile}"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/SimpleNetworkMonitor.jar">
+            <manifest>
+                <attribute name="Main-Class" value="monitor.SimpleMonitor"/>
+                <attribute name="Class-Path" value=". SimpleNetworkMonitor_lib/jfreechart-1.0.19.jar SimpleNetworkMonitor_lib/slf4j-api-1.8.0-alpha2.jar SimpleNetworkMonitor_lib/swtgraphics2d-1.0.jar SimpleNetworkMonitor_lib/jnetpcap.jar SimpleNetworkMonitor_lib/jcommon-1.0.23.jar SimpleNetworkMonitor_lib/jfreechart-swt-1.0.jar SimpleNetworkMonitor_lib/swing2swt.jar SimpleNetworkMonitor_lib/swt.jar"/>
+            </manifest>
+            <fileset dir="${dir.workspace}/SimpleNetworkMonitor/bin"/>
+            <fileset dir="${dir.workspace}/org.eclipse.swt"/>
+        </jar>
+        <delete dir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
+        <mkdir dir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
+        <copy file="${dir.workspace}/SimpleNetworkMonitor/lib/jfreechart-1.0.19.jar" todir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
+        <copy file="${dir.workspace}/SimpleNetworkMonitor/lib/slf4j-api-1.8.0-alpha2.jar" todir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
+        <copy file="${dir.workspace}/SimpleNetworkMonitor/lib/swtgraphics2d-1.0.jar" todir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
+        <copy file="${dir.workspace}/SimpleNetworkMonitor/lib/jnetpcap.jar" todir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
+        <copy file="${dir.workspace}/SimpleNetworkMonitor/lib/jcommon-1.0.23.jar" todir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
+        <copy file="${dir.workspace}/SimpleNetworkMonitor/lib/jfreechart-swt-1.0.jar" todir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
+        <copy file="${dir.workspace}/SimpleNetworkMonitor/lib/swing2swt.jar" todir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
+        <copy file="${dir.workspace}/org.eclipse.swt/swt.jar" todir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
+    </target>
 </project>
-
-
-
