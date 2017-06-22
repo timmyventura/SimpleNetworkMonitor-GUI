@@ -35,6 +35,7 @@ public class SpeedGraph extends JPanel implements View {
 	private TimeSeries out_rate;
 	private int maxAge = 60000;
 	
+
     public SpeedGraph() {
 		
 		super(new BorderLayout());
@@ -155,10 +156,10 @@ public class SpeedGraph extends JPanel implements View {
 		double input = SpeedRate.SPEED_RATE.getInputSpeed();
 		double output = SpeedRate.SPEED_RATE.getOutputSpeed();
 		*/
-		double input = SpeedRate.Speed.SPEED_RATE.getInputSpeed();
-		double output = SpeedRate.Speed.SPEED_RATE.getOutputSpeed();
+		double input = SpeedRate.getInputSpeed();
+		double output = SpeedRate.getOutputSpeed();
 		
-		this.in_rate.add(new Millisecond(), input);
+		   this.in_rate.add(new Millisecond(), input);
 		   this.in_rate.setKey(String.format("Current inbound speed - %.2f kbits/s", input));
 		   this.out_rate.add(new Millisecond(), output);
 		   this.out_rate.setKey(String.format("Current outbound speed - %.2f kbits/s", output));

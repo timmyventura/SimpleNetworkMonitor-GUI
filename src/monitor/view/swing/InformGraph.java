@@ -102,12 +102,12 @@ public class InformGraph extends JPanel implements View {
 				BorderFactory.createLineBorder(Color.black)));
     	add(iplocallabel);
     	add(iplocalfield);
-    	add(ipexternallabel);
-    	add(ipexternalfield);
     	add(masklabel);
     	add(maskfield);
     	add(gatewaylabel);
-    	add(gatewayfield); 
+    	add(gatewayfield);
+    	add(ipexternallabel);
+    	add(ipexternalfield);
     	if(dnsfields != null || dnslabels != null) {
     	for(int i=0; (i< dnsfields.length)||(i < dnslabels.length); i++) {
     		add(dnslabels[i]);
@@ -217,7 +217,7 @@ public class InformGraph extends JPanel implements View {
 	
     
 	@Override
-	public void addObservation(Map<Object, Object> param) {
+	public void addObservation(Map<Object, Object> param) throws UnsupportedOperationException{
 		  
 		throw new UnsupportedOperationException();
 
@@ -228,9 +228,7 @@ public class InformGraph extends JPanel implements View {
 
 		max_input_speedfield.setText( (((int)(param[2]/1024)==0) ? String.format("%.2f kbits/s", param[2]) : String.format("%.2f Mbits/s", param[2]/1024)));
 		max_output_speedfield.setText(((int)(param[3]/1024)==0) ? String.format("%.2f kbits/s", param[3]) : String.format("%.2f Mbits/s", param[3]/1024));
-		
-		
-		
+
 	}
 
 	@Override
@@ -241,8 +239,8 @@ public class InformGraph extends JPanel implements View {
 		double output = SpeedRate.SPEED_RATE.getMaxOutputSpeed();
 		*/
 		
-		double input = SpeedRate.Speed.SPEED_RATE.getMaxInputSpeed();
-		double output = SpeedRate.Speed.SPEED_RATE.getMaxOutputSpeed();
+		double input = SpeedRate.getMaxInputSpeed();
+		double output = SpeedRate.getMaxOutputSpeed();
 		
 		max_input_speedfield.setText( (((int)(input/1024)==0) ? String.format("%.2f kbits/s", input) : String.format("%.2f Mbits/s", input/1024)));
 		max_output_speedfield.setText(((int)(output/1024)==0) ? String.format("%.2f kbits/s", output) : String.format("%.2f Mbits/s", output/1024));

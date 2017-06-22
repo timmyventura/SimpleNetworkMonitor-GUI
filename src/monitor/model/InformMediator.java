@@ -7,23 +7,14 @@ import monitor.view.View;
 
 public class InformMediator implements Model {
 
-	
 	private InformGraph graph;
-	private NetworkFactory factory;
 
-     	
-    public InformMediator(NetworkFactory factory) {
-    	   
-    	this.factory = factory;
-
-    }
     
     public InformMediator() {
  	
     }
-    
-    
-    private void init() {
+        
+    public void initInform(NetworkFactory factory) {
     	
     	graph.setIPToLocalIPField(factory.getLocalIP());
     	graph.setMaskToMaskField(factory.getNetworkMask());
@@ -32,26 +23,19 @@ public class InformMediator implements Model {
     	graph.setIPToExternalIPField(factory.getExternalIP());
     	graph.setGatewayToGatewayField(factory.getDefaultGateway());
     	
+    	graph.init();
+    	
     	
     }
-    
-    public void setNetworkFactory(NetworkFactory factory) {
-    	
-    	this.factory = factory;
-    }
-    
-   	   
+
 	@Override
 	public void addView(View view) {
 		
-		if(view instanceof monitor.view.swing.InformGraph) 
+	  if(view instanceof monitor.view.swing.InformGraph) 
 		{
          graph = (monitor.view.swing.InformGraph)view;
-         init();
-         graph.init();
-		
+     
 		}
-      
 
 	}
 

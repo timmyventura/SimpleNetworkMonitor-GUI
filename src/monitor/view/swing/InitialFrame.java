@@ -38,7 +38,8 @@ public class InitialFrame extends JFrame{
         interface_list = new JComboBox<>();
         cancel = new JButton();
         ready = new JButton();
-
+        
+        setTitle("Simple Network Monitor");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         select_label.setText("Select an Interface:");

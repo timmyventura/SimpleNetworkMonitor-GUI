@@ -70,7 +70,6 @@ public class PacketCapture implements Capture, Runnable {
 	public void run() {
 		
 			if(handle==null) handle = openHandle(device, DEFAULT_SNAPLEN, DEFAULT_FLAG, DEFAULT_TIMEOUT);
-			System.out.println("Cycle");
 			PcapPacketHandler<String> packethandler = (packet, string) ->mediators.forEach(med->med.execute(packet));
 			
 			handle.loop(0, packethandler, null);

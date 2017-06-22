@@ -31,7 +31,8 @@ public class Devices {
     	int size = devs.size()+1;
     	String [] devs_names = new String [size];
     	for(PcapIf dev : devs) {
-    		devs_names[--size] = dev.getName();
+
+    		devs_names[--size] = OSType.isWindows()?dev.getDescription():dev.getName();
     	}        
     	devs_names[--size] = "  ";
 		return devs_names;
@@ -43,7 +44,8 @@ public class Devices {
 		 
 		 for(PcapIf dev : alldevs) {
 			 
-			 if(dev.getName().equals(device))
+			 if((OSType.isWindows()?dev.getDescription():dev.getName()).equals(device))
+				 
 				 interf = dev;
 		 }
 		 return interf;

@@ -119,8 +119,8 @@ public abstract class OSNetworkFactory implements NetworkFactory{
 
 	public static NetworkFactory returnConcreteNetworkFactoryObject(String os, PcapIf device) {
 				
-		  if(os.toLowerCase().matches("linux.*")) return new LinuxNetworkFactory(device);
-		  if(os.toLowerCase().matches("win.*")) return new WindowsNetworkFactory(device);
+		  if(os.toLowerCase().matches(".*linux.*")) return new LinuxNetworkFactory(device);
+		  if(os.toLowerCase().matches(".*win.*")) return new WindowsNetworkFactory(device);
 		  else
 		   return null;
 	}

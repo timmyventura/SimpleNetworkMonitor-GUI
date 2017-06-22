@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
+
 
 import org.jnetpcap.PcapIf;
 import org.jnetpcap.packet.PcapPacket;
@@ -140,15 +140,15 @@ public class SpeedMediator implements Mediator, Model, Runnable {
 	public void run() {
 		
 
-		TimerTask task = new TimerTask() {
+		final TimerTask task = new TimerTask() {
 			
 			@Override
 			public void run() {
 
-				SpeedRate.Speed.SPEED_RATE.setInputSpeed(getInputLength());
-				SpeedRate.Speed.SPEED_RATE.setOutputSpeed(getOutputLength());
-				SpeedRate.Speed.SPEED_RATE.setMaxInputSpeed(getMaxInputLength());
-				SpeedRate.Speed.SPEED_RATE.setMaxOutputSpeed(getMaxOutputLength());
+				SpeedRate.addInputSpeed(getInputLength());
+				SpeedRate.addOutputSpeed(getOutputLength());
+				SpeedRate.addMaxInputSpeed(getMaxInputLength());
+				SpeedRate.addMaxOutputSpeed(getMaxOutputLength());
 				
 				sendToView();
 				

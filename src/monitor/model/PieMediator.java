@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.WeakHashMap;
-import java.util.concurrent.TimeUnit;
-
 import org.jnetpcap.packet.PcapPacket;
 
 import monitor.view.View;
@@ -91,12 +89,11 @@ public class PieMediator implements Mediator, Model, Runnable {
 	public void run() {
 		
 		
-		TimerTask task = new TimerTask() {
+		final TimerTask task = new TimerTask() {
 			
 			@Override
 			public void run() {
 				sendToView();
-				
 			}
 			
 		};

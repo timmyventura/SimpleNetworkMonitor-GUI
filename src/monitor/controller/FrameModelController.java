@@ -37,7 +37,7 @@ public class FrameModelController {
 	
 	private String selectedDevice;
 
-	private static final ExecutorService exec = Executors.newFixedThreadPool(5);
+	private static final ExecutorService exec = Executors.newFixedThreadPool(3);
 	
 	public FrameModelController() {
 		
@@ -66,14 +66,6 @@ public class FrameModelController {
 		PcapIf device = Devices.getSelectedDevice(selectedDevice);
 		packetCapture.chooseDevice(device);
 		
-		try {
-			
-			speedMediator.setHardwareAddress(device.getHardwareAddress());
-			informMediator.setNetworkFactory(OSNetworkFactory.returnConcreteNetworkFactoryObject(System.getProperty("os.name"), device));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
 		packetCapture.addMediator(speedMediator);
 		packetCapture.addMediator(pieMediator);
 
@@ -82,6 +74,15 @@ public class FrameModelController {
 		pieMediator.addView(pieGraph);
 		informMediator.addView(informGraph);
 
+       try {
+			
+			speedMediator.setHardwareAddress(device.getHardwareAddress());
+			informMediator.initInform(OSNetworkFactory.returnConcreteNetworkFactoryObject(System.getProperty("os.name"), device));
+			//informMediator.setNetworkFactory(OSNetworkFactory.returnConcreteNetworkFactoryObject(System.getProperty("os.name"), device));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		mainFrame.init();
 		
 		exec.execute(packetCapture);

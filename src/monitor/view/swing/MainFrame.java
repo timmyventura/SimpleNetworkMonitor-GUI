@@ -5,8 +5,7 @@ import java.awt.Dimension;
 
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
-import javax.swing.LayoutStyle;
-import javax.swing.LayoutStyle.ComponentPlacement;
+
 
 public class MainFrame extends JFrame {
 
@@ -29,12 +28,10 @@ public class MainFrame extends JFrame {
 	
 	public void init() {
 		
-		setPreferredSize(new Dimension(900, 700));
+		setPreferredSize(new Dimension(900, 600));
 		setResizable(false);
-		setName("Simple Network Monitor");
+		setTitle("Simple Network Monitor");
 		GroupLayout layout = new GroupLayout(getContentPane());
-		//layout.setAutoCreateGaps(true);
-		//layout.setAutoCreateContainerGaps(true);
 	    getContentPane().setLayout(layout);
 	    setHorizontalGroup(layout);
 	    setVerticalGroup(layout);

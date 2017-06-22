@@ -1,19 +1,21 @@
 package monitor.model;
 
+import java.util.HashMap;
+import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class SpeedRate {
 
 	
 	public enum Speed{
-		/*
+		
 		INPUT_SPEED,
 		OUTPUT_SPEED,
 		MAX_INPUT_SPEED,
 		MAX_OUTPUT_SPEED;
-		*/
+	
 		
-
+/*
 		SPEED_RATE;
 			
 
@@ -45,11 +47,11 @@ public class SpeedRate {
 		private static double max_input_speed;
 		private static double max_output_speed;
 		
-		
+		*/
 	}
 	
-	/*
-	private static final ConcurrentHashMap<Enum<Speed>, Double> map = new ConcurrentHashMap<>();
+	
+	private static final WeakHashMap<Enum<Speed>, Double> map = new WeakHashMap<>();
 	
 	
 	public static void addInputSpeed(double speed) {
@@ -99,5 +101,5 @@ public class SpeedRate {
 		return map.get(Speed.MAX_OUTPUT_SPEED);
 		
 	}
-	*/
+	
 }
