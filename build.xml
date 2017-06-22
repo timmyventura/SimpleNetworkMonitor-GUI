@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jar" name="Create Runnable Jar for Project SimpleNetworkMonitor with libraries in sub-folder">
-    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
-    <!--ANT 1.7 is required                                        -->
+<project default="create_run_jar" name="Create Runnable Jar for Project SimpleNetworkMonitor with Jar-in-Jar Loader">
+    <!--this file was created by Eclipse Runnable JAR file Export Wizard-->
+    <!--ANT 1.7 is required-->
     <!--define folder properties-->
     <property name="dir.buildfile" value="."/>
     <property name="dir.workspace" value="/root/workspace"/>
-    <property name="dir.jarfile" value="${dir.buildfile}"/>
-    <target name="create_run_jar">
-        <jar destfile="${dir.jarfile}/SimpleNetworkMonitor.jar">
+    <property name="dir.jarfile" value="${dir.buildfile}/dist/jar"/>
+    <property name="jar.filename" value="SimpleNetworkMonitor.jar"/>
+    <target name="create_run_jar" depends="clean">
+        <jar destfile="${dir.jarfile}/${jar.filename}">
             <manifest>
-                <attribute name="Main-Class" value="monitor.SimpleMonitor"/>
-                <attribute name="Class-Path" value=". SimpleNetworkMonitor_lib/jfreechart-1.0.19.jar SimpleNetworkMonitor_lib/slf4j-api-1.8.0-alpha2.jar SimpleNetworkMonitor_lib/swtgraphics2d-1.0.jar SimpleNetworkMonitor_lib/jnetpcap.jar SimpleNetworkMonitor_lib/jcommon-1.0.23.jar SimpleNetworkMonitor_lib/jfreechart-swt-1.0.jar SimpleNetworkMonitor_lib/swing2swt.jar SimpleNetworkMonitor_lib/swt.jar"/>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="monitor.SimpleMonitor"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ jfreechart-1.0.19.jar slf4j-api-1.8.0-alpha2.jar swtgraphics2d-1.0.jar jnetpcap.jar jcommon-1.0.23.jar jfreechart-swt-1.0.jar swing2swt.jar swt.jar"/>
             </manifest>
+            <zipfileset src="${dir.workspace}/SimpleNetworkMonitor/lib/jar-in-jar-loader.zip"/>
             <fileset dir="${dir.workspace}/SimpleNetworkMonitor/bin"/>
+            <zipfileset dir="${dir.workspace}/SimpleNetworkMonitor/lib" includes="jfreechart-1.0.19.jar"/>
+            <zipfileset dir="${dir.workspace}/SimpleNetworkMonitor/lib" includes="slf4j-api-1.8.0-alpha2.jar"/>
+            <zipfileset dir="${dir.workspace}/SimpleNetworkMonitor/lib" includes="swtgraphics2d-1.0.jar"/>
+            <zipfileset dir="${dir.workspace}/SimpleNetworkMonitor/lib" includes="jnetpcap.jar"/>
+            <zipfileset dir="${dir.workspace}/SimpleNetworkMonitor/lib" includes="jcommon-1.0.23.jar"/>
+            <zipfileset dir="${dir.workspace}/SimpleNetworkMonitor/lib" includes="jfreechart-swt-1.0.jar"/>
+            <zipfileset dir="${dir.workspace}/SimpleNetworkMonitor/lib" includes="swing2swt.jar"/>
             <fileset dir="${dir.workspace}/org.eclipse.swt"/>
+            <fileset dir="${dir.workspace}/org.eclipse.swt"/>
+            <zipfileset dir="${dir.workspace}/org.eclipse.swt" includes="swt.jar"/>
         </jar>
-        <delete dir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
-        <mkdir dir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
-        <copy file="${dir.workspace}/SimpleNetworkMonitor/lib/jfreechart-1.0.19.jar" todir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
-        <copy file="${dir.workspace}/SimpleNetworkMonitor/lib/slf4j-api-1.8.0-alpha2.jar" todir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
-        <copy file="${dir.workspace}/SimpleNetworkMonitor/lib/swtgraphics2d-1.0.jar" todir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
-        <copy file="${dir.workspace}/SimpleNetworkMonitor/lib/jnetpcap.jar" todir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
-        <copy file="${dir.workspace}/SimpleNetworkMonitor/lib/jcommon-1.0.23.jar" todir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
-        <copy file="${dir.workspace}/SimpleNetworkMonitor/lib/jfreechart-swt-1.0.jar" todir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
-        <copy file="${dir.workspace}/SimpleNetworkMonitor/lib/swing2swt.jar" todir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
-        <copy file="${dir.workspace}/org.eclipse.swt/swt.jar" todir="${dir.jarfile}/SimpleNetworkMonitor_lib"/>
+    </target>
+    <target name="clean">
+      <delete file="${dir.jarfile}/${jar.filename}"/>
     </target>
 </project>
