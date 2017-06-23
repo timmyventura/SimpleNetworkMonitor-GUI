@@ -6,9 +6,11 @@
     <property name="dir.buildfile" value="."/>
     <property name="dir.workspace" value="/root/workspace"/>
     <property name="dir.jarfile" value="${dir.buildfile}/dist/jar"/>
-    <property name="jar.filename" value="SimpleNetworkMonitor.jar"/>
     <property name="dir.native.library" value="${dir.buildfile}/library"/>
-    <target name="create_run_jar" depends="create jar dir">
+    <property name="dir.build.classes" value="${dir.buildfile}/build/classes"/>
+    <property name="jar.filename" value="SimpleNetworkMonitor.jar"/>
+    <property name="classpath" value="${dir.buildfile}"/>
+    <target name="create_run_jar" depends="compile">
         <jar destfile="${dir.jarfile}/${jar.filename}">
             <manifest>
                 <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
@@ -17,7 +19,7 @@
                 <attribute name="Rsrc-Class-Path" value="./ jfreechart-1.0.19.jar slf4j-api-1.8.0-alpha2.jar swtgraphics2d-1.0.jar jnetpcap.jar jcommon-1.0.23.jar jfreechart-swt-1.0.jar swing2swt.jar swt.jar"/>
             </manifest>
             <zipfileset src="${dir.workspace}/SimpleNetworkMonitor/lib/jar-in-jar-loader.zip"/>
-            <fileset dir="${dir.workspace}/SimpleNetworkMonitor/bin"/>
+            <fileset dir="${dir.workspace}/SimpleNetworkMonitor/build/classes"/>
             <zipfileset dir="${dir.workspace}/SimpleNetworkMonitor/lib" includes="jfreechart-1.0.19.jar"/>
             <zipfileset dir="${dir.workspace}/SimpleNetworkMonitor/lib" includes="slf4j-api-1.8.0-alpha2.jar"/>
             <zipfileset dir="${dir.workspace}/SimpleNetworkMonitor/lib" includes="swtgraphics2d-1.0.jar"/>
@@ -33,11 +35,25 @@
             </zipfileset>
         </jar>
     </target>
-     <target name="create jar dir" depends="clean">
+     <target name="create_jar_classes_dir" depends="clean">
       <mkdir dir="${dir.jarfile}"/>
+      <mkdir dir="${dir.build.classes}"/>
+    </target>
+     <target name="compile" depends="create_jar_classes_dir">
+      <javac destdir="${dir.build.classes}">
+       <src path="${dir.buildfile}/src"/>
+       <exclude name="monitor/view/swt/*.java"/>
+        <classpath>
+          <pathelement path="${classpath}"/>
+                <fileset dir="lib">
+                  <include name="**/*.jar"/>
+                </fileset>
+        </classpath>
+      </javac>
     </target>
     <target name="clean">
       <delete file="${dir.jarfile}/${jar.filename}"/>
       <delete dir="${dir.jarfile}"/>
+      <delete dir="${dir.build.classes}"/>
     </target>
 </project>
