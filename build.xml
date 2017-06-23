@@ -7,7 +7,8 @@
     <property name="dir.workspace" value="/root/workspace"/>
     <property name="dir.jarfile" value="${dir.buildfile}/dist/jar"/>
     <property name="jar.filename" value="SimpleNetworkMonitor.jar"/>
-    <target name="create_run_jar" depends="clean">
+    <property name="dir.native.library" value="${dir.buildfile}/library"/>
+    <target name="create_run_jar" depends="create jar dir">
         <jar destfile="${dir.jarfile}/${jar.filename}">
             <manifest>
                 <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
@@ -24,12 +25,19 @@
             <zipfileset dir="${dir.workspace}/SimpleNetworkMonitor/lib" includes="jcommon-1.0.23.jar"/>
             <zipfileset dir="${dir.workspace}/SimpleNetworkMonitor/lib" includes="jfreechart-swt-1.0.jar"/>
             <zipfileset dir="${dir.workspace}/SimpleNetworkMonitor/lib" includes="swing2swt.jar"/>
-            <fileset dir="${dir.workspace}/org.eclipse.swt"/>
-            <fileset dir="${dir.workspace}/org.eclipse.swt"/>
-            <zipfileset dir="${dir.workspace}/org.eclipse.swt" includes="swt.jar"/>
+            <fileset dir="${dir.native.library}"/>
+            <zipfileset dir="${dir.workspace}/org.eclipse.swt">
+             <include name="swt.jar"/>
+             <include name="swt-debug.jar"/>
+             <include name="src.zip"/> 
+            </zipfileset>
         </jar>
+    </target>
+     <target name="create jar dir" depends="clean">
+      <mkdir dir="${dir.jarfile}"/>
     </target>
     <target name="clean">
       <delete file="${dir.jarfile}/${jar.filename}"/>
+      <delete dir="${dir.jarfile}"/>
     </target>
 </project>
