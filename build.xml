@@ -16,7 +16,7 @@
                 <attribute name="Rsrc-Class-Path" value="./ jfreechart-1.0.19.jar slf4j-api-1.8.0-alpha2.jar swtgraphics2d-1.0.jar jnetpcap.jar jcommon-1.0.23.jar jfreechart-swt-1.0.jar swing2swt.jar swt.jar"/>
             </manifest>
             <zipfileset src="${dir.workspace}/SimpleNetworkMonitor/lib/jar-in-jar-loader.zip"/>
-            <fileset dir="${dir.workspace}/SimpleNetworkMonitor/build/classes"/>
+            <fileset dir="${dir.build.classes}"/>
             <zipfileset dir="${dir.workspace}/SimpleNetworkMonitor/lib" includes="jfreechart-1.0.19.jar"/>
             <zipfileset dir="${dir.workspace}/SimpleNetworkMonitor/lib" includes="slf4j-api-1.8.0-alpha2.jar"/>
             <zipfileset dir="${dir.workspace}/SimpleNetworkMonitor/lib" includes="swtgraphics2d-1.0.jar"/>
