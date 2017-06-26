@@ -3,6 +3,9 @@ package monitor;
 
 
 import monitor.model.InformMediator;
+
+import java.util.concurrent.Executors;
+
 import monitor.capture.PacketCapture;
 import monitor.controller.FrameModelController;
 import monitor.model.PieMediator;
@@ -37,7 +40,7 @@ public class SimpleMonitor {
 	      
 	       MainFrame mainFrame = new MainFrame(pieGraph, informGraph, speedGraph);
 	       InitialFrame initialFrame = new InitialFrame(controller);
-	       
+	       	       
 	       controller.setPacketCapture(packetCapture);
 	       controller.setPieMediator(pieMediator);
 	       controller.setSpeedMediator(speedMediator);

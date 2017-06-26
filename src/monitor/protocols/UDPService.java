@@ -12,7 +12,9 @@ private static final Map<Integer, String> map = new HashMap<>();
 	private static final Integer IMAP = 143;
 	private static final Integer VIBER_52 = 5243;
 	private static final Integer VIBER_97 = 9785;
-	
+	public static final Integer SSH = 22;
+	public static final Integer TELNET = 23;
+
 	
 	private static final Integer NULL = 0;
 	
@@ -38,6 +40,9 @@ private static final Map<Integer, String> map = new HashMap<>();
 	//////Messengers//////////
 		map.put(VIBER_52, viber);
 		map.put(VIBER_97, viber);
+    //////SSH, TELNET/////////
+		map.put(SSH, ssh);
+		map.put(TELNET, telnet);
 	/////Other-Service////////
 	    map.put(NULL, null_service);
 	}

@@ -19,8 +19,8 @@ public class PieMediator implements Mediator, Model, Runnable {
 	
 	private static final Timer timer = new Timer();
 	private static final long TIMEOUT = 5000;
-	private static double LOAD = 0.75;
-	private static double LIMIT = Integer.MAX_VALUE*LOAD;
+	//private static double LOAD = 0.75;
+	//private static double LIMIT = Integer.MAX_VALUE*LOAD;
 	
 	public PieMediator() {
 		
@@ -42,16 +42,14 @@ public class PieMediator implements Mediator, Model, Runnable {
 		
 		map.put(service, ((Double)map.getOrDefault(service, 0.0)+(double)length));
 		
-		if((Double)map.get(service)>LIMIT) reduceMap();
-		
 	}
-	
+	/*
 	private void reduceMap() {
 		
 		map.forEach((key, value) -> {map.put(key, (Double)map.get(key)-((Double)map.get(key)*LIMIT));});
 				  
 	}
-	
+	*/
 	private void sendToView() {
 		
 		views.forEach(view -> view.addObservation(map));

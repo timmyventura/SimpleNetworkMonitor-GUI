@@ -133,9 +133,9 @@ public class SpeedGraph extends JPanel implements View {
 	@Override
 	public void addObservation(double ... param) {
 		
-		   this.in_rate.add(new Millisecond(), param[0]);
+		   this.in_rate.addOrUpdate(new Millisecond(), param[0]);
 		   this.in_rate.setKey(String.format("Current inbound speed - %.2f kbits/s", param[0]));
-		   this.out_rate.add(new Millisecond(), param[1]);
+		   this.out_rate.addOrUpdate(new Millisecond(), param[1]);
 		   this.out_rate.setKey(String.format("Current outbound speed - %.2f kbits/s", param[1]));
 	}
 
@@ -152,25 +152,15 @@ public class SpeedGraph extends JPanel implements View {
 		
 		
 		
-		/*
-		double input = SpeedRate.SPEED_RATE.getInputSpeed();
-		double output = SpeedRate.SPEED_RATE.getOutputSpeed();
-		*/
-		double input = SpeedRate.getInputSpeed();
-		double output = SpeedRate.getOutputSpeed();
+
+		  double input = SpeedRate.getInputSpeed();
+		  double output = SpeedRate.getOutputSpeed();
+
+		   this.in_rate.addOrUpdate(new Millisecond(), input);
+		   this.in_rate.setKey((((int)(input/1024)==0) ? String.format("Current inbound speed - %.2f kbits/s", input) : String.format("Current inbound speed - %.2f Mbits/s", input/1024)));
+		   this.out_rate.addOrUpdate(new Millisecond(), output);
+		   this.out_rate.setKey(((int)(output/1024)==0) ? String.format("Current outbound speed - %.2f kbits/s", output) : String.format("Current outbound speed - %.2f Mbits/s", output/1024));
 		
-		   this.in_rate.add(new Millisecond(), input);
-		   this.in_rate.setKey(String.format("Current inbound speed - %.2f kbits/s", input));
-		   this.out_rate.add(new Millisecond(), output);
-		   this.out_rate.setKey(String.format("Current outbound speed - %.2f kbits/s", output));
-		
-		
-		/*
-		   this.in_rate.add(new Millisecond(), input);
-		   this.in_rate.setKey((((int)(input/1024)==0) ? String.format("Current inbound speed - %.2f kbits/s", input) : String.format("%.2f Mbits/s", input/1024)));
-		   this.out_rate.add(new Millisecond(), output);
-		   this.out_rate.setKey(((int)(output/1024)==0) ? String.format("Current outbound speed - %.2f kbits/s", output) : String.format("%.2f Mbits/s", output/1024));
-		*/
 	}
 
 }
