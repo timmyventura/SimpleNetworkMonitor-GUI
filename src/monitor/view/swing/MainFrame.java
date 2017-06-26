@@ -29,7 +29,6 @@ public class MainFrame extends JFrame {
 	public void init() {
 		
 		setPreferredSize(new Dimension(900, 600));
-		setResizable(false);
 		setTitle("Simple Network Monitor");
 		GroupLayout layout = new GroupLayout(getContentPane());
 	    getContentPane().setLayout(layout);
@@ -47,7 +46,7 @@ public class MainFrame extends JFrame {
 		           layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 		           .addGroup(layout.createSequentialGroup()
 		               .addComponent(piegraph, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-		               .addComponent(inform, GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+		               .addComponent(inform, GroupLayout.DEFAULT_SIZE, 10, Short.MAX_VALUE))
 		           .addComponent(speedgraph, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 		       );
 		
@@ -60,7 +59,7 @@ public class MainFrame extends JFrame {
  	           .addGroup(layout.createSequentialGroup()
  	               .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
  	                   .addComponent(piegraph, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)  
- 	                   .addComponent(inform, GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))        
+ 	                   .addComponent(inform, GroupLayout.DEFAULT_SIZE, 10, Short.MAX_VALUE))        
  	                   .addComponent(speedgraph, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
  	                  .addGap(0,0,0)
  	               .addContainerGap())

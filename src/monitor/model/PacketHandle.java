@@ -15,8 +15,6 @@ public interface PacketHandle {
 	public String packetHandle(Tcp packet);
 	public String packetHandle(Udp packet);
 	public String packetHandle(Ip4 packet);
-	public String packetHandle(Arp packet);
-	public String packetHandle(Icmp packet);
 	public String packetHandle(Ethernet packet);
 	
 }

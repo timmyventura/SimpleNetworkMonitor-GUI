@@ -114,7 +114,6 @@ public class SpeedMediator implements Mediator, Model, Runnable {
     	return (double)MAX_OUT_LEN*8/1024;
     	
     }
-	
 
 	public void clear() {
 		

@@ -7,16 +7,9 @@ public class UDPService {
 
 private static final Map<Integer, String> map = new HashMap<>();
 	
-	private static final Integer HTTP = 80;
-	private static final Integer HTTPS = 443;
-	private static final Integer FTP = 21;
-	private static final Integer FTP_DATA = 20;
-	private static final Integer SSH = 22;
-	private static final Integer TELNET = 23;
+
 	private static final Integer SMTP = 25;
 	private static final Integer IMAP = 143;
-	private static final Integer IMAPS = 993;
-	private static final Integer SMTPS = 465;
 	private static final Integer VIBER_52 = 5243;
 	private static final Integer VIBER_97 = 9785;
 	
@@ -38,24 +31,13 @@ private static final Map<Integer, String> map = new HashMap<>();
 	
 	static {
 		
-	///////Web-Services////////
-		map.put(HTTP, web);
-		map.put(HTTPS, web);
+
 	//////Post-Services////////
 		map.put(SMTP, post);
-		map.put(SMTPS, post);
 		map.put(IMAP, post);
-		map.put(IMAPS, post);
-	//////FTP-Service//////////
-		map.put(FTP, ftp);
-		map.put(FTP_DATA, ftp);
 	//////Messengers//////////
 		map.put(VIBER_52, viber);
 		map.put(VIBER_97, viber);
-	/////SSH-Service//////////	
-	    map.put(SSH, ssh);
-	/////Telnet-Serivce///////
-	    map.put(TELNET, telnet);
 	/////Other-Service////////
 	    map.put(NULL, null_service);
 	}

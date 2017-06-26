@@ -1,8 +1,7 @@
 package monitor.model;
 
-import java.util.HashMap;
 import java.util.WeakHashMap;
-import java.util.concurrent.ConcurrentHashMap;
+
 
 public class SpeedRate {
 
