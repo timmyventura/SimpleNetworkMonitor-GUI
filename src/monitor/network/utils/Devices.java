@@ -6,6 +6,9 @@ import java.util.List;
 import org.jnetpcap.Pcap;
 import org.jnetpcap.PcapIf;
 
+import monitor.logging.Logging;
+import monitor.logging.Logging.MessageType;
+
 public class Devices {
 
 	
@@ -16,8 +19,13 @@ public class Devices {
 	    	
     	 int r = Pcap.findAllDevs(alldevs, errbuf);  
 	        if (r == Pcap.NOT_OK || alldevs.isEmpty()) {  
-	            System.err.printf("Can't read list of devices, error is %s", errbuf  
-	                .toString());  
+	        	
+	        	String err_message = String.format("Can't read list of devices, error is", errbuf.toString());
+	        	
+	        	Logging.log(Devices.class, MessageType.ERROR, err_message);
+	        	
+	        	Logging.viewLogMessage(err_message, MessageType.ERROR);
+	            
 	            return null;  
 	        }  
 	        else

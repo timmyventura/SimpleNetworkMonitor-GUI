@@ -54,11 +54,8 @@ public class IPService {
 		
 		if(map.containsKey(port))
 			return map.get(port);
-		else
-		{   
-			System.out.println(port);
+		else  
 			return map.get(NULL);
-		}
 	}
 	
 	

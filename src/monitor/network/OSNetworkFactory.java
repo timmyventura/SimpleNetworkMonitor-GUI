@@ -7,6 +7,9 @@ import java.util.regex.Pattern;
 
 import org.jnetpcap.PcapIf;
 
+import monitor.logging.Logging;
+import monitor.logging.Logging.MessageType;
+import monitor.network.utils.Devices;
 import monitor.network.utils.ExternalAddress;
 
 public abstract class OSNetworkFactory implements NetworkFactory{
@@ -46,7 +49,10 @@ public abstract class OSNetworkFactory implements NetworkFactory{
 			try {
 				hostname = InetAddress.getLocalHost().getHostName();
 			} catch (UnknownHostException e) {
-				e.printStackTrace();
+
+		       	Logging.log(this.getClass(), MessageType.ERROR, e);
+		       	
+		       	Logging.viewLogMessage(e, MessageType.ERROR);
 			}
 			return hostname;
 		}
@@ -93,6 +99,9 @@ public abstract class OSNetworkFactory implements NetworkFactory{
 			   	if(m.find()) netmask = m.group();
 				}
 				catch(NullPointerException e) {	
+	       	   
+			       	Logging.log(this.getClass(), MessageType.INFO, e);  	
+					
 				} 	    	
 			});
 		return netmask;

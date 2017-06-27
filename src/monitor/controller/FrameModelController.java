@@ -1,6 +1,7 @@
 package monitor.controller;
 
 
+
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -8,7 +9,8 @@ import java.util.concurrent.Executors;
 import org.jnetpcap.PcapIf;
 
 import monitor.capture.PacketCapture;
-
+import monitor.logging.Logging;
+import monitor.logging.Logging.MessageType;
 import monitor.model.InformMediator;
 import monitor.model.PieMediator;
 import monitor.model.SpeedMediator;
@@ -38,11 +40,6 @@ public class FrameModelController {
 	private String selectedDevice;
 
 	private static final ExecutorService exec = Executors.newFixedThreadPool(3);
-	
-	public FrameModelController() {
-		
-		
-	}
 	
 	public void runningInitialFrame() {
 		
@@ -74,14 +71,19 @@ public class FrameModelController {
 		pieMediator.addView(pieGraph);
 		informMediator.addView(informGraph);
 
-       try {
 			
-			speedMediator.setHardwareAddress(device.getHardwareAddress());
+			try {
+				
+				speedMediator.setHardwareAddress(device.getHardwareAddress());
+				
+			} catch (IOException e) {
+				
+		      Logging.log(this.getClass(),MessageType.ERROR, e);
+				
+			}
 			informMediator.initInform(OSNetworkFactory.returnConcreteNetworkFactoryObject(System.getProperty("os.name"), device));
 			//informMediator.setNetworkFactory(OSNetworkFactory.returnConcreteNetworkFactoryObject(System.getProperty("os.name"), device));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
 		
 		mainFrame.init();
 		

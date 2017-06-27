@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import monitor.logging.Logging;
+import monitor.logging.Logging.MessageType;
+
 
 public class ExternalAddress {
 
@@ -31,7 +34,14 @@ public class ExternalAddress {
 		      ext_ip = in.readLine();
         }
        } catch (IOException e) {
-		e.printStackTrace();
+    	
+    	String err_message = e.getMessage();
+       	
+       	Logging.log(Devices.class, MessageType.ERROR, e);
+       	
+       	Logging.viewLogMessage(err_message, MessageType.ERROR);
+       	
+       	return "NULL";
 	}
 		return ext_ip;
    

@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import monitor.logging.Logging;
+import monitor.logging.Logging.MessageType;
+
 public class WindowsNetworkUtils {
 
 	
@@ -38,9 +41,17 @@ public class WindowsNetworkUtils {
 				});
 
 			} catch (IOException | NullPointerException e) {
-				e.printStackTrace();
+				
+				Logging.log(WindowsNetworkUtils.class, MessageType.ERROR, e);
+				
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				
+                String err_message = e.getMessage();
+		       	
+		       	Logging.log(WindowsNetworkUtils.class, MessageType.ERROR, err_message);
+		       	
+		       	Logging.viewLogMessage(err_message, MessageType.ERROR);
+				
 			}
 	    	return gateway[0];
 	    	
@@ -58,9 +69,15 @@ public class WindowsNetworkUtils {
 					lines = readFromInputStream(netst_proc.getInputStream(), ip_pattern);
 
 				} catch (IOException e) {
-					e.printStackTrace();
+					
+					Logging.log(WindowsNetworkUtils.class, MessageType.ERROR, e);
+					
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+
+			       	Logging.log(WindowsNetworkUtils.class, MessageType.ERROR, e);
+			       	
+			       	Logging.viewLogMessage(e, MessageType.ERROR);
+					
 				}
 				
 			return lines;

@@ -13,6 +13,9 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import monitor.logging.Logging;
+import monitor.logging.Logging.MessageType;
+
 public class LinuxNetworkUtils {
 
 	private static final String netstat_rn = "netstat -rn";	
@@ -43,11 +46,16 @@ public class LinuxNetworkUtils {
 				
 
 			} catch (IOException | NullPointerException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
+				Logging.log(Devices.class, MessageType.ERROR, e.getMessage());
+		       	
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
+				String err_message = e.getMessage();
+		       	
+				Logging.log(LinuxNetworkUtils.class, MessageType.INFO, e.getLocalizedMessage());
+		       	
+		       	Logging.viewLogMessage(err_message, MessageType.ERROR);
 			}
 	    	return gateway[0];
 	    	
@@ -66,13 +74,19 @@ public class LinuxNetworkUtils {
 					String [] fields = line.split("\\s+");
 		
 					application.put(fields[3].split(":")[1], fields[6].split("/")[1]);
-					}catch(ArrayIndexOutOfBoundsException e) {}
+					}catch(ArrayIndexOutOfBoundsException e) {
+						
+						
+						Logging.log(LinuxNetworkUtils.class, MessageType.INFO, e);
+						
+					}
 				});
 				
 
 			} catch (IOException | NullPointerException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
+		       	Logging.log(LinuxNetworkUtils.class, MessageType.ERROR, e);
+		       	
 			} 
 	    	return application;
 		  
@@ -93,7 +107,9 @@ public class LinuxNetworkUtils {
 				
 
 			} catch (IOException | NullPointerException e) {
-				e.printStackTrace();
+				
+				Logging.log(LinuxNetworkUtils.class, MessageType.ERROR, e);
+				
 			} 
 	    	return dnsServers;
 	    	
