@@ -33,15 +33,14 @@ public class ExternalAddress {
         try(BufferedReader in = new BufferedReader(new InputStreamReader(hpcon.getInputStream()))){
   
 		      ext_ip = in.readLine();
+		      
         }
         
        } catch (IOException e) {
-    	
-    	String err_message = e.getMessage();
-       	
+
        	Logging.log(Devices.class, MessageType.ERROR, e);
        	
-       	Logging.viewLogMessage(err_message, MessageType.ERROR);
+       	Logging.viewLogMessage(e, MessageType.ERROR);
        	
        	return "NULL";
 	}

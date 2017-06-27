@@ -10,6 +10,7 @@ import org.jnetpcap.PcapIf;
 import monitor.logging.Logging;
 import monitor.logging.Logging.MessageType;
 import monitor.network.utils.ExternalAddress;
+import monitor.network.utils.OSType;
 
 public abstract class OSNetworkFactory implements NetworkFactory{
 
@@ -125,11 +126,15 @@ public abstract class OSNetworkFactory implements NetworkFactory{
 		return device;
 	}
 
-	public static NetworkFactory returnConcreteNetworkFactoryObject(String os, PcapIf device) {
+	public static NetworkFactory returnConcreteNetworkFactoryObject(PcapIf device) {
 				
-		  if(os.toLowerCase().matches(".*linux.*")) return new LinuxNetworkFactory(device);
-		  if(os.toLowerCase().matches(".*win.*")) return new WindowsNetworkFactory(device);
+		
+		  if(OSType.isLinux()) return new LinuxNetworkFactory(device);
+		  
+		  if(OSType.isWindows()) return new WindowsNetworkFactory(device);
+		  
 		  else
+			  
 		   return null;
 	}
 	

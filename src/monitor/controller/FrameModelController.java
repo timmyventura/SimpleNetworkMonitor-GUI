@@ -81,7 +81,7 @@ public class FrameModelController {
 		      Logging.log(this.getClass(),MessageType.ERROR, e);
 				
 			}
-			informMediator.initInform(OSNetworkFactory.returnConcreteNetworkFactoryObject(System.getProperty("os.name"), device));
+			informMediator.initInform(OSNetworkFactory.returnConcreteNetworkFactoryObject(device));
 			//informMediator.setNetworkFactory(OSNetworkFactory.returnConcreteNetworkFactoryObject(System.getProperty("os.name"), device));
 		
 		
