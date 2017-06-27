@@ -13,6 +13,8 @@ import org.jnetpcap.packet.PcapPacket;
 
 import org.jnetpcap.protocol.lan.Ethernet;
 
+import monitor.logging.Logging;
+import monitor.logging.Logging.MessageType;
 import monitor.protocols.ProtocolSet;
 import monitor.view.View;
 
@@ -32,10 +34,13 @@ public class SpeedMediator implements Mediator, Model, Runnable {
     public SpeedMediator(PcapIf net) {
     	
     	try {
+    		
 			dev_mac = net.getHardwareAddress();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+    	} catch (IOException e) {
+			
+			Logging.log(this.getClass(), MessageType.ERROR, e);
+		    Logging.viewLogMessage(e, MessageType.ERROR);
 		}
 	}
     
@@ -46,6 +51,7 @@ public class SpeedMediator implements Mediator, Model, Runnable {
     public SpeedMediator(byte [] net) {
     	
     	setHardwareAddress(net);
+    	
 	}
     
     public void setHardwareAddress(byte[] mac) {
@@ -72,6 +78,7 @@ public class SpeedMediator implements Mediator, Model, Runnable {
 		int wirelen = packet.getCaptureHeader().wirelen();
 		
 		Ethernet pack = (Ethernet)packet.getHeader(ProtocolSet.ETHERNET.getInstance());
+		
 		if(Arrays.equals(pack.source(), dev_mac)) {
 			OUT_LEN+=wirelen;
 		}
@@ -85,7 +92,6 @@ public class SpeedMediator implements Mediator, Model, Runnable {
 		
     	
     	views.forEach(view -> view.addObservation());
-    	//views.forEach(view -> view.addObservation(getInputLength(), getOutputLength(), getMaxInputLength(), getMaxOutputLength()));
      	clear();
 	}
    
@@ -131,7 +137,7 @@ public class SpeedMediator implements Mediator, Model, Runnable {
 
 	@Override
 	public boolean removeView(View view) {
-		// TODO Auto-generated method stub
+	
 		return views.remove(view);
 	}
 

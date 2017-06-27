@@ -233,12 +233,7 @@ public class InformGraph extends JPanel implements View {
 
 	@Override
 	public void addObservation() {
-		
-		/*
-		double input = SpeedRate.SPEED_RATE.getMaxInputSpeed();
-		double output = SpeedRate.SPEED_RATE.getMaxOutputSpeed();
-		*/
-		
+	
 		double input = SpeedRate.getMaxInputSpeed();
 		double output = SpeedRate.getMaxOutputSpeed();
 		

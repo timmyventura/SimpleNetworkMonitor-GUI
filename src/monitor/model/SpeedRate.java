@@ -12,41 +12,7 @@ public class SpeedRate {
 		OUTPUT_SPEED,
 		MAX_INPUT_SPEED,
 		MAX_OUTPUT_SPEED;
-	
 		
-/*
-		SPEED_RATE;
-			
-
-		public void setInputSpeed(double speed) {current_input_speed = speed;};
-		public double getInputSpeed() {return current_input_speed;};
-		
-		public void setOutputSpeed(double speed) {current_output_speed = speed;};
-		public double getOutputSpeed() {return current_output_speed;};
-		
-		public void setMaxInputSpeed(double speed) {max_input_speed = speed;};
-		public double getMaxInputSpeed() {return max_input_speed;};
-		
-		public void setMaxOutputSpeed(double speed) {max_output_speed = speed;};
-		public double getMaxOutputSpeed() {return max_output_speed;};
-		
-		public void clear() {
-			
-			current_input_speed  = 0;
-			current_output_speed = 0;
-			max_input_speed = 0;
-			max_output_speed = 0;
-			
-			
-		}
-		
-		
-		private static double current_input_speed;
-		private static double current_output_speed;
-		private static double max_input_speed;
-		private static double max_output_speed;
-		
-		*/
 	}
 	
 	

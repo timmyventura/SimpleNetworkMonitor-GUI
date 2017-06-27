@@ -89,7 +89,8 @@ public class PieGraph extends JPanel implements View {
 
 	@Override
 	public void addObservation() {
-		// TODO Auto-generated method stub
+		
+		 throw new UnsupportedOperationException();
 		
 	}
 

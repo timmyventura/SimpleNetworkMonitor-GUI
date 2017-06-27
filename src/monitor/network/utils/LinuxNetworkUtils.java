@@ -43,19 +43,20 @@ public class LinuxNetworkUtils {
 					if(fields[0].equals(gateway_pattern)) gateway[0] = fields[1];
 					
 				});
-				
-
-			} catch (IOException | NullPointerException e) {
+		    
+	    	}catch(NullPointerException e) {
+			
+	    		Logging.log(Devices.class, MessageType.INFO, e.getMessage());
+			
+	    	}catch (IOException e) {
 				
 				Logging.log(Devices.class, MessageType.ERROR, e.getMessage());
 		       	
-			} catch (InterruptedException e) {
-				
-				String err_message = e.getMessage();
+			}catch (InterruptedException e) {
+
+				Logging.log(LinuxNetworkUtils.class, MessageType.ERROR, e);
 		       	
-				Logging.log(LinuxNetworkUtils.class, MessageType.INFO, e.getLocalizedMessage());
-		       	
-		       	Logging.viewLogMessage(err_message, MessageType.ERROR);
+		       	Logging.viewLogMessage(e, MessageType.ERROR);
 			}
 	    	return gateway[0];
 	    	
@@ -83,11 +84,15 @@ public class LinuxNetworkUtils {
 				});
 				
 
-			} catch (IOException | NullPointerException e) {
+	    	}catch(NullPointerException e) {
 				
-		       	Logging.log(LinuxNetworkUtils.class, MessageType.ERROR, e);
+	    		Logging.log(Devices.class, MessageType.INFO, e.getMessage());
+			
+	    	}catch (IOException e) {
+				
+				Logging.log(Devices.class, MessageType.ERROR, e.getMessage());
 		       	
-			} 
+			}
 	    	return application;
 		  
 	  }

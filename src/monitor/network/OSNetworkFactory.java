@@ -9,7 +9,6 @@ import org.jnetpcap.PcapIf;
 
 import monitor.logging.Logging;
 import monitor.logging.Logging.MessageType;
-import monitor.network.utils.Devices;
 import monitor.network.utils.ExternalAddress;
 
 public abstract class OSNetworkFactory implements NetworkFactory{

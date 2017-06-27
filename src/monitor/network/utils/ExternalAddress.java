@@ -21,7 +21,8 @@ public class ExternalAddress {
 	public static String getExternalIP()
     {
  
-         try {    
+         try {  
+        	 
 	    	 hpcon = (HttpURLConnection)new URL(request).openConnection();
              hpcon.setUseCaches(false);
              hpcon.setRequestMethod(method);
@@ -33,6 +34,7 @@ public class ExternalAddress {
   
 		      ext_ip = in.readLine();
         }
+        
        } catch (IOException e) {
     	
     	String err_message = e.getMessage();

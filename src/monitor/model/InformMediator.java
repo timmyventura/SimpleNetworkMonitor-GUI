@@ -41,6 +41,7 @@ public class InformMediator implements Model {
 
 	@Override
 	public boolean removeView(View view) {
+		
 		graph = null;
 		
 		return graph==null;

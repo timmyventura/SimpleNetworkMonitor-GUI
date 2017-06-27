@@ -36,14 +36,18 @@ public class Devices {
 	 public static String [] getDevicesName() {
 	    	
     	List<PcapIf> devs = getDevices();
+    	
     	int size = devs.size()+1;
+    	
     	String [] devs_names = new String [size];
-    	for(PcapIf dev : devs) {
+    	
+    	  for(PcapIf dev : devs) {
 
     		devs_names[--size] = OSType.isWindows()?dev.getDescription():dev.getName();
-    	}        
-    	devs_names[--size] = "  ";
-		return devs_names;
+    	  }        
+    	    devs_names[--size] = "  ";
+    	
+		 return devs_names;
     }
 	 
 	 public static PcapIf getSelectedDevice(String device) throws NullPointerException {

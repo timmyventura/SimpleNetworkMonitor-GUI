@@ -149,11 +149,8 @@ public class SpeedGraph extends JPanel implements View {
 
 	@Override
 	public void addObservation() {
-		
-		
-		
 
-		  double input = SpeedRate.getInputSpeed();
+	   	  double input = SpeedRate.getInputSpeed();
 		  double output = SpeedRate.getOutputSpeed();
 
 		   this.in_rate.addOrUpdate(new Millisecond(), input);

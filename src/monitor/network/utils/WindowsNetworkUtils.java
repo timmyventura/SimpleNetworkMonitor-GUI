@@ -30,29 +30,34 @@ public class WindowsNetworkUtils {
 	    	try {
 	    		
 				Process netst_proc = Runtime.getRuntime().exec(netsh_route);
+				
 				netst_proc.waitFor();
 				
 				List<String> lines = readFromInputStream(netst_proc.getInputStream());
+				
 				lines.forEach((line) -> {
 					
 					String [] fields = line.split("\\s+");
+					
 					if(fields[3].equals(gateway_pattern)) gateway[0] = fields[5];
 					
 				});
 
-			} catch (IOException | NullPointerException e) {
+	    	}catch(NullPointerException e) {
 				
-				Logging.log(WindowsNetworkUtils.class, MessageType.ERROR, e);
+	    		Logging.log(Devices.class, MessageType.INFO, e.getMessage());
+			
+	    	}catch (IOException e) {
 				
-			} catch (InterruptedException e) {
-				
-                String err_message = e.getMessage();
+				Logging.log(Devices.class, MessageType.ERROR, e.getMessage());
 		       	
-		       	Logging.log(WindowsNetworkUtils.class, MessageType.ERROR, err_message);
+			}catch (InterruptedException e) {
+
+				Logging.log(LinuxNetworkUtils.class, MessageType.ERROR, e);
 		       	
-		       	Logging.viewLogMessage(err_message, MessageType.ERROR);
-				
+		       	Logging.viewLogMessage(e, MessageType.ERROR);
 			}
+	    	
 	    	return gateway[0];
 	    	
 	    }
@@ -65,7 +70,9 @@ public class WindowsNetworkUtils {
 				try {
 					
 					Process netst_proc = Runtime.getRuntime().exec(netsh_dns);
+					
 					netst_proc.waitFor();
+					
 					lines = readFromInputStream(netst_proc.getInputStream(), ip_pattern);
 
 				} catch (IOException e) {
@@ -94,13 +101,19 @@ public class WindowsNetworkUtils {
 	  public static List<String> readFromInputStream(InputStream input, String pattern) throws IOException{
 	    	
 	    	List<String> buffer = new ArrayList<>();
+	    	
 	    	try(BufferedReader br = new BufferedReader(new InputStreamReader(input))){
+	    		
 	    	String temp;
+	    	
 	    	if(pattern!=null) {
 	    		
 	    		Pattern p = Pattern.compile(pattern);
+	    		
 	    	    while((temp=br.readLine())!=null) {
+	    	    	
 	    		  Matcher m = p.matcher(temp);
+	    		  
 	    		   while(m.find()) buffer.add(m.group());
 	    		
 		    	}
