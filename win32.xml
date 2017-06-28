@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="copy_created_jar_file_into_win32_dir" name="Create distribute directory for OS Windows 32 Bit Architecture">
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="/root/workspace"/>
+    <property name="dir.dist" value="${dir.buildfile}/dist"/>
+    <property name="dir.jarfile" value="${dir.dist}/jar"/>
+    <property name="dir.win32" value="${dir.dist}/win32"/>
+    <property name="dir.native.library" value="${dir.buildfile}/library"/>
+    <property name="jar.filename" value="SimpleNetworkMonitor.jar"/>
+    <property name="classpath" value="${dir.buildfile}"/>
+    <target name="copy_created_jar_file_into_win32_dir" depends="create_win32_dir">
+      <copy file="${dir.jarfile}/${jar.filename}" todir="${dir.win32}"/>
+    </target>
+    <target name="create_win32_dir" depends="clean">
+      <mkdir dir="${dir.win32}"/>
+      <mkdir dir="${dir.win32}/dependency"/>
+      <mkdir dir="${dir.win32}/library"/>
+      <mkdir dir="${dir.win32}/properties"/>
+      <mkdir dir="${dir.win32}/logs"/>
+      <copy todir="${dir.win32}/properties">
+        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/properties/"/>
+      </copy>
+      <copy todir="${dir.win32}/library">
+        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/library/win32"/>
+      </copy>
+      <copy todir="${dir.win32}/dependency">
+        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/lib">
+          <include name="jfreechart-1.0.19.jar"/>        
+          <include name="jnetpcap.jar"/>
+          <include name="jcommon-1.0.23.jar"/>
+          <include name="slf4j-api-1.8.0-alpha2.jar"/>
+          <include name="slf4j-log4j12-1.8.0-alpha2.jar"/>
+          <include name="log4j-1.2.17.jar"/>
+       </fileset>  
+      </copy>
+    </target>
+    <target name="clean">
+      <delete dir="${dir.win32}"/>
+    </target>
+</project>

@@ -2,7 +2,8 @@
 <project default="create_run_jar" name="Create Runnable Jar for Project SimpleNetworkMonitor">
     <property name="dir.buildfile" value="."/>
     <property name="dir.workspace" value="/root/workspace"/>
-    <property name="dir.jarfile" value="${dir.buildfile}/dist/jar"/>
+    <property name="dir.dist" value="${dir.buildfile}/dist"/>
+    <property name="dir.jarfile" value="${dir.dist}/jar"/>
     <property name="dir.native.library" value="${dir.buildfile}/library"/>
     <property name="dir.build.classes" value="${dir.buildfile}/build/classes"/>
     <property name="jar.filename" value="SimpleNetworkMonitor.jar"/>
@@ -22,18 +23,19 @@
             </manifest>
             <fileset dir="${dir.build.classes}"/>
         </jar>
-    </target>
-     <target name="create_jar_classes_dir" depends="clean">
+     </target>
+     <target name="create_jar_dir" depends="clean">
       <mkdir dir="${dir.jarfile}"/>
       <mkdir dir="${dir.build.classes}"/>
       <mkdir dir="${dir.jarfile}/dependency"/>
       <mkdir dir="${dir.jarfile}/library"/>
       <mkdir dir="${dir.jarfile}/properties"/>
       <mkdir dir="${dir.jarfile}/logs"/>
-      <copy file="${dir.workspace}/SimpleNetworkMonitor/src/log4j.properties" todir="${dir.jarfile}/properties"/>
-      <copy file="${dir.workspace}/SimpleNetworkMonitor/bash/SimpleNetworkMonitor.sh" todir="${dir.jarfile}"/>
+      <copy todir="${dir.jarfile}/properties">
+        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/properties/"/>
+      </copy>
       <copy todir="${dir.jarfile}/library">
-        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/library/library"/>
+        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/library/"/>
       </copy>
       <copy todir="${dir.jarfile}/dependency">
         <fileset dir="${dir.workspace}/SimpleNetworkMonitor/lib">
@@ -46,7 +48,7 @@
        </fileset>  
       </copy>
     </target>
-     <target name="compile" depends="create_jar_classes_dir">
+     <target name="compile" depends="create_jar_dir">
       <javac destdir="${dir.build.classes}">
        <src path="${dir.buildfile}/src"/>
        <exclude name="monitor/view/swt/*.java"/>
