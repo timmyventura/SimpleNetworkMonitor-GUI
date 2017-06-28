@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="copy_created_jar_file_into_win64_dir" name="Create distribute directory for OS Windows 64 Bit Architecture">
+<project default="create_run_jar" name="Create distribute directory for OS Windows 32 Bit Architecture">
     <property name="dir.buildfile" value="."/>
     <property name="dir.workspace" value="/root/workspace"/>
+    <property name="dir.build.classes" value="${dir.buildfile}/build/classes"/>
     <property name="dir.dist" value="${dir.buildfile}/dist"/>
     <property name="dir.jarfile" value="${dir.dist}/jar"/>
     <property name="dir.win64" value="${dir.dist}/win64"/>
     <property name="dir.native.library" value="${dir.buildfile}/library"/>
     <property name="jar.filename" value="SimpleNetworkMonitor.jar"/>
     <property name="classpath" value="${dir.buildfile}"/>
-    <target name="copy_created_jar_file_into_win64_dir" depends="create_win64_dir">
-      <copy file="${dir.jarfile}/${jar.filename}" todir="${dir.win64}"/>
-    </target>
+    <target name="create_run_jar" depends="compile">
+        <jar destfile="${dir.win64}/${jar.filename}">
+            <manifest>
+                <attribute name="Main-Class" value="monitor.SimpleMonitor"/>
+                <attribute name="Class-Path" value="properties/
+                                                    dependency/jfreechart-1.0.19.jar 
+                                                    dependency/slf4j-api-1.8.0-alpha2.jar
+                                                    dependency/jnetpcap.jar
+                                                    dependency/jcommon-1.0.23.jar 
+                                                    dependency/slf4j-log4j12-1.8.0-alpha2.jar
+                                                    dependency/log4j-1.2.17.jar
+                                                    "/>
+            </manifest>
+            <fileset dir="${dir.build.classes}"/>
+        </jar>
+     </target>
     <target name="create_win64_dir" depends="clean">
+      <mkdir dir="${dir.build.classes}"/>
       <mkdir dir="${dir.win64}"/>
       <mkdir dir="${dir.win64}/dependency"/>
       <mkdir dir="${dir.win64}/library"/>
@@ -34,7 +49,20 @@
        </fileset>  
       </copy>
     </target>
+    <target name="compile" depends="create_win64_dir">
+      <javac destdir="${dir.build.classes}">
+       <src path="${dir.buildfile}/src"/>
+       <exclude name="monitor/view/swt/*.java"/>
+        <classpath>
+          <pathelement path="${classpath}"/>
+                <fileset dir="lib">
+                  <include name="**/*.jar"/>
+                </fileset>
+        </classpath>
+      </javac>
+    </target>
     <target name="clean">
       <delete dir="${dir.win64}"/>
+      <delete dir="${dir.build.classes}"/>
     </target>
 </project>
