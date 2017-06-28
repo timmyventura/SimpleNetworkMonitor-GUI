@@ -1,1 +1,0 @@
-2017-06-28 10:51:07 INFO  LinuxNetworkFactory: java.lang.NullPointerException at monitor.network.OSNetworkFactory.lambda$getNetworkMask$1(Unknown Source)
