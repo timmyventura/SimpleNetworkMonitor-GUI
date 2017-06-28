@@ -12,6 +12,13 @@ public class Logging {
 	
 	private static final ConcurrentHashMap<Class<? extends Object>, Logger> map = new ConcurrentHashMap<>();
 		
+	static {
+		
+		
+		
+		
+	}
+	
 	public enum MessageType{
 		
 		INFO{
@@ -97,6 +104,10 @@ public class Logging {
 	
 	
 	public static void main(String [] args) {
+		
+		Logger logging = LoggerFactory.getLogger(Logging.class);
+		
+		
 		
 		log(Logging.class, MessageType.INFO, "Hello World!");
 		

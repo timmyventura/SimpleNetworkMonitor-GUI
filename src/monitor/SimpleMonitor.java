@@ -53,6 +53,8 @@ public class SimpleMonitor {
 	       controller.setMainFrame(mainFrame);
 	       controller.setInitialFrame(initialFrame);
 	      
+	       
+	       
 	       controller.runningInitialFrame();
 	       
 	       

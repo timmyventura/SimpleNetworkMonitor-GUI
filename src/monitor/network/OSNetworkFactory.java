@@ -10,7 +10,7 @@ import org.jnetpcap.PcapIf;
 import monitor.logging.Logging;
 import monitor.logging.Logging.MessageType;
 import monitor.network.utils.ExternalAddress;
-import monitor.network.utils.OSType;
+import monitor.commonutils.OSType;
 
 public abstract class OSNetworkFactory implements NetworkFactory{
 
@@ -99,7 +99,7 @@ public abstract class OSNetworkFactory implements NetworkFactory{
 			   	if(m.find()) netmask = m.group();
 				}
 				catch(NullPointerException e) {	
-	       	   
+					
 			       	Logging.log(this.getClass(), MessageType.INFO, e);  	
 					
 				} 	    	

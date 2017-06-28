@@ -46,11 +46,11 @@ public class LinuxNetworkUtils {
 		    
 	    	}catch(NullPointerException e) {
 			
-	    		Logging.log(Devices.class, MessageType.INFO, e.getMessage());
+	    		Logging.log(Devices.class, MessageType.INFO, e);
 			
 	    	}catch (IOException e) {
 				
-				Logging.log(Devices.class, MessageType.ERROR, e.getMessage());
+				Logging.log(Devices.class, MessageType.ERROR, e);
 		       	
 			}catch (InterruptedException e) {
 
@@ -86,11 +86,11 @@ public class LinuxNetworkUtils {
 
 	    	}catch(NullPointerException e) {
 				
-	    		Logging.log(Devices.class, MessageType.INFO, e.getMessage());
+	    		Logging.log(Devices.class, MessageType.INFO, e);
 			
 	    	}catch (IOException e) {
 				
-				Logging.log(Devices.class, MessageType.ERROR, e.getMessage());
+				Logging.log(Devices.class, MessageType.ERROR, e);
 		       	
 			}
 	    	return application;

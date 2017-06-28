@@ -6,6 +6,7 @@ import java.util.List;
 import org.jnetpcap.Pcap;
 import org.jnetpcap.PcapIf;
 
+import monitor.commonutils.OSType;
 import monitor.logging.Logging;
 import monitor.logging.Logging.MessageType;
 

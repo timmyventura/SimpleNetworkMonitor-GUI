@@ -1,4 +1,4 @@
-package monitor.network.utils;
+package monitor.commonutils;
 
 public class OSType {
 
