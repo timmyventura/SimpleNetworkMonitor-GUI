@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="clean" name="Create distribute directory for OS Windows 32 Bit Architecture">
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="/root/workspace"/>
+    <property name="dir.dist" value="${dir.buildfile}/dist"/>
+    <target name="clean">
+      <delete dir="${dir.dist}"/>
+    </target>
+</project>

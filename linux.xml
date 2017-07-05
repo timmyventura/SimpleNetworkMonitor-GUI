@@ -32,7 +32,9 @@
       <mkdir dir="${dir.linux}/library/lin64"/>
       <mkdir dir="${dir.linux}/properties"/>
       <mkdir dir="${dir.linux}/logs"/>
-      <copy file="${dir.workspace}/SimpleNetworkMonitor/bash/SimpleNetworkMonitor.sh" todir="${dir.linux}"/>
+      <copy todir="${dir.linux}">
+        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/bash"/>
+      </copy>
       <copy todir="${dir.linux}/properties">
         <fileset dir="${dir.workspace}/SimpleNetworkMonitor/properties/"/>
       </copy>
