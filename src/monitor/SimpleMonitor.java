@@ -10,6 +10,8 @@ import monitor.capture.PacketCapture;
 import monitor.controller.FrameModelController;
 import monitor.model.PieMediator;
 import monitor.model.SpeedMediator;
+import monitor.network.OSNetworkFactory;
+import monitor.network.utils.Devices;
 import monitor.view.swing.InformGraph;
 import monitor.view.swing.InitialFrame;
 import monitor.view.swing.MainFrame;
@@ -24,8 +26,7 @@ public class SimpleMonitor {
 
 	public static void main(String[] args){
 		
-		  
-	       
+		 
 		   FrameModelController controller = new FrameModelController();
 	      
 		   
@@ -57,6 +58,8 @@ public class SimpleMonitor {
 	       
 	       controller.runningInitialFrame();
 	       
-	       
+		
+	
+		 
 	}
 }

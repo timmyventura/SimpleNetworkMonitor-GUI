@@ -12,12 +12,6 @@ public class Logging {
 	
 	private static final ConcurrentHashMap<Class<? extends Object>, Logger> map = new ConcurrentHashMap<>();
 		
-	static {
-		
-		
-		
-		
-	}
 	
 	public enum MessageType{
 		
@@ -58,6 +52,7 @@ public class Logging {
 		};
 		
 		public abstract void writeTextIntoLogFile(String text, Logger logging);
+		
 		public abstract void showLogInMessageDialog(String text);
 	}
 	
@@ -101,16 +96,4 @@ public class Logging {
 			viewLogMessage(err_message, type);
 
 	}
-	
-	
-	public static void main(String [] args) {
-		
-		Logger logging = LoggerFactory.getLogger(Logging.class);
-		
-		
-		
-		log(Logging.class, MessageType.INFO, "Hello World!");
-		
-	}
-	
 }

@@ -1,10 +1,11 @@
 package monitor.view.swing;
 
 
-import java.awt.Dimension;
 
+import java.awt.Dimension;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
+
 
 
 public class MainFrame extends JFrame {
@@ -46,7 +47,7 @@ public class MainFrame extends JFrame {
 		           layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 		           .addGroup(layout.createSequentialGroup()
 		               .addComponent(piegraph, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-		               .addComponent(inform, GroupLayout.DEFAULT_SIZE, 10, Short.MAX_VALUE))
+		               .addComponent(inform, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		           .addComponent(speedgraph, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 		       );
 		
@@ -59,7 +60,7 @@ public class MainFrame extends JFrame {
  	           .addGroup(layout.createSequentialGroup()
  	               .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
  	                   .addComponent(piegraph, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)  
- 	                   .addComponent(inform, GroupLayout.DEFAULT_SIZE, 10, Short.MAX_VALUE))        
+ 	                   .addComponent(inform, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))        
  	                   .addComponent(speedgraph, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
  	                  .addGap(0,0,0)
  	               .addContainerGap())

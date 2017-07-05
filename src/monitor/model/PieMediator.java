@@ -79,7 +79,7 @@ public class PieMediator implements Mediator, Model, Runnable {
 	@Override
 	public void run() {
 		
-		
+	
 		final TimerTask task = new TimerTask() {
 			
 			@Override

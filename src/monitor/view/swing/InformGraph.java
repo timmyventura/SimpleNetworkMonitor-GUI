@@ -1,6 +1,7 @@
 package monitor.view.swing;
 
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.Map;
@@ -9,7 +10,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 
 import monitor.model.SpeedRate;
 import monitor.view.View;
@@ -41,11 +41,16 @@ public class InformGraph extends JPanel implements View {
 	private JTextField max_output_speedfield;
 	private JTextField hostnamefield;
 	
+	private JPanel panel;
 	
 	private int DEFAULT_COLUMN = 20;
-		
+
+	
+	
 	public InformGraph() {
 		
+		super(new BorderLayout());
+		panel = new JPanel();
     	initLabels();
     	initFields();
 		
@@ -95,32 +100,32 @@ public class InformGraph extends JPanel implements View {
     public void init() {
     	
         GridLayout layout = new GridLayout(0,2);
-    	setLayout(layout);
-    	setBackground(Color.WHITE);
+        getPanel().setLayout(layout);
+        getPanel().setBackground(Color.WHITE);
     	setBorder(BorderFactory.createCompoundBorder(
-				BorderFactory.createEmptyBorder(4, 4, 4, 4),
-				BorderFactory.createLineBorder(Color.black)));
-    	add(iplocallabel);
-    	add(iplocalfield);
-    	add(masklabel);
-    	add(maskfield);
-    	add(gatewaylabel);
-    	add(gatewayfield);
-    	add(ipexternallabel);
-    	add(ipexternalfield);
+				  BorderFactory.createEmptyBorder(4, 4, 4, 4),
+				  BorderFactory.createLineBorder(Color.black)));
+    	getPanel().add(iplocallabel);
+    	getPanel().add(iplocalfield);
+    	getPanel().add(masklabel);
+    	getPanel().add(maskfield);
+    	getPanel().add(gatewaylabel);
+    	getPanel().add(gatewayfield);
+    	getPanel().add(ipexternallabel);
+    	getPanel().add(ipexternalfield);
     	if(dnsfields != null || dnslabels != null) {
     	for(int i=0; (i< dnsfields.length)||(i < dnslabels.length); i++) {
-    		add(dnslabels[i]);
-    		add(dnsfields[i]);
+    		getPanel().add(dnslabels[i]);
+    		getPanel().add(dnsfields[i]);
     	}
     	}
-    	add(hostnamelabel);
-    	add(hostnamefield);
-    	add(max_input_speedlabel);
-    	add(max_input_speedfield);
-    	add(max_output_speedlabel);
-    	add(max_output_speedfield);
-
+    	getPanel().add(hostnamelabel);
+    	getPanel().add(hostnamefield);
+    	getPanel().add(max_input_speedlabel);
+    	getPanel().add(max_input_speedfield);
+    	getPanel().add(max_output_speedlabel);
+    	getPanel().add(max_output_speedfield);
+        add(getPanel());
     }
     
     public void setDNSLabelsFields(String [] label) {
@@ -159,6 +164,8 @@ public class InformGraph extends JPanel implements View {
     	
     	return ipexternalfield.getText();
     }
+    
+    
     public void setMaskToMaskField(String mask) {
     	
     	maskfield.setText(mask);
@@ -242,5 +249,16 @@ public class InformGraph extends JPanel implements View {
 		
 		
 	}
+
+
+	public JPanel getPanel() {
+		return panel;
+	}
+
+
+	public void setPanel(JPanel panel) {
+		this.panel = panel;
+	}
+
 
 }

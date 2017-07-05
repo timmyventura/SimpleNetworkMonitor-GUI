@@ -38,6 +38,9 @@
       <copy todir="${dir.win32}/library">
         <fileset dir="${dir.workspace}/SimpleNetworkMonitor/library/win32"/>
       </copy>
+      <copy todir="${dir.win32}">
+        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/executable/win32"/>
+      </copy>
       <copy todir="${dir.win32}/dependency">
         <fileset dir="${dir.workspace}/SimpleNetworkMonitor/lib">
           <include name="jfreechart-1.0.19.jar"/>        

@@ -97,10 +97,12 @@ public class SpeedMediator implements Mediator, Model, Runnable {
    
     private double getInputLength() {
         	
+    	
     	return (double)IN_LEN*8/1024;
     }
     
     private double getOutputLength() {
+    	
     	
     	return (double)OUT_LEN*8/1024;
     }
@@ -109,7 +111,8 @@ public class SpeedMediator implements Mediator, Model, Runnable {
     	
     	if(MAX_IN_LEN<=IN_LEN) MAX_IN_LEN=IN_LEN;
     	
-    	return (double)MAX_IN_LEN*8/1024;
+    	
+        return (double)MAX_IN_LEN*8/1024;
     	
     }
     
@@ -117,7 +120,7 @@ public class SpeedMediator implements Mediator, Model, Runnable {
     	
     	if(MAX_OUT_LEN<=OUT_LEN) MAX_OUT_LEN=OUT_LEN;
     	
-    	return (double)MAX_OUT_LEN*8/1024;
+        return (double)MAX_OUT_LEN*8/1024;
     	
     }
 
@@ -144,7 +147,8 @@ public class SpeedMediator implements Mediator, Model, Runnable {
 	@Override
 	public void run() {
 		
-
+		
+		
 		final TimerTask task = new TimerTask() {
 			
 			@Override
@@ -161,7 +165,7 @@ public class SpeedMediator implements Mediator, Model, Runnable {
 		};
 		
 		timer.scheduleAtFixedRate(task, 0,  TIMEOUT);
-			
+		
 		
 		
      

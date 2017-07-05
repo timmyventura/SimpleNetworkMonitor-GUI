@@ -37,9 +37,17 @@ public class WindowsNetworkUtils {
 				
 				lines.forEach((line) -> {
 					
+					try {
+					
 					String [] fields = line.split("\\s+");
 					
 					if(fields[3].equals(gateway_pattern)) gateway[0] = fields[5];
+					
+					}catch(ArrayIndexOutOfBoundsException e) {
+					  									        	
+			        	Logging.log(WindowsNetworkUtils.class, MessageType.ERROR, e);
+			        							
+					}
 					
 				});
 

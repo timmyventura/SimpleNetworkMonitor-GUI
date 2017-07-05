@@ -9,7 +9,10 @@ import org.jnetpcap.Pcap;
 import org.jnetpcap.PcapIf;
 import org.jnetpcap.packet.PcapPacketHandler;
 
+import monitor.logging.Logging;
+import monitor.logging.Logging.MessageType;
 import monitor.model.Mediator;
+import monitor.network.utils.Devices;
 
 
 public class PacketCapture implements Capture, Runnable {
@@ -20,7 +23,7 @@ public class PacketCapture implements Capture, Runnable {
 	private static final StringBuilder errbuf = new StringBuilder();
 	
 	public static final int DEFAULT_SNAPLEN = Pcap.DEFAULT_SNAPLEN;
-	public static final int DEFAULT_TIMEOUT = System.getProperty("os.name").startsWith("W")?-1:0;
+	public static final int DEFAULT_TIMEOUT = System.getProperty("os.name").toLowerCase().contains(".*win.*")?-1:0;
 	public static final int DEFAULT_FLAG    = Pcap.MODE_PROMISCUOUS;
 	
 
@@ -29,9 +32,14 @@ public class PacketCapture implements Capture, Runnable {
 		handle = Pcap.openLive(device.getName(), snaplen, flags, timeout, errbuf);
 		
 		if (handle == null) {  
-            System.err.printf("Error while opening device for capture: "  
-                + errbuf.toString());  
-            return null;  
+			
+			String err_message = String.format("Can't read list of devices, error is", errbuf.toString());
+        	
+        	Logging.log(this.getClass(), MessageType.ERROR, err_message);
+        	
+        	Logging.viewLogMessage(err_message, MessageType.ERROR);
+            
+            return null;    
         }  
 		
 		return handle;

@@ -17,6 +17,7 @@ import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.time.FixedMillisecond;
 import org.jfree.data.time.Millisecond;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
@@ -34,6 +35,7 @@ public class SpeedGraph extends JPanel implements View {
 	private TimeSeries in_rate;
 	private TimeSeries out_rate;
 	private int maxAge = 60000;
+
 	
 
     public SpeedGraph() {
@@ -153,6 +155,8 @@ public class SpeedGraph extends JPanel implements View {
 	   	  double input = SpeedRate.getInputSpeed();
 		  double output = SpeedRate.getOutputSpeed();
 
+		  
+		  
 		   this.in_rate.addOrUpdate(new Millisecond(), input);
 		   this.in_rate.setKey((((int)(input/1024)==0) ? String.format("Current inbound speed - %.2f kbits/s", input) : String.format("Current inbound speed - %.2f Mbits/s", input/1024)));
 		   this.out_rate.addOrUpdate(new Millisecond(), output);
