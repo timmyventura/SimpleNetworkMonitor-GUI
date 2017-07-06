@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=Launch4j 
+Comment=Launch4j Executable Wrapper
+Icon=launch4j
+Exec=/home/tpetrov/Downloads/Java/launch4j/launch4j
+StartupNotify=true
+StartupWMClass=Launch4j 
