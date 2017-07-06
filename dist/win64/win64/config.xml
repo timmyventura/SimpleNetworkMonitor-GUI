@@ -3,7 +3,7 @@
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
   <jar>/root/workspace/SimpleNetworkMonitor/dist/jar/SimpleNetworkMonitor.jar</jar>
-  <outfile>/root/workspace/SimpleNetworkMonitor/dist/win32/SimpleNetworkMonitor.exe</outfile>
+  <outfile>/root/workspace/SimpleNetworkMonitor/dist/win64/SimpleNetworkMonitor.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jar" name="Create distribute directory for OS Windows 32 Bit Architecture">
+<project default="create_win32_dir" name="Create distribute directory for OS Windows 32 Bit Architecture">
     <property name="dir.buildfile" value="."/>
     <property name="dir.workspace" value="/root/workspace"/>
     <property name="dir.build.classes" value="${dir.buildfile}/build/classes"/>
@@ -9,22 +9,6 @@
     <property name="dir.native.library" value="${dir.buildfile}/library"/>
     <property name="jar.filename" value="SimpleNetworkMonitor.jar"/>
     <property name="classpath" value="${dir.buildfile}"/>
-    <target name="create_run_jar" depends="compile">
-        <jar destfile="${dir.win32}/${jar.filename}">
-            <manifest>
-                <attribute name="Main-Class" value="monitor.SimpleMonitor"/>
-                <attribute name="Class-Path" value="properties/
-                                                    dependency/jfreechart-1.0.19.jar 
-                                                    dependency/slf4j-api-1.8.0-alpha2.jar
-                                                    dependency/jnetpcap.jar
-                                                    dependency/jcommon-1.0.23.jar 
-                                                    dependency/slf4j-log4j12-1.8.0-alpha2.jar
-                                                    dependency/log4j-1.2.17.jar
-                                                    "/>
-            </manifest>
-            <fileset dir="${dir.build.classes}"/>
-        </jar>
-     </target>
     <target name="create_win32_dir" depends="clean">
       <mkdir dir="${dir.build.classes}"/>
       <mkdir dir="${dir.win32}"/>
@@ -39,7 +23,10 @@
         <fileset dir="${dir.workspace}/SimpleNetworkMonitor/library/win32"/>
       </copy>
       <copy todir="${dir.win32}">
-        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/executable/win32"/>
+        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/executable">
+          <include name="win32/config.xml"/>
+          <include name="WinPcap_4_1_3.exe"/>
+        </fileset>
       </copy>
       <copy todir="${dir.win32}/dependency">
         <fileset dir="${dir.workspace}/SimpleNetworkMonitor/lib">
@@ -52,20 +39,7 @@
        </fileset>  
       </copy>
     </target>
-    <target name="compile" depends="create_win32_dir">
-      <javac destdir="${dir.build.classes}">
-       <src path="${dir.buildfile}/src"/>
-       <exclude name="monitor/view/swt/*.java"/>
-        <classpath>
-          <pathelement path="${classpath}"/>
-                <fileset dir="lib">
-                  <include name="**/*.jar"/>
-                </fileset>
-        </classpath>
-      </javac>
-    </target>
     <target name="clean">
       <delete dir="${dir.win32}"/>
-      <delete dir="${dir.build.classes}"/>
     </target>
 </project>

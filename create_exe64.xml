@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="launch4j">
+    <property name="dir.buildfile" location="." />
+    <property name="launch4j.dir" location="${dir.buildfile}/lib/launch4j" />
+      <taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask">
+      <classpath>
+         <pathelement location="${launch4j.dir}/launch4j.jar"/>
+         <pathelement location="${launch4j.dir}/lib/xstream.jar"/>
+      </classpath>
+      </taskdef>
+      <launch4j configFile="${dir.buildfile}/executable/win64/config.xml" />
+</project>
