@@ -39,10 +39,18 @@ public class LinuxNetworkUtils {
 				List<String> lines = readFromInputStream(netst_proc.getInputStream(), null);
 				lines.forEach((line) -> {
 					
+				   try {
+					   
 					String [] fields = line.split("\\s+");
 					if(fields[0].equals(gateway_pattern)) gateway[0] = fields[1];
 					
+				   }catch(ArrayIndexOutOfBoundsException e) {
+				        	
+			        	Logging.log(LinuxNetworkUtils.class, MessageType.ERROR, e);
+			        							
+					}
 				});
+			
 		    
 	    	}catch(NullPointerException e) {
 			
@@ -58,7 +66,9 @@ public class LinuxNetworkUtils {
 		       	
 		       	Logging.viewLogMessage(e, MessageType.ERROR);
 			}
+	
 	    	return gateway[0];
+	    	
 	    	
 	    }
 	 

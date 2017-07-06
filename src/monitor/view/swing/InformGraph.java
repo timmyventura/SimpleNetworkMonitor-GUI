@@ -3,6 +3,7 @@ package monitor.view.swing;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
 
 import monitor.model.SpeedRate;
 import monitor.view.View;
@@ -50,22 +52,42 @@ public class InformGraph extends JPanel implements View {
 	public InformGraph() {
 		
 		super(new BorderLayout());
-		panel = new JPanel();
+		if(panel==null) setPanel(new JPanel());
     	initLabels();
     	initFields();
 		
+	}
+	
+	public JPanel getPanel() {
+		
+		return panel;
+	
+	}
+
+
+	public void setPanel(JPanel panel) {
+		
+		this.panel = panel;
+	
 	}
 	
 	
 	private void initLabels() {
 		
 		iplocallabel = new JLabel("Local IP:");
+		setLabelFieldParameters(iplocallabel);
 		ipexternallabel = new JLabel("External IP:");
+		setLabelFieldParameters(ipexternallabel);
 		masklabel = new JLabel("Mask:");
+		setLabelFieldParameters(masklabel);
 		gatewaylabel = new JLabel("Gateway:");
+		setLabelFieldParameters(gatewaylabel);
 		max_input_speedlabel = new JLabel("Max Input Speed:");
+		setLabelFieldParameters(max_input_speedlabel);
 		max_output_speedlabel = new JLabel("Max Output Speed:");
+		setLabelFieldParameters(max_output_speedlabel);
 	    hostnamelabel = new JLabel("Hostname:");
+	    setLabelFieldParameters(hostnamelabel);
 	    
 	}
 	
@@ -90,18 +112,31 @@ public class InformGraph extends JPanel implements View {
 	private void setTextFieldParameters(JTextField field) {
 		
 		field.setColumns(DEFAULT_COLUMN);
-		field.setEditable(false);
+		field.setEditable(false);	
 		field.setBackground(Color.WHITE);
 		field.setHorizontalAlignment(JTextField.RIGHT);
+		field.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+		field.setFont(new Font("SansSerif", Font.BOLD, 14));
+		field.setForeground(new Color(65, 0, 160));
+	}
+	
+	private void setLabelFieldParameters(JLabel label) {
 		
-		
+		label.setFont(new Font("SansSerif", Font.BOLD, 14));
+
 	}
 	
     public void init() {
     	
-        GridLayout layout = new GridLayout(0,2);
+        GridLayout layout = new GridLayout(0,2,8,8);
         getPanel().setLayout(layout);
-        getPanel().setBackground(Color.WHITE);
+        getPanel().setBackground(new Color(211,211,211));
+        getPanel().setBorder(BorderFactory.createTitledBorder(BorderFactory.createEmptyBorder(8,0,0,0),
+        		                                             "Brief network info",
+        		                                              TitledBorder.CENTER,
+        		                                              TitledBorder.TOP,
+        		                                              new Font("SansSerif", Font.BOLD, 16) ));
+
     	setBorder(BorderFactory.createCompoundBorder(
 				  BorderFactory.createEmptyBorder(4, 4, 4, 4),
 				  BorderFactory.createLineBorder(Color.black)));
@@ -136,6 +171,7 @@ public class InformGraph extends JPanel implements View {
     	for(int i=0; i<label.length;i++) {
     		int k=i;
     		dnslabels[i] = new JLabel(String.format("DNS %d:", k+1));
+    		setLabelFieldParameters(dnslabels[i]);
     		dnsfields[i] = new JTextField(label[i]);
     		setTextFieldParameters(dnsfields[i]);
     	}
@@ -251,14 +287,7 @@ public class InformGraph extends JPanel implements View {
 	}
 
 
-	public JPanel getPanel() {
-		return panel;
-	}
 
-
-	public void setPanel(JPanel panel) {
-		this.panel = panel;
-	}
 
 
 }

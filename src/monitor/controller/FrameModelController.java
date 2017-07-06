@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+
 import org.jnetpcap.PcapIf;
 
 import monitor.capture.PacketCapture;
@@ -16,16 +17,15 @@ import monitor.model.PieMediator;
 import monitor.model.SpeedMediator;
 import monitor.network.OSNetworkFactory;
 import monitor.network.utils.Devices;
-import monitor.view.swing.InformGraph;
+import monitor.view.Frame;
+import monitor.view.View;
 import monitor.view.swing.InitialFrame;
-import monitor.view.swing.MainFrame;
-import monitor.view.swing.PieGraph;
-import monitor.view.swing.SpeedGraph;
+
 
 public class FrameModelController {
 
-	private MainFrame mainFrame;
-	private InitialFrame initialFrame;
+	private Frame mainFrame;
+	private Frame initialFrame;
 	
 	private PacketCapture packetCapture;
 	
@@ -33,9 +33,9 @@ public class FrameModelController {
 	private SpeedMediator speedMediator;
 	private InformMediator informMediator;
 	
-	private SpeedGraph speedGraph;
-	private PieGraph pieGraph;
-	private InformGraph informGraph;
+	private View speedGraph;
+	private View pieGraph;
+	private View informGraph;
 	
 	private String selectedDevice;
 
@@ -43,7 +43,8 @@ public class FrameModelController {
 	
 	public void runningInitialFrame() {
 		
-		initialFrame.setVisible(true);
+		initialFrame.init();
+		initialFrame.setVisible(true);	
 		setInitialComboModel(Devices.getDevicesName());
 		
 	}
@@ -79,10 +80,11 @@ public class FrameModelController {
 			} catch (IOException e) {
 				
 		      Logging.log(this.getClass(),MessageType.ERROR, e);
+		      Logging.viewLogMessage(e, MessageType.ERROR);
 				
 			}
 			informMediator.initInform(OSNetworkFactory.returnConcreteNetworkFactoryObject(device));
-			//informMediator.setNetworkFactory(OSNetworkFactory.returnConcreteNetworkFactoryObject(System.getProperty("os.name"), device));
+			
 		
 		
 		mainFrame.init();
@@ -96,31 +98,31 @@ public class FrameModelController {
 	
 	public void setInitialComboModel(String [] interfaces) {
 		
-		initialFrame.setComboModel(interfaces);
+		((InitialFrame)initialFrame).setComboModel(interfaces);
 		
 	}
 
 	
 
-	public MainFrame getMainFrame() {
+	public Frame getMainFrame() {
 		
 		return mainFrame;
 		
 	}
 
-	public void setMainFrame(MainFrame mainFrame) {
+	public void setMainFrame(Frame mainFrame) {
 		
 		this.mainFrame = mainFrame;
 		
 	}
 
-	public InitialFrame getInitialFrame() {
+	public Frame getInitialFrame() {
 		
 		return initialFrame;
 		
 	}
 
-	public void setInitialFrame(InitialFrame initialFrame) {
+	public void setInitialFrame(Frame initialFrame) {
 		
 		this.initialFrame = initialFrame;
 		
@@ -164,27 +166,27 @@ public class FrameModelController {
 		this.informMediator = informMediator;
 	}
 
-	public SpeedGraph getSpeedGraph() {
+	public View getSpeedGraph() {
 		return speedGraph;
 	}
 
-	public void setSpeedGraph(SpeedGraph speedGraph) {
+	public void setSpeedGraph(View speedGraph) {
 		this.speedGraph = speedGraph;
 	}
 
-	public PieGraph getPieGraph() {
+	public View getPieGraph() {
 		return pieGraph;
 	}
 
-	public void setPieGraph(PieGraph pieGraph) {
+	public void setPieGraph(View pieGraph) {
 		this.pieGraph = pieGraph;
 	}
 
-	public InformGraph getInformGraph() {
+	public View getInformGraph() {
 		return informGraph;
 	}
 
-	public void setInformGraph(InformGraph informGraph) {
+	public void setInformGraph(View informGraph) {
 		this.informGraph = informGraph;
 	}
 

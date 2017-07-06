@@ -10,7 +10,7 @@ import org.jnetpcap.packet.PcapPacket;
 
 import monitor.view.View;
 
-public class PieMediator implements Mediator, Model, Runnable {
+public class PieMediator extends AbstractModel {
 
 	
 	private List<View> views = new ArrayList<View>();

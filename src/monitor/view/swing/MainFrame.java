@@ -2,28 +2,28 @@ package monitor.view.swing;
 
 
 
+import java.awt.Component;
 import java.awt.Dimension;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 
+import monitor.view.Frame;
+import monitor.view.View;
 
 
-public class MainFrame extends JFrame {
+
+public class MainFrame extends Frame {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private PieGraph piegraph;
-	private InformGraph inform;
-	private SpeedGraph speedgraph;
+	private View [] views;
 	
-	public MainFrame(PieGraph piegraph, InformGraph inform, SpeedGraph speedgraph) {
+    public MainFrame(View ... views ) {
 		
-		this.piegraph = piegraph;
-		this.inform = inform;
-		this.speedgraph = speedgraph;
+		this.views = views;
 		
 	}
 	
@@ -46,9 +46,9 @@ public class MainFrame extends JFrame {
 		layout.setHorizontalGroup(
 		           layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 		           .addGroup(layout.createSequentialGroup()
-		               .addComponent(piegraph, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-		               .addComponent(inform, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		           .addComponent(speedgraph, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+		               .addComponent((Component)views[0], GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+		               .addComponent((Component)views[1], GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+		           .addComponent((Component)views[2], GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 		       );
 		
 	}
@@ -59,9 +59,9 @@ public class MainFrame extends JFrame {
  	           layout.createParallelGroup(GroupLayout.Alignment.LEADING)
  	           .addGroup(layout.createSequentialGroup()
  	               .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
- 	                   .addComponent(piegraph, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)  
- 	                   .addComponent(inform, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))        
- 	                   .addComponent(speedgraph, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+ 	                   .addComponent((Component)views[0], GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)  
+ 	                   .addComponent((Component)views[1], GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))        
+ 	                   .addComponent((Component)views[2], GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
  	                  .addGap(0,0,0)
  	               .addContainerGap())
  	       );

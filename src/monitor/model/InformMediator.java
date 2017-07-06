@@ -1,11 +1,13 @@
 package monitor.model;
 
 
+import org.jnetpcap.packet.PcapPacket;
+
 import monitor.network.NetworkFactory;
 import monitor.view.swing.InformGraph;
 import monitor.view.View;
 
-public class InformMediator implements Model {
+public class InformMediator extends AbstractModel {
 
 	private InformGraph graph;
 
@@ -45,6 +47,20 @@ public class InformMediator implements Model {
 		graph = null;
 		
 		return graph==null;
+	}
+
+	@Override
+	public void execute(PcapPacket packet) {
+		
+       throw new UnsupportedOperationException();
+		
+	}
+
+	@Override
+	public void run() {
+		
+		 throw new UnsupportedOperationException();
+		
 	}
 
 }

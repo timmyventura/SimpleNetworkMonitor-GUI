@@ -5,12 +5,12 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import monitor.controller.FrameModelController;
+import monitor.view.Frame;
 
-public class InitialFrame extends JFrame{
+public class InitialFrame extends Frame{
 	
 	
     /**
@@ -27,12 +27,14 @@ public class InitialFrame extends JFrame{
 	public InitialFrame(FrameModelController controller) {
 		
 		this.controller = controller;
-		initComponents();
+
 	}
         
+
+	
 	@SuppressWarnings("unchecked")
 	
-	private void initComponents() {
+	public void init() {
 
         select_label = new JLabel();
         interface_list = new JComboBox<>();
@@ -120,5 +122,7 @@ public class InitialFrame extends JFrame{
     	 interface_list.setModel(new DefaultComboBoxModel<>(interfaces));
     	
     }
+
+	
 	
 }

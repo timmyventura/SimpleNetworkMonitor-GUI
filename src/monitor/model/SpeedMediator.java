@@ -18,7 +18,7 @@ import monitor.logging.Logging.MessageType;
 import monitor.protocols.ProtocolSet;
 import monitor.view.View;
 
-public class SpeedMediator implements Mediator, Model, Runnable {
+public class SpeedMediator extends AbstractModel {
 
 	private List<View> views = new ArrayList<View>();
 	

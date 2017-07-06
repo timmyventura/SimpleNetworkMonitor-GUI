@@ -12,7 +12,7 @@ import org.jnetpcap.packet.PcapPacketHandler;
 import monitor.logging.Logging;
 import monitor.logging.Logging.MessageType;
 import monitor.model.Mediator;
-import monitor.network.utils.Devices;
+
 
 
 public class PacketCapture implements Capture, Runnable {
@@ -23,7 +23,7 @@ public class PacketCapture implements Capture, Runnable {
 	private static final StringBuilder errbuf = new StringBuilder();
 	
 	public static final int DEFAULT_SNAPLEN = Pcap.DEFAULT_SNAPLEN;
-	public static final int DEFAULT_TIMEOUT = System.getProperty("os.name").toLowerCase().contains(".*win.*")?-1:0;
+	public static final int DEFAULT_TIMEOUT = System.getProperty("os.name").toLowerCase().contains("win")?-1:0;
 	public static final int DEFAULT_FLAG    = Pcap.MODE_PROMISCUOUS;
 	
 

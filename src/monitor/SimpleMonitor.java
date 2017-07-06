@@ -4,14 +4,14 @@ package monitor;
 
 import monitor.model.InformMediator;
 
-import java.util.concurrent.Executors;
+
 
 import monitor.capture.PacketCapture;
 import monitor.controller.FrameModelController;
 import monitor.model.PieMediator;
 import monitor.model.SpeedMediator;
-import monitor.network.OSNetworkFactory;
-import monitor.network.utils.Devices;
+import monitor.view.Frame;
+import monitor.view.View;
 import monitor.view.swing.InformGraph;
 import monitor.view.swing.InitialFrame;
 import monitor.view.swing.MainFrame;
@@ -35,12 +35,12 @@ public class SimpleMonitor {
 	       SpeedMediator speedMediator = new SpeedMediator();   
 	       InformMediator informMediator = new InformMediator();
 	       
-	       SpeedGraph speedGraph = new SpeedGraph();
-	       PieGraph  pieGraph = new PieGraph();
-	       InformGraph informGraph = new InformGraph();
+	       View  speedGraph = new SpeedGraph();
+	       View  pieGraph = new PieGraph();
+	       View  informGraph = new InformGraph(); 
 	      
-	       MainFrame mainFrame = new MainFrame(pieGraph, informGraph, speedGraph);
-	       InitialFrame initialFrame = new InitialFrame(controller);
+	       Frame mainFrame = new MainFrame(pieGraph, informGraph, speedGraph);
+	       Frame initialFrame = new InitialFrame(controller);
 	       	       
 	       controller.setPacketCapture(packetCapture);
 	       controller.setPieMediator(pieMediator);
