@@ -38,7 +38,7 @@ public class ExternalAddress {
         
        } catch (IOException e) {
 
-       	Logging.log(Devices.class, MessageType.ERROR, e);
+       	Logging.log(ExternalAddress.class, MessageType.ERROR, e);
        	
        	Logging.viewLogMessage(e, MessageType.ERROR);
        	
