@@ -2,7 +2,7 @@
 
 ## Overview
 
-A simple network monitor is an application with a graphical user interface that includes 3 graphic elements:
+A simple network monitor is an application with a GUI that includes three graphic elements:
 
 1. The current type of traffic is a pie chart showing the types of services / protocols collected in 5 seconds.
 
