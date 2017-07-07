@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="launch4j" default="create_zip">
+    <property name="dir.buildfile" location="." />
+    <property name="dir.dist" value="${dir.buildfile}/dist"/>
+    <property name="dir.lin" value="${dir.dist}/linux"/>
+    <property name="launch4j.dir" location="${dir.buildfile}/lib/launch4j" />
+     <target name="create_zip" depends="clean">
+        <tar destfile="${dir.dist}/simple_network_monitor_linux.tar.gz" compression="gzip">
+            <fileset dir="${dir.lin}"/>
+        </tar>
+     </target>
+     <target name="clean">
+      <delete dir="${dir.dist}/simple_network_monitor_linux.tar.gz"/>
+    </target>
+</project>

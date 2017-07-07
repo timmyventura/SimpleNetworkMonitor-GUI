@@ -58,13 +58,9 @@ public class Logging {
 	
 	
 	public static void log(Class<? extends Object> classname, MessageType type, Throwable throwable) {
-	     
-		String err_message = throwable.getMessage();
-		
-		if(err_message == null)
+
 			log(classname, type, throwable.toString() + " at " + throwable.getStackTrace()[0]);
-		else
-			log(classname, type, err_message);
+	
 		
 	}
 	
@@ -87,13 +83,8 @@ public class Logging {
 	}
 	
     public static void viewLogMessage(Throwable throwable, MessageType type) {
-		
-		String err_message = throwable.getMessage();
-		
-		if(err_message == null)
+
 			viewLogMessage(throwable.toString() + " at " + throwable.getStackTrace()[0], type);
-		else
-			viewLogMessage(err_message, type);
 
 	}
 }

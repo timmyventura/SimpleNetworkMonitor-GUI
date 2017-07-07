@@ -49,7 +49,7 @@
       </copy>
     </target>
      <target name="compile" depends="create_jar_dir">
-      <javac destdir="${dir.build.classes}">
+      <javac destdir="${dir.build.classes}" debug="true">
        <src path="${dir.buildfile}/src"/>
        <exclude name="monitor/view/swt/*.java"/>
         <classpath>
