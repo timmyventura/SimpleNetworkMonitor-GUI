@@ -16,7 +16,7 @@ At the core of the application are [jNetPcap](https://github.com/ruedigergad/clj
 
 ## Download
 
-[Linux](https://github.com/timmyventura/SimpleNetworkMonitor/raw/master/dist/simple_network_monitor_linux.tar.gz)
+[GNU/Linux](https://github.com/timmyventura/SimpleNetworkMonitor/raw/master/dist/simple_network_monitor_linux.tar.gz)
 
 [Windows 32 bit](https://github.com/timmyventura/SimpleNetworkMonitor/raw/master/dist/simple_network_monitor_win32.zip)
 
