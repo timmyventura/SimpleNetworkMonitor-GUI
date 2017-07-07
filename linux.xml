@@ -16,6 +16,7 @@
       <mkdir dir="${dir.linux}/library/lin64"/>
       <mkdir dir="${dir.linux}/properties"/>
       <mkdir dir="${dir.linux}/logs"/>
+      <copy file="${dir.workspace}/SimpleNetworkMonitor/INSTALL.txt" todir="${dir.linux}"/>
       <copy file="${dir.workspace}/SimpleNetworkMonitor/dist/jar/SimpleNetworkMonitor.jar" todir="${dir.linux}"/>
       <copy todir="${dir.linux}">
         <fileset dir="${dir.workspace}/SimpleNetworkMonitor/bash"/>

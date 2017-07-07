@@ -16,6 +16,7 @@
       <mkdir dir="${dir.win64}/library"/>
       <mkdir dir="${dir.win64}/properties"/>
       <mkdir dir="${dir.win64}/logs"/>
+      <copy file="${dir.workspace}/SimpleNetworkMonitor/INSTALL.txt" todir="${dir.win64}"/>
       <copy todir="${dir.win64}/properties">
         <fileset dir="${dir.workspace}/SimpleNetworkMonitor/properties/"/>
       </copy>      

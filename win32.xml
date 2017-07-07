@@ -16,6 +16,7 @@
       <mkdir dir="${dir.win32}/library"/>
       <mkdir dir="${dir.win32}/properties"/>
       <mkdir dir="${dir.win32}/logs"/>
+      <copy file="${dir.workspace}/SimpleNetworkMonitor/INSTALL.txt" todir="${dir.win32}"/>
       <copy todir="${dir.win32}/properties">
         <fileset dir="${dir.workspace}/SimpleNetworkMonitor/properties/"/>
       </copy>
