@@ -48,8 +48,9 @@ sudo cp "$DIRECTORY/$NAME" /usr/share/applications
 }
  
    sudo apt-get update
-   echo "Install net-tools packet"
+   echo "Install net-tools packet, gksu"
    sudo apt-get -y install net-tools
+   sudo apt-get -y install gksu
    echo "Install libpcap-dev library"
    sudo apt-get -y install libpcap-dev
    sudo apt-get update
