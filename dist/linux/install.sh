@@ -42,6 +42,9 @@ echo 'NoDisplay=false' >> "$DIRECTORY/$NAME"
 echo "Use runnable $NAME_SCRIPT script"
 sudo chmod +x "$DIRECTORY/$NAME_SCRIPT"
 
+echo "Use runnable $NAME icon"
+sudo chmod +x "$DIRECTORY/$NAME"
+
 echo "Copy icon to share directory"
 sudo cp "$DIRECTORY/$NAME" /usr/share/applications
 
