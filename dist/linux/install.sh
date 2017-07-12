@@ -7,13 +7,14 @@ JAVA_OPENJDK='OpenJDK'
 
 DIRECTORY='.';
 PATHS=$0
+LOG_FILE='properties/log4j.properties'
 
 NAME='simple_network_monitor.desktop'
 NAME_SCRIPT='SimpleNetworkMonitor.sh'
 
 define_path(){
 
-echo "Define appliaction path"
+echo "Define application path"
 
 if [ "${PATHS:0:1}" = '/' ]; then
   DIRECTORY="${PATHS%/*}"
@@ -23,7 +24,15 @@ else
 fi
 
 }
- 
+
+define_log_path(){
+
+echo "Define log path"
+echo '# Set the name of the file' >> "$DIRECTORY/$LOG_FILE"
+echo "log4j.appender.FILE.File=$DIRECTORY/logs/log.txt" >> "$DIRECTORY/$LOG_FILE"
+
+}
+
 create_icon(){
  
 echo "Create icon"
@@ -42,18 +51,14 @@ echo 'NoDisplay=false' >> "$DIRECTORY/$NAME"
 echo "Use runnable $NAME_SCRIPT script"
 sudo chmod +x "$DIRECTORY/$NAME_SCRIPT"
 
-echo "Use runnable $NAME icon"
-sudo chmod +x "$DIRECTORY/$NAME"
-
 echo "Copy icon to share directory"
 sudo cp "$DIRECTORY/$NAME" /usr/share/applications
 
 }
  
    sudo apt-get update
-   echo "Install net-tools packet, gksu"
+   echo "Install net-tools packet"
    sudo apt-get -y install net-tools
-   sudo apt-get -y install gksu
    echo "Install libpcap-dev library"
    sudo apt-get -y install libpcap-dev
    sudo apt-get update
@@ -67,8 +72,10 @@ sudo cp "$DIRECTORY/$NAME" /usr/share/applications
    elif [ `java -version 2>&1 | grep ${JAVA_OPENJDK} | wc -l` != 0 ]; then
    echo "Install openjdk java 8 instance"
    sudo apt-get -y install openjdk-8-jre
+  fi 
   
    define_path
    create_icon
-   fi
+   define_log_path
+
    echo "Success!"
