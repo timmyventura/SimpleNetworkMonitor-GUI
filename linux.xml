@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_linux_dir" name="Create distribute directory for OS Linux 32,64 Bit Architecture">
-    <property name="dir.buildfile" value="."/>
-    <property name="dir.workspace" value="/root/workspace"/>
-    <property name="dir.build.classes" value="${dir.buildfile}/build/classes"/>
-    <property name="dir.dist" value="${dir.buildfile}/dist"/>
+<project default="create_tar_gz" name="Create distribute directory for OS Linux 32,64 Bit Architecture">
+    <property name="dir.workspace" value="."/>
+    <property name="dir.dist" value="${dir.workspace}/dist"/>
     <property name="dir.linux" value="${dir.dist}/linux"/>
-    <property name="dir.native.library" value="${dir.buildfile}/library"/>
+    <property name="dir.native.library" value="${dir.workspace}/library"/>
     <property name="jar.filename" value="SimpleNetworkMonitor.jar"/>
-    <property name="classpath" value="${dir.buildfile}"/>
+    <property name="classpath" value="${dir.workspace}"/>
      <target name="create_linux_dir" depends="clean">
       <mkdir dir="${dir.build.classes}"/>
       <mkdir dir="${dir.linux}"/>
@@ -16,22 +14,22 @@
       <mkdir dir="${dir.linux}/library/lin64"/>
       <mkdir dir="${dir.linux}/properties"/>
       <mkdir dir="${dir.linux}/logs"/>
-      <copy file="${dir.workspace}/SimpleNetworkMonitor/INSTALL.txt" todir="${dir.linux}"/>
-      <copy file="${dir.workspace}/SimpleNetworkMonitor/dist/jar/SimpleNetworkMonitor.jar" todir="${dir.linux}"/>
+      <copy file="${dir.workspace}/INSTALL.txt" todir="${dir.linux}"/>
+      <copy file="${dir.workspace}/dist/jar/${jar.filename}" todir="${dir.linux}"/>
       <copy todir="${dir.linux}">
-        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/bash"/>
+        <fileset dir="${dir.workspace}/bash"/>
       </copy>
       <copy todir="${dir.linux}/properties">
-        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/properties/"/>
+        <fileset dir="${dir.workspace}/properties/"/>
       </copy>
       <copy todir="${dir.linux}/library/lin32">
-        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/library/lin32"/>
+        <fileset dir="${dir.workspace}/library/lin32"/>
       </copy>
       <copy todir="${dir.linux}/library/lin64">
-        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/library/lin64"/>
+        <fileset dir="${dir.workspace}/library/lin64"/>
       </copy> 
       <copy todir="${dir.linux}/dependency">
-        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/lib">
+        <fileset dir="${dir.workspace}/lib">
           <include name="jfreechart-1.0.19.jar"/>        
           <include name="jnetpcap.jar"/>
           <include name="jcommon-1.0.23.jar"/>
@@ -41,7 +39,7 @@
        </fileset>  
       </copy>
     </target>
-    <target name="compile" depends="create_linux_dir">
+    <!--target name="compile" depends="create_linux_dir">
       <javac destdir="${dir.build.classes}">
        <src path="${dir.buildfile}/src"/>
        <exclude name="monitor/view/swt/*.java"/>
@@ -52,9 +50,14 @@
                 </fileset>
         </classpath>
       </javac>
-    </target>
+    </target-->
+    <target name="create_tar_gz" depends="create_linux_dir">
+        <tar destfile="${dir.dist}/simple_network_monitor_linux.tar.gz" compression="gzip">
+            <fileset dir="${dir.linux}"/>
+        </tar>
+     </target>
     <target name="clean">
       <delete dir="${dir.linux}"/>
-      <delete dir="${dir.build.classes}"/>
+      <delete file="${dir.dist}/simple_network_monitor_linux.tar.gz"/>
     </target>
 </project>
