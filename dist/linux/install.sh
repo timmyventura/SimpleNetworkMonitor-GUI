@@ -71,7 +71,12 @@ sudo cp "$DIRECTORY/$NAME" /usr/share/applications
    sudo apt-get -y install oracle-java8-installer
    elif [ `java -version 2>&1 | grep ${JAVA_OPENJDK} | wc -l` != 0 ]; then
    echo "Install openjdk java 8 instance"
-   sudo apt-get -y install openjdk-8-jre
+   sudo add-apt-repository "deb http://http.debian.net/debian jessie-backports main"
+   sudo apt-get update
+   sudo apt-get install -t jessie-backports openjdk-8-jdk
+   if [ `sudo update-java-alternatives --list | grep 1.8 | wc -l` != 0 ]; then
+   sudo update-java-alternatives --set java-1.8.0-openjdk-*
+   fi
   fi 
   
    define_path
