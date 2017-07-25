@@ -1,0 +1,1 @@
+2017-07-25 15:47:40 INFO  LinuxNetworkFactory: java.lang.NullPointerException at monitor.network.OSNetworkFactory.lambda$getNetworkMask$1(OSNetworkFactory.java:98)
