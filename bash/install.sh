@@ -5,7 +5,7 @@
 ######Define path to direcory SimpleNetworkMonitor#######
 DIRECTORY='.';
 PATHS=$0
-
+NEW_JAVA_PATH="/usr/lib/jvm/jdk-8-141"
 #######Define log path ################################
 LOG_FILE='properties/log4j.properties'
 
@@ -79,11 +79,14 @@ echo "Install Java 8 Oracle Instance"
 
 platform=${linbit[$BIT_SYSTEM]}
 
-sudo mkdir $NEW_JAVA_PATH && cd $NEW_JAVA_PATH
+CURRENT_DIR=`pwd`
 
-wget -c -O "$JDK_VERSION$platform" --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" "${BASE_URL_8}${platform}"
+sudo mkdir $NEW_JAVA_PATH
+cd $NEW_JAVA_PATH
 
-tar -zxvf $JDK_VERSION$platform
+sudo wget -c -O "$JDK_VERSION$platform" --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" "${BASE_URL_8}${platform}"
+
+sudo tar -zxvf $JDK_VERSION$platform
 
 cd jdk1.8.0_141/
 
@@ -94,7 +97,10 @@ export JAVA_HOME=$NEW_JAVA_PATH/jdk1.8.0_141/
 export JRE_HOME=$NEW_JAVA_PATH/jdk1.8.0_141/jre 	
 export PATH=$PATH:$NEW_JAVA_PATH/jdk1.8.0_141/bin:$NEW_JAVA_PATH/jdk1.8.0_141/jre/bin
 
-rm $platform
+
+sudo rm ../$JDK_VERSION$platform
+
+cd $CURRENT_DIR
 
 }
 
