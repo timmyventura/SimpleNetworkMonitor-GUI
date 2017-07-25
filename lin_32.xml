@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_tar_gz" name="Create distribute directory for OS Linux 32,64 Bit Architecture">
+    <property name="dir.workspace" value="."/>
+    <property name="dir.dist" value="${dir.workspace}/dist"/>
+    <property name="dir.linux" value="${dir.dist}/linux/lin32"/>
+    <property name="dir.native.library" value="${dir.workspace}/library/lin32"/>
+    <property name="jar.filename" value="SimpleNetworkMonitor.jar"/>
+    <property name="classpath" value="${dir.workspace}"/>
+     <target name="create_linux_dir" depends="clean">
+      <mkdir dir="${dir.linux}"/>
+      <mkdir dir="${dir.linux}/dependency"/>
+      <mkdir dir="${dir.linux}/library/lin32"/>
+      <mkdir dir="${dir.linux}/properties"/>
+      <mkdir dir="${dir.linux}/logs"/>
+      <copy file="${dir.workspace}/INSTALL.txt" todir="${dir.linux}"/>
+      <copy file="${dir.workspace}/dist/jar/${jar.filename}" todir="${dir.linux}"/>
+      <copy todir="${dir.linux}">
+        <fileset dir="${dir.workspace}/bash"/>
+      </copy>
+      <copy todir="${dir.linux}/properties">
+        <fileset dir="${dir.workspace}/properties/"/>
+      </copy>
+      <copy todir="${dir.linux}/library/lin32">
+        <fileset dir="${dir.native.library}/">
+         <include name="*.so"/>
+        </fileset>
+      </copy>
+      <copy todir="${dir.linux}/dependency">
+        <fileset dir="${dir.workspace}/lib">
+          <include name="jfreechart-1.0.19.jar"/>        
+          <include name="jcommon-1.0.23.jar"/>
+          <include name="slf4j-api-1.8.0-alpha2.jar"/>
+          <include name="slf4j-log4j12-1.8.0-alpha2.jar"/>
+          <include name="log4j-1.2.17.jar"/>
+       </fileset>  
+      </copy>
+      <copy todir="${dir.linux}/dependency">
+       <fileset dir = "${dir.native.library}/">
+          <include name="*.jar"/>
+       </fileset>
+      </copy>
+    </target>
+    <!--target name="compile" depends="create_linux_dir">
+      <javac destdir="${dir.build.classes}">
+       <src path="${dir.buildfile}/src"/>
+       <exclude name="monitor/view/swt/*.java"/>
+        <classpath>
+          <pathelement path="${classpath}"/>
+                <fileset dir="lib">
+                  <include name="**/*.jar"/>
+                </fileset>
+        </classpath>
+      </javac>
+    </target-->
+    <target name="create_tar_gz" depends="create_linux_dir">
+        <tar destfile="${dir.dist}/simple_network_monitor_linux32.tar.gz" compression="gzip">
+            <fileset dir="${dir.linux}"/>
+        </tar>
+     </target>
+    <target name="clean">
+      <delete dir="${dir.linux}"/>
+      <delete file="${dir.dist}/simple_network_monitor_linux32.tar.gz"/>
+    </target>
+</project>

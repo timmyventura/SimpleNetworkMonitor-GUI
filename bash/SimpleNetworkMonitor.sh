@@ -8,7 +8,7 @@ DIRECTORY=".";
 PATHS=$0
 
 
-CHECK_JAVA_VERSION_ARCH=`java -version 2>&1 | awk '/Bit/{print $3}'`	
+CHECK_JAVA_VERSION_ARCH=`java -version 2>&1 | grep -o '64-Bit'`	
 CHECK_JAVA_VERSION=`java -version 2>&1 | grep 'version "1.8.*"' | wc -l`
 
 
