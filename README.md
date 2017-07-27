@@ -27,6 +27,6 @@ At the core of the application are [jNetPcap](https://github.com/ruedigergad/clj
 
 ### Disclaimer
 
-**The project is designed for the practical application of knowledge of the Java language, most of the technologies use Java SE. The project does not pretend to be unique.***
+**The project is designed for the practical application of knowledge of the Java language, most of the technologies use Java SE. The project does not pretend to be unique.**
 
 **For all questions please contact timmyventura@yandex.ru**
