@@ -106,9 +106,9 @@ cd $CURRENT_DIR
 
 checking_java_version(){
 
-if [ java -version 2>&1 | grep 'version "1.9.*"' | wc -l !=0 ]; then
+if [ `java -version 2>&1 | grep 'version "1.9.*"' | wc -l`!=0 ]; then
 echo "You have newest java version"
-elif [ `java -version 2>&1 | grep 1.8.0 | wc -l` != 0 ]; then
+elif [ `java -version 2>&1 | grep 1.8.0 | wc -l`!= 0 ]; then
   echo "You already have java version 8 instance"
 else
  install_java
