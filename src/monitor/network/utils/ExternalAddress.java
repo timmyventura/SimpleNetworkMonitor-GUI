@@ -42,7 +42,7 @@ public class ExternalAddress {
        	
        	Logging.viewLogMessage(e, MessageType.ERROR);
        	
-       	return "NULL";
+       	ext_ip = "NULL";
 	}
 		return ext_ip;
    
