@@ -12,10 +12,15 @@ public class LinuxNetworkFactory extends OSNetworkFactory {
 	
 	private String defaultGateway;
 	private List<String> dnsServers = new ArrayList<>();
+	private LinuxNetworkUtils linuxNetworkUtils;
 	
 	public LinuxNetworkFactory(PcapIf device) {
 		
 		setDevice(device);
+		
+	}
+    public LinuxNetworkFactory() {
+	
 		
 	}
 	
@@ -23,7 +28,7 @@ public class LinuxNetworkFactory extends OSNetworkFactory {
 	public String getDefaultGateway() {
 		
 		if(defaultGateway==null) {
-			defaultGateway = LinuxNetworkUtils.getGateway();
+			defaultGateway = getLinuxNetworkUtils().getGateway();
 			return defaultGateway;
 		}
 		else
@@ -41,7 +46,7 @@ public class LinuxNetworkFactory extends OSNetworkFactory {
 	public String[] getNameServers() {
 		
 		if(dnsServers.size()==0) {
-			dnsServers = LinuxNetworkUtils.getDnsServers();
+			dnsServers = getLinuxNetworkUtils().getDnsServers();
 			return dnsServers.toArray(new String [dnsServers.size()]);
 		}
 		else
@@ -53,6 +58,12 @@ public class LinuxNetworkFactory extends OSNetworkFactory {
 		
 		dnsServers.add(dns);
 
+	}
+	public LinuxNetworkUtils getLinuxNetworkUtils() {
+		return linuxNetworkUtils;
+	}
+	public void setLinuxNetworkUtils(LinuxNetworkUtils linuxNetworkUtils) {
+		this.linuxNetworkUtils = linuxNetworkUtils;
 	}
 
 

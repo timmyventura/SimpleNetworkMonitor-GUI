@@ -1,49 +1,30 @@
 package monitor.model;
 
-import java.io.IOException;
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
-import org.jnetpcap.PcapIf;
 import org.jnetpcap.packet.PcapPacket;
-
 import org.jnetpcap.protocol.lan.Ethernet;
-
-import monitor.logging.Logging;
-import monitor.logging.Logging.MessageType;
 import monitor.protocols.ProtocolSet;
 import monitor.view.View;
 
 public class SpeedMediator extends AbstractModel {
 
-	private List<View> views = new ArrayList<View>();
+	private List<View> views;
 	
 	private static final Timer timer = new Timer();
+	
     private static final int TIMEOUT = 1000;
-	private static int IN_LEN;
-	private static int OUT_LEN;
-	private static int MAX_IN_LEN;
-	private static int MAX_OUT_LEN;
+	private int IN_LEN;
+	private int OUT_LEN;
+	private int MAX_IN_LEN;
+	private int MAX_OUT_LEN;
 	private byte[] dev_mac;
-		
-   
-    public SpeedMediator(PcapIf net) {
-    	
-    	try {
-    		
-			dev_mac = net.getHardwareAddress();
-		
-    	} catch (IOException e) {
-			
-			Logging.log(this.getClass(), MessageType.ERROR, e);
-		    Logging.viewLogMessage(e, MessageType.ERROR);
-		}
-	}
     
+	  
     public SpeedMediator() {
 
 	}
@@ -76,10 +57,9 @@ public class SpeedMediator extends AbstractModel {
 	public void execute(PcapPacket packet) {
 	   	
 		int wirelen = packet.getCaptureHeader().wirelen();
-		
-		Ethernet pack = (Ethernet)packet.getHeader(ProtocolSet.ETHERNET.getInstance());
-		
-		if(Arrays.equals(pack.source(), dev_mac)) {
+			
+		if(compareSrcMacWithInterfaceMac(packet)) {
+			
 			OUT_LEN+=wirelen;
 		}
 		else {
@@ -88,11 +68,27 @@ public class SpeedMediator extends AbstractModel {
 		
 	}
 	
+	private Ethernet getEtherHeader(PcapPacket packet) {
+		
+        return (Ethernet)packet.getHeader((Ethernet)ProtocolSet.ETHERNET.getInstance());
+
+	}
+	
+	private boolean compareSrcMacWithInterfaceMac(PcapPacket packet) {
+		
+		return Arrays.equals(getEtherHeader(packet).source(), dev_mac);
+		
+	}
+	
     private void sendToView() {
 		
     	
-    	views.forEach(view -> view.addObservation());
-     	clear();
+    	views.forEach(view -> view.addObservation(getInputLength(), 
+    			                                  getOutputLength(),
+    			                                  getMaxInputLength(),
+    			                                  getMaxOutputLength()));
+  
+     	
 	}
    
     private double getInputLength() {
@@ -153,22 +149,27 @@ public class SpeedMediator extends AbstractModel {
 			
 			@Override
 			public void run() {
-
-				SpeedRate.addInputSpeed(getInputLength());
-				SpeedRate.addOutputSpeed(getOutputLength());
-				SpeedRate.addMaxInputSpeed(getMaxInputLength());
-				SpeedRate.addMaxOutputSpeed(getMaxOutputLength());
-				
+			
 				sendToView();
-				
+				clear();
 			}
 		};
 		
 		timer.scheduleAtFixedRate(task, 0,  TIMEOUT);
 		
-		
-		
      
+	}
+	
+	
+	public void setViews(List<View> views) {
+		
+		this.views = views;
+	}
+	
+	public List<View> getViews(){
+		
+		return views;
+		
 	}
 
 }

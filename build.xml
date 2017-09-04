@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project default="create_run_jar" name="Create Runnable Jar for Project SimpleNetworkMonitor">
-    <property name="dir.buildfile" value="."/>
-    <property name="dir.workspace" value="/root/workspace"/>
-    <property name="dir.dist" value="${dir.buildfile}/dist"/>
+    <property name="dir.workspace" value="."/>
+    <property name="dir.dist" value="${dir.workspace}/dist"/>
     <property name="dir.jarfile" value="${dir.dist}/jar"/>
-    <property name="dir.native.library" value="${dir.buildfile}/library"/>
-    <property name="dir.build.classes" value="${dir.buildfile}/build/classes"/>
+    <property name="dir.native.library" value="${dir.workspace}/library"/>
+    <property name="dir.build.classes" value="${dir.workspace}/build/classes"/>
     <property name="jar.filename" value="SimpleNetworkMonitor.jar"/>
-    <property name="classpath" value="${dir.buildfile}"/>
+    <property name="classpath" value="${dir.workspace}"/>
     <target name="create_run_jar" depends="compile">
         <jar destfile="${dir.jarfile}/${jar.filename}">
             <manifest>
@@ -19,8 +18,15 @@
                                                     dependency/jcommon-1.0.23.jar 
                                                     dependency/slf4j-log4j12-1.8.0-alpha2.jar
                                                     dependency/log4j-1.2.17.jar
+                                                    dependency/spring-beans-4.3.7.RELEASE.jar
+                                                    dependency/spring-context-4.3.7.RELEASE.jar
+                                                    dependency/spring-core-4.3.7.RELEASE.jar
+                                                    dependency/spring-expression-4.3.7.RELEASE.jar
+                                                    dependency/spring-aop-4.3.7.RELEASE.jar
+                                                    dependency/commons-logging-1.2.jar
                                                     "/>
             </manifest>
+            <metainf dir="${dir.workspace}/spring"/> 
             <fileset dir="${dir.build.classes}"/>
         </jar>
      </target>
@@ -31,27 +37,29 @@
       <mkdir dir="${dir.jarfile}/library"/>
       <mkdir dir="${dir.jarfile}/properties"/>
       <mkdir dir="${dir.jarfile}/logs"/>
-      <copy file="${dir.workspace}/SimpleNetworkMonitor/INSTALL.txt" todir="${dir.jarfile}"/>
+      <copy file="${dir.workspace}/INSTALL.txt" todir="${dir.jarfile}"/>
       <copy todir="${dir.jarfile}/properties">
-        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/properties/"/>
+        <fileset dir="${dir.workspace}/properties/"/>
       </copy>
       <copy todir="${dir.jarfile}/library">
-        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/library/"/>
+        <fileset dir="${dir.workspace}/library/"/>
       </copy>
       <copy todir="${dir.jarfile}/dependency">
-        <fileset dir="${dir.workspace}/SimpleNetworkMonitor/lib">
+        <fileset dir="${dir.workspace}/lib">
           <include name="jfreechart-1.0.19.jar"/>        
           <include name="jnetpcap.jar"/>
           <include name="jcommon-1.0.23.jar"/>
           <include name="slf4j-api-1.8.0-alpha2.jar"/>
           <include name="slf4j-log4j12-1.8.0-alpha2.jar"/>
           <include name="log4j-1.2.17.jar"/>
+          <include name="spring*"/>
+          <include name="commons-logging-1.2.jar"/>
        </fileset>  
       </copy>
     </target>
      <target name="compile" depends="create_jar_dir">
       <javac destdir="${dir.build.classes}" debug="true">
-       <src path="${dir.buildfile}/src"/>
+       <src path="${dir.workspace}/src"/>
        <exclude name="monitor/view/swt/*.java"/>
         <classpath>
           <pathelement path="${classpath}"/>

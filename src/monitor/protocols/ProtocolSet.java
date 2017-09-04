@@ -10,7 +10,8 @@ import org.jnetpcap.protocol.tcpip.Tcp;
 import org.jnetpcap.protocol.tcpip.Udp;
 
 public enum ProtocolSet {
-
+	
+	
 	ETHERNET(new Ethernet()),
 	IPv4(new Ip4()),
 	IPv6(new Ip6()),
@@ -31,5 +32,6 @@ public enum ProtocolSet {
 		
 		return header;
 	}
+
 	
 }

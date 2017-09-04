@@ -15,21 +15,21 @@ import monitor.logging.Logging.MessageType;
 public class WindowsNetworkUtils {
 
 	
-	private static final String netsh_route = "netsh interface ipv4 show route";	
-	private static final String netsh_dns = "netsh interface ipv4 show dnsservers";
-	private static final String ip_pattern = "((\\d*\\.){3}\\d*)";
-	private static final String gateway_pattern = "0.0.0.0/0";
+	private String routingTableCommand;	
+	private String nameServersCommand;
+	private String gatewayPattern;
+	private String ipPattern;
 
 	
 	private WindowsNetworkUtils() {}
 	
-	 public static String getGateway() {
+	 public String getGateway() {
 	    	
 		 String [] gateway = new String[1];
 		 
 	    	try {
 	    		
-				Process netst_proc = Runtime.getRuntime().exec(netsh_route);
+				Process netst_proc = Runtime.getRuntime().exec(getRoutingTableCommand());
 				
 				netst_proc.waitFor();
 				
@@ -41,7 +41,7 @@ public class WindowsNetworkUtils {
 					
 					String [] fields = line.split("\\s+");
 					
-					if(fields[3].equals(gateway_pattern)) gateway[0] = fields[5];
+					if(fields[3].equals(getGatewayPattern())) gateway[0] = fields[5];
 					
 					}catch(ArrayIndexOutOfBoundsException e) {
 					  									        	
@@ -71,17 +71,17 @@ public class WindowsNetworkUtils {
 	    }
 	 
 	  	    
-	  public static List<String> getDnsServers() {
+	  public List<String> getDnsServers() {
 	    	
 		  List<String> lines = null;
 		  			
 				try {
 					
-					Process netst_proc = Runtime.getRuntime().exec(netsh_dns);
+					Process netst_proc = Runtime.getRuntime().exec(getNameServersCommand());
 					
 					netst_proc.waitFor();
 					
-					lines = readFromInputStream(netst_proc.getInputStream(), ip_pattern);
+					lines = readFromInputStream(netst_proc.getInputStream(), getIpPattern());
 
 				} catch (IOException e) {
 					
@@ -137,6 +137,38 @@ public class WindowsNetworkUtils {
 	    	return buffer;
 	    	
 	    }
+
+	public String getRoutingTableCommand() {
+		return routingTableCommand;
+	}
+
+	public void setRoutingTableCommand(String routingTable) {
+		this.routingTableCommand = routingTable;
+	}
+
+	public String getNameServersCommand() {
+		return nameServersCommand;
+	}
+
+	public void setNameServersCommand(String nameServers) {
+		this.nameServersCommand = nameServers;
+	}
+
+	public String getGatewayPattern() {
+		return gatewayPattern;
+	}
+
+	public void setGatewayPattern(String gatewayPattern) {
+		this.gatewayPattern = gatewayPattern;
+	}
+
+	public String getIpPattern() {
+		return ipPattern;
+	}
+
+	public void setIpPattern(String ipPattern) {
+		this.ipPattern = ipPattern;
+	}
 	
 	
 	

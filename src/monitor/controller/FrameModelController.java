@@ -1,7 +1,6 @@
 package monitor.controller;
 
 
-
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -15,7 +14,6 @@ import monitor.logging.Logging.MessageType;
 import monitor.model.InformMediator;
 import monitor.model.PieMediator;
 import monitor.model.SpeedMediator;
-import monitor.network.OSNetworkFactory;
 import monitor.network.utils.Devices;
 import monitor.view.Frame;
 import monitor.view.View;
@@ -39,7 +37,7 @@ public class FrameModelController {
 	
 	private String selectedDevice;
 
-	private static final ExecutorService exec = Executors.newFixedThreadPool(3);
+	private static final ExecutorService exec = Executors.newFixedThreadPool(4);
 	
 	public void runningInitialFrame() {
 		
@@ -63,15 +61,6 @@ public class FrameModelController {
 		
 		PcapIf device = Devices.getSelectedDevice(selectedDevice);
 		packetCapture.chooseDevice(device);
-		
-		packetCapture.addMediator(speedMediator);
-		packetCapture.addMediator(pieMediator);
-
-		speedMediator.addView(speedGraph);
-		speedMediator.addView(informGraph);
-		pieMediator.addView(pieGraph);
-		informMediator.addView(informGraph);
-
 			
 			try {
 				
@@ -79,20 +68,24 @@ public class FrameModelController {
 				
 			} catch (IOException e) {
 				
-		      Logging.log(this.getClass(),MessageType.ERROR, e);
-		      Logging.viewLogMessage(e, MessageType.ERROR);
+		       Logging.log(this.getClass(),MessageType.ERROR, e);
+		       Logging.viewLogMessage(e, MessageType.ERROR);
 				
 			}
-			informMediator.initInform(OSNetworkFactory.returnConcreteNetworkFactoryObject(device));
-			
-		
-		
+            
+			informMediator.initInform(device);
+           	
 		mainFrame.init();
 		
-		exec.execute(packetCapture);
-		exec.execute(speedMediator);
-		exec.execute(pieMediator);
+		executeCaptureAndAbstractModels(packetCapture, speedMediator, pieMediator);
 		
+	}
+	
+	private void executeCaptureAndAbstractModels(PacketCapture packetCapture, SpeedMediator speedMediator, PieMediator pieMediator) {
+		
+		   exec.execute(packetCapture);
+		   exec.execute(speedMediator);
+		   exec.execute(pieMediator);
 	}
 	
 	
@@ -102,7 +95,6 @@ public class FrameModelController {
 		
 	}
 
-	
 
 	public Frame getMainFrame() {
 		
@@ -175,11 +167,15 @@ public class FrameModelController {
 	}
 
 	public View getPieGraph() {
+		
 		return pieGraph;
+	
 	}
 
 	public void setPieGraph(View pieGraph) {
+		
 		this.pieGraph = pieGraph;
+	
 	}
 
 	public View getInformGraph() {

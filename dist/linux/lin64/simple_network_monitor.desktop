@@ -1,0 +1,30 @@
+[Desktop Entry]
+Name=SimpleNetworkMonitor
+Comment=A simple network monitor
+GenericName=SNM
+Keywords=Simple; Monitor
+Exec=sudo /home/tpetrov/workspace_oxygen/SimpleNetworkMonitor/dist/linux/lin64/SimpleNetworkMonitor.sh
+Terminal=false
+Icon=/usr/share/pixmaps/javaws.png
+Type=Application
+NoDisplay=false
+[Desktop Entry]
+Name=SimpleNetworkMonitor
+Comment=A simple network monitor
+GenericName=SNM
+Keywords=Simple; Monitor
+Exec=sudo /home/tpetrov/workspace_oxygen/SimpleNetworkMonitor/dist/linux/lin64/SimpleNetworkMonitor.sh
+Terminal=false
+Icon=/usr/share/pixmaps/javaws.png
+Type=Application
+NoDisplay=false
+[Desktop Entry]
+Name=SimpleNetworkMonitor
+Comment=A simple network monitor
+GenericName=SNM
+Keywords=Simple; Monitor
+Exec=sudo /home/tpetrov/workspace_oxygen/SimpleNetworkMonitor/dist/linux/lin64/SimpleNetworkMonitor.sh
+Terminal=false
+Icon=/usr/share/pixmaps/javaws.png
+Type=Application
+NoDisplay=false

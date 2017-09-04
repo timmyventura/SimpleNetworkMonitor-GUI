@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jnetpcap.PcapIf;
+
 import monitor.network.utils.WindowsNetworkUtils;
 
 public class WindowsNetworkFactory extends OSNetworkFactory {
 
 	private String defaultGateway;
 	private List<String> dnsServers = new ArrayList<>();
+	private WindowsNetworkUtils windowsNetworkUtils;
 	
 	public WindowsNetworkFactory(PcapIf device) {
 		
@@ -17,11 +19,16 @@ public class WindowsNetworkFactory extends OSNetworkFactory {
 		
 	}
 	
+	public WindowsNetworkFactory() {
+		
+		
+	}
+	
 	@Override
 	public String getDefaultGateway() {
 		
 		if(defaultGateway==null) {
-			defaultGateway = WindowsNetworkUtils.getGateway();
+			defaultGateway = getWindowsNetworkUtils().getGateway();
 			return defaultGateway;
 		}
 		else
@@ -40,7 +47,7 @@ public class WindowsNetworkFactory extends OSNetworkFactory {
 		
 		
 		if(dnsServers.size()==0) {
-			dnsServers = WindowsNetworkUtils.getDnsServers();
+			dnsServers = getWindowsNetworkUtils().getDnsServers();
 			return dnsServers.toArray(new String [dnsServers.size()]);
 		}
 		else
@@ -52,6 +59,14 @@ public class WindowsNetworkFactory extends OSNetworkFactory {
 		
 		dnsServers.add(dns);
 
+	}
+
+	public WindowsNetworkUtils getWindowsNetworkUtils() {
+		return windowsNetworkUtils;
+	}
+
+	public void setWindowsNetworkUtils(WindowsNetworkUtils windowsNetworkUtils) {
+		this.windowsNetworkUtils = windowsNetworkUtils;
 	}
 
 }

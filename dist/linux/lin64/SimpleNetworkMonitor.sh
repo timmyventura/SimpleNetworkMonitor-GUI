@@ -28,14 +28,7 @@ echo $DIRECTORY
 
 install_java(){
 
-    echo "You have not installed java version 8 instance"
-    echo "Download/Update java, please type sudo password and wait, while java version 8 installed/update"
-    sudo apt-get update
-    sudo apt-get -y install software-properties-common
-    sudo add-apt-repository "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main"
-    sudo apt-get update
-    sudo apt-get -y install oracle-java8-installer
-    sudo apt-get -y install oracle-java8-set-default
+   `echo $DIRECTORY/install.sh`
 
 }
 

@@ -32,6 +32,8 @@
           <include name="slf4j-api-1.8.0-alpha2.jar"/>
           <include name="slf4j-log4j12-1.8.0-alpha2.jar"/>
           <include name="log4j-1.2.17.jar"/>
+          <include name="spring*"/>
+          <include name="commons-logging-1.2.jar"/>
        </fileset>  
       </copy>
       <copy todir="${dir.linux}/dependency">

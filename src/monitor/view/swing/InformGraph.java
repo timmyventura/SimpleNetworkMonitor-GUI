@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-import monitor.model.SpeedRate;
 import monitor.view.View;
 
 
@@ -262,27 +261,16 @@ public class InformGraph extends JPanel implements View {
 	@Override
 	public void addObservation(Map<Object, Object> param) throws UnsupportedOperationException{
 		  
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException("Using addObservation(double input_length, double output_length, double max_input_length, " + 
+				"double max_output_length) method");
 
 	}
 
 	@Override
-	public void addObservation(double... param) {
-
-		max_input_speedfield.setText( (((int)(param[2]/1024)==0) ? String.format("%.2f kbits/s", param[2]) : String.format("%.2f Mbits/s", param[2]/1024)));
-		max_output_speedfield.setText(((int)(param[3]/1024)==0) ? String.format("%.2f kbits/s", param[3]) : String.format("%.2f Mbits/s", param[3]/1024));
-
-	}
-
-	@Override
-	public void addObservation() {
-	
-		double input = SpeedRate.getMaxInputSpeed();
-		double output = SpeedRate.getMaxOutputSpeed();
-		
-		max_input_speedfield.setText( (((int)(input/1024)==0) ? String.format("%.2f kbits/s", input) : String.format("%.2f Mbits/s", input/1024)));
-		max_output_speedfield.setText(((int)(output/1024)==0) ? String.format("%.2f kbits/s", output) : String.format("%.2f Mbits/s", output/1024));
-		
+	public void addObservation(double input_length, double output_length, double max_input_length,
+			double max_output_length) {
+		max_input_speedfield.setText( (((int)(max_input_length/1024)==0) ? String.format("%.2f kbits/s", max_input_length) : String.format("%.2f Mbits/s", max_input_length/1024)));
+		max_output_speedfield.setText(((int)(max_output_length/1024)==0) ? String.format("%.2f kbits/s",  max_output_length) : String.format("%.2f Mbits/s",  max_output_length/1024));
 		
 	}
 

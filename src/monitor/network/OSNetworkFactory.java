@@ -10,7 +10,6 @@ import org.jnetpcap.PcapIf;
 import monitor.logging.Logging;
 import monitor.logging.Logging.MessageType;
 import monitor.network.utils.ExternalAddress;
-import monitor.commonutils.OSType;
 
 public abstract class OSNetworkFactory implements NetworkFactory{
 
@@ -20,8 +19,8 @@ public abstract class OSNetworkFactory implements NetworkFactory{
 	private String localip;
 	private String netmask;
 	private PcapIf device;
-	
-	private static final String ip_pattern = "((\\d*\\.){3}\\d*)";
+	private String ipPattern;
+	private ExternalAddress externalAddress;
 	
 	public abstract String getDefaultGateway();
 	public abstract void setDefaultGateway(String defaultGateway);
@@ -31,12 +30,12 @@ public abstract class OSNetworkFactory implements NetworkFactory{
 	public  String getExternalIP() {
 		
 		if(externalIp==null) {
-			externalIp = ExternalAddress.getExternalIP();
+			externalIp = externalAddress.getExternalIP();
 			return externalIp;
 		}
 		else
 		  return externalIp;
-	}
+		  	}
 	
 	public  void setExternalIP(String externalip) {
 		
@@ -70,12 +69,14 @@ public abstract class OSNetworkFactory implements NetworkFactory{
 	public  String getLocalIP() {
          if(localip==null) {
 			
-			Pattern p = Pattern.compile(ip_pattern);
+			Pattern p = Pattern.compile(getIpPattern());
 			device.getAddresses().forEach(addr -> {
+				
 			   	Matcher m = p.matcher(addr.getAddr().toString());
 			   	if(m.find()) localip = m.group();
 			    	
 			});
+
 		return localip;
 		}
 		else
@@ -92,7 +93,7 @@ public abstract class OSNetworkFactory implements NetworkFactory{
 		
          if(netmask==null) {
 			
-			Pattern p = Pattern.compile(ip_pattern);
+			Pattern p = Pattern.compile(getIpPattern());
 			device.getAddresses().forEach(addr -> {
 				try {
 			   	Matcher m = p.matcher(addr.getNetmask().toString());
@@ -125,17 +126,19 @@ public abstract class OSNetworkFactory implements NetworkFactory{
 		
 		return device;
 	}
+	
+	public String getIpPattern() {
+		return ipPattern;
+	}
 
-	public static NetworkFactory returnConcreteNetworkFactoryObject(PcapIf device) {
-				
-		
-		  if(OSType.isLinux()) return new LinuxNetworkFactory(device);
-		  
-		  if(OSType.isWindows()) return new WindowsNetworkFactory(device);
-		  
-		  else
-			  
-		   return null;
+	public void setIpPattern(String ipPattern) {
+		this.ipPattern = ipPattern;
+	}
+	public ExternalAddress getExternalAddress() {
+		return externalAddress;
+	}
+	public void setExternalAddress(ExternalAddress externalAddress) {
+		this.externalAddress = externalAddress;
 	}
 	
 	

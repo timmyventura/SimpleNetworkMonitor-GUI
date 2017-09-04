@@ -7,9 +7,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,22 +16,21 @@ import monitor.logging.Logging.MessageType;
 
 public class LinuxNetworkUtils {
 
-	private static final String netstat_rn = "netstat -rn";	
-	private static final String netstat_p = "netstat -p";
-	private static final String resolve_path = "/etc/resolv.conf";
-	private static final String gateway_pattern = "0.0.0.0";
-	private static final String dns_pattern = "nameserver";
+	private  String routingTableCommand;	
+	private  String resolverPath;
+	private  String gatewayPattern;
+	private  String dnsPattern;
 	
 	
 	private LinuxNetworkUtils() {}
 	
-	 public static String getGateway() {
+	 public String getGateway() {
 	    	
 		 String [] gateway = new String[1];
 		 
 	    	try {
 	    		
-				Process netst_proc = Runtime.getRuntime().exec(netstat_rn);
+				Process netst_proc = Runtime.getRuntime().exec(getRoutingTableCommand());
 				netst_proc.waitFor();
 				
 				List<String> lines = readFromInputStream(netst_proc.getInputStream(), null);
@@ -42,7 +39,7 @@ public class LinuxNetworkUtils {
 				   try {
 					   
 					String [] fields = line.split("\\s+");
-					if(fields[0].equals(gateway_pattern)) gateway[0] = fields[1];
+					if(fields[0].equals(getGatewayPattern())) gateway[0] = fields[1];
 					
 				   }catch(ArrayIndexOutOfBoundsException e) {
 				        	
@@ -72,51 +69,17 @@ public class LinuxNetworkUtils {
 	    	
 	    }
 	 
-	  public static Map<String, String> getApplicationPorts(String pattern){
-		  
-        Map<String, String> application = new HashMap<>();		 
-        
-	    	try {
-	    		
-				Process netst_proc = Runtime.getRuntime().exec(netstat_p);
-				List<String> lines = readFromInputStream(netst_proc.getInputStream(), pattern);
-				lines.forEach((line) -> {
-					try {
-					String [] fields = line.split("\\s+");
-		
-					application.put(fields[3].split(":")[1], fields[6].split("/")[1]);
-					}catch(ArrayIndexOutOfBoundsException e) {
-						
-						
-						Logging.log(LinuxNetworkUtils.class, MessageType.INFO, e);
-						
-					}
-				});
-				
-
-	    	}catch(NullPointerException e) {
-				
-	    		Logging.log(Devices.class, MessageType.INFO, e);
-			
-	    	}catch (IOException e) {
-				
-				Logging.log(Devices.class, MessageType.ERROR, e);
-		       	
-			}
-	    	return application;
-		  
-	  }
 	    
-	  public static List<String> getDnsServers() {
+	public List<String> getDnsServers() {
 	    	
 		  List<String> dnsServers = new ArrayList<>();
 		  
 	    	try {
 
-				List<String> lines = Files.readAllLines(Paths.get(resolve_path));
+				List<String> lines = Files.readAllLines(Paths.get(getResolverPath()));
 				lines.forEach((line) -> {
 					String [] fields = line.split("\\s+");
-					if(fields[0].equals(dns_pattern)) 
+					if(fields[0].equals(getDnsPattern())) 
 					dnsServers.add(fields[1]);
 				});
 				
@@ -161,5 +124,38 @@ public class LinuxNetworkUtils {
 	    	return buffer;
 	    	
 	    }
+
+	public String getRoutingTableCommand() {
+		return routingTableCommand;
+	}
+
+	public void setRoutingTableCommand(String routingTable) {
+		this.routingTableCommand = routingTable;
+	}
+
+	public String getResolverPath() {
+		return resolverPath;
+	}
+
+	public void setResolverPath(String resolvePath) {
+		this.resolverPath = resolvePath;
+	}
+
+	public String getGatewayPattern() {
+		return gatewayPattern;
+	}
+
+	public void setGatewayPattern(String gatewayPattern) {
+		this.gatewayPattern = gatewayPattern;
+	}
+
+	public String getDnsPattern() {
+		return dnsPattern;
+	}
+
+	public void setDnsPattern(String dnsPattern) {
+		this.dnsPattern = dnsPattern;
+	}
+
 	
 }

@@ -1,6 +1,7 @@
 package monitor.model;
 
 
+import org.jnetpcap.PcapIf;
 import org.jnetpcap.packet.PcapPacket;
 
 import monitor.network.NetworkFactory;
@@ -10,20 +11,22 @@ import monitor.view.View;
 public class InformMediator extends AbstractModel {
 
 	private InformGraph graph;
-
-    
+    private NetworkFactory networkFactory;
+	
     public InformMediator() {
  	
     }
         
-    public void initInform(NetworkFactory factory) {
+    public void initInform(PcapIf device) {
     	
-    	graph.setIPToLocalIPField(factory.getLocalIP());
-    	graph.setMaskToMaskField(factory.getNetworkMask());
-    	graph.setDNSLabelsFields(factory.getNameServers());
-    	graph.setHostnameToHostnameField(factory.getHostname()); 
-    	graph.setIPToExternalIPField(factory.getExternalIP());
-    	graph.setGatewayToGatewayField(factory.getDefaultGateway());
+    	
+    	getNetworkFactory().setDevice(device);
+    	graph.setIPToLocalIPField(getNetworkFactory().getLocalIP());
+    	graph.setMaskToMaskField(getNetworkFactory().getNetworkMask());
+    	graph.setDNSLabelsFields(getNetworkFactory().getNameServers());
+    	graph.setHostnameToHostnameField(getNetworkFactory().getHostname()); 
+    	graph.setIPToExternalIPField(getNetworkFactory().getExternalIP());
+    	graph.setGatewayToGatewayField(getNetworkFactory().getDefaultGateway());
     	
     	graph.init();
     	
@@ -61,6 +64,22 @@ public class InformMediator extends AbstractModel {
 		
 		 throw new UnsupportedOperationException();
 		
+	}
+
+	public View getGraph() {
+		return graph;
+	}
+
+	public void setGraph(InformGraph graph) {
+		this.graph = graph;
+	}
+
+	public NetworkFactory getNetworkFactory() {
+		return networkFactory;
+	}
+
+	public void setNetworkFactory(NetworkFactory networkFactory) {
+		this.networkFactory = networkFactory;
 	}
 
 }

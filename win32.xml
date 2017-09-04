@@ -39,8 +39,13 @@
           <include name="log4j-1.2.17.jar"/>
        </fileset>  
       </copy>
+    <echo file="${dir.win32}/properties/log4j.properties" append="true" message="# Set the name of the file${line.separator}log4j.appender.FILE.File=./logs/log.txt${line.separator}"/>
     </target>
     <target name="clean">
       <delete dir="${dir.win32}"/>
     </target>
 </project>
+
+
+
+

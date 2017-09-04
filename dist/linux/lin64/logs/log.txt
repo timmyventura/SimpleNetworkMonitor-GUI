@@ -1,0 +1,408 @@
+2017-08-29 16:02:26 DEBUG StandardEnvironment: Adding [systemProperties] PropertySource with lowest search precedence
+2017-08-29 16:02:26 DEBUG StandardEnvironment: Adding [systemEnvironment] PropertySource with lowest search precedence
+2017-08-29 16:02:26 DEBUG StandardEnvironment: Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+2017-08-29 16:02:26 INFO  XmlBeanDefinitionReader: Loading XML bean definitions from class path resource [META-INF/context/main-context.xml]
+2017-08-29 16:02:26 DEBUG DefaultDocumentLoader: Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2017-08-29 16:02:26 DEBUG PluggableSchemaResolver: Loading schema mappings from [META-INF/spring.schemas]
+2017-08-29 16:02:26 DEBUG PluggableSchemaResolver: Loaded schema mappings: {http://www.springframework.org/schema/cache/spring-cache-4.2.xsd=org/springframework/cache/config/spring-cache-4.2.xsd, http://www.springframework.org/schema/aop/spring-aop-4.1.xsd=org/springframework/aop/config/spring-aop-4.1.xsd, http://www.springframework.org/schema/context/spring-context-3.1.xsd=org/springframework/context/config/spring-context-3.1.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.2.xsd=org/springframework/aop/config/spring-aop-3.2.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-4.3.xsd, http://www.springframework.org/schema/lang/spring-lang-4.1.xsd=org/springframework/scripting/config/spring-lang-4.1.xsd, http://www.springframework.org/schema/context/spring-context-4.0.xsd=org/springframework/context/config/spring-context-4.0.xsd, http://www.springframework.org/schema/beans/spring-beans-4.2.xsd=org/springframework/beans/factory/xml/spring-beans-4.2.xsd, http://www.springframework.org/schema/tool/spring-tool-4.1.xsd=org/springframework/beans/factory/xml/spring-tool-4.1.xsd, http://www.springframework.org/schema/lang/spring-lang-3.2.xsd=org/springframework/scripting/config/spring-lang-3.2.xsd, http://www.springframework.org/schema/cache/spring-cache-3.2.xsd=org/springframework/cache/config/spring-cache-3.2.xsd, http://www.springframework.org/schema/jee/spring-jee-4.1.xsd=org/springframework/ejb/config/spring-jee-4.1.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/task/spring-task-4.2.xsd=org/springframework/scheduling/config/spring-task-4.2.xsd, http://www.springframework.org/schema/tool/spring-tool-3.2.xsd=org/springframework/beans/factory/xml/spring-tool-3.2.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-4.3.xsd, http://www.springframework.org/schema/cache/spring-cache-4.1.xsd=org/springframework/cache/config/spring-cache-4.1.xsd, http://www.springframework.org/schema/aop/spring-aop-4.0.xsd=org/springframework/aop/config/spring-aop-4.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.2.xsd=org/springframework/ejb/config/spring-jee-3.2.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/util/spring-util-4.3.xsd=org/springframework/beans/factory/xml/spring-util-4.3.xsd, http://www.springframework.org/schema/beans/spring-beans-3.2.xsd=org/springframework/beans/factory/xml/spring-beans-3.2.xsd, http://www.springframework.org/schema/aop/spring-aop-3.1.xsd=org/springframework/aop/config/spring-aop-3.1.xsd, http://www.springframework.org/schema/lang/spring-lang-4.0.xsd=org/springframework/scripting/config/spring-lang-4.0.xsd, http://www.springframework.org/schema/beans/spring-beans-4.1.xsd=org/springframework/beans/factory/xml/spring-beans-4.1.xsd, http://www.springframework.org/schema/tool/spring-tool-4.0.xsd=org/springframework/beans/factory/xml/spring-tool-4.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.1.xsd=org/springframework/scripting/config/spring-lang-3.1.xsd, http://www.springframework.org/schema/cache/spring-cache-3.1.xsd=org/springframework/cache/config/spring-cache-3.1.xsd, http://www.springframework.org/schema/jee/spring-jee-4.0.xsd=org/springframework/ejb/config/spring-jee-4.0.xsd, http://www.springframework.org/schema/task/spring-task-4.1.xsd=org/springframework/scheduling/config/spring-task-4.1.xsd, http://www.springframework.org/schema/tool/spring-tool-3.1.xsd=org/springframework/beans/factory/xml/spring-tool-3.1.xsd, http://www.springframework.org/schema/cache/spring-cache-4.0.xsd=org/springframework/cache/config/spring-cache-4.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.1.xsd=org/springframework/ejb/config/spring-jee-3.1.xsd, http://www.springframework.org/schema/task/spring-task-3.2.xsd=org/springframework/scheduling/config/spring-task-3.2.xsd, http://www.springframework.org/schema/util/spring-util-4.2.xsd=org/springframework/beans/factory/xml/spring-util-4.2.xsd, http://www.springframework.org/schema/beans/spring-beans-3.1.xsd=org/springframework/beans/factory/xml/spring-beans-3.1.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-4.3.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-4.0.xsd=org/springframework/beans/factory/xml/spring-beans-4.0.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-4.3.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/context/spring-context-4.3.xsd=org/springframework/context/config/spring-context-4.3.xsd, http://www.springframework.org/schema/task/spring-task-4.0.xsd=org/springframework/scheduling/config/spring-task-4.0.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/util/spring-util-4.1.xsd=org/springframework/beans/factory/xml/spring-util-4.1.xsd, http://www.springframework.org/schema/task/spring-task-3.1.xsd=org/springframework/scheduling/config/spring-task-3.1.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-4.3.xsd, http://www.springframework.org/schema/aop/spring-aop-4.3.xsd=org/springframework/aop/config/spring-aop-4.3.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/util/spring-util-3.2.xsd=org/springframework/beans/factory/xml/spring-util-3.2.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-4.3.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/lang/spring-lang-4.3.xsd=org/springframework/scripting/config/spring-lang-4.3.xsd, http://www.springframework.org/schema/context/spring-context-4.2.xsd=org/springframework/context/config/spring-context-4.2.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-4.3.xsd=org/springframework/beans/factory/xml/spring-tool-4.3.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee-4.3.xsd=org/springframework/ejb/config/spring-jee-4.3.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/util/spring-util-4.0.xsd=org/springframework/beans/factory/xml/spring-util-4.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/cache/spring-cache-4.3.xsd=org/springframework/cache/config/spring-cache-4.3.xsd, http://www.springframework.org/schema/aop/spring-aop-4.2.xsd=org/springframework/aop/config/spring-aop-4.2.xsd, http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-4.3.xsd, http://www.springframework.org/schema/context/spring-context-3.2.xsd=org/springframework/context/config/spring-context-3.2.xsd, http://www.springframework.org/schema/util/spring-util-3.1.xsd=org/springframework/beans/factory/xml/spring-util-3.1.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/cache/spring-cache.xsd=org/springframework/cache/config/spring-cache-4.3.xsd, http://www.springframework.org/schema/lang/spring-lang-4.2.xsd=org/springframework/scripting/config/spring-lang-4.2.xsd, http://www.springframework.org/schema/context/spring-context-4.1.xsd=org/springframework/context/config/spring-context-4.1.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-4.3.xsd=org/springframework/beans/factory/xml/spring-beans-4.3.xsd, http://www.springframework.org/schema/tool/spring-tool-4.2.xsd=org/springframework/beans/factory/xml/spring-tool-4.2.xsd, http://www.springframework.org/schema/jee/spring-jee-4.2.xsd=org/springframework/ejb/config/spring-jee-4.2.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-4.3.xsd, http://www.springframework.org/schema/task/spring-task-4.3.xsd=org/springframework/scheduling/config/spring-task-4.3.xsd}
+2017-08-29 16:02:26 DEBUG PluggableSchemaResolver: Found XML schema [http://www.springframework.org/schema/beans/spring-beans.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-4.3.xsd
+2017-08-29 16:02:26 DEBUG DefaultBeanDefinitionDocumentReader: Loading bean definitions
+2017-08-29 16:02:26 INFO  XmlBeanDefinitionReader: Loading XML bean definitions from class path resource [META-INF/context/app-context.xml]
+2017-08-29 16:02:26 DEBUG DefaultDocumentLoader: Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2017-08-29 16:02:26 DEBUG PluggableSchemaResolver: Found XML schema [http://www.springframework.org/schema/beans/spring-beans.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-4.3.xsd
+2017-08-29 16:02:26 DEBUG PluggableSchemaResolver: Found XML schema [http://www.springframework.org/schema/util/spring-util.xsd] in classpath: org/springframework/beans/factory/xml/spring-util-4.3.xsd
+2017-08-29 16:02:26 DEBUG PluggableSchemaResolver: Found XML schema [http://www.springframework.org/schema/tool/spring-tool-4.3.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-4.3.xsd
+2017-08-29 16:02:26 DEBUG DefaultBeanDefinitionDocumentReader: Loading bean definitions
+2017-08-29 16:02:26 DEBUG DefaultNamespaceHandlerResolver: Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/cache=org.springframework.cache.config.CacheNamespaceHandler, http://www.springframework.org/schema/c=org.springframework.beans.factory.xml.SimpleConstructorNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+2017-08-29 16:02:26 DEBUG DefaultBeanDefinitionDocumentReader: Imported 14 bean definitions from relative location [app-context.xml]
+2017-08-29 16:02:26 INFO  XmlBeanDefinitionReader: Loading XML bean definitions from class path resource [META-INF/context/net-service-context.xml]
+2017-08-29 16:02:26 DEBUG DefaultDocumentLoader: Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2017-08-29 16:02:26 DEBUG PluggableSchemaResolver: Found XML schema [http://www.springframework.org/schema/beans/spring-beans.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-4.3.xsd
+2017-08-29 16:02:26 DEBUG PluggableSchemaResolver: Found XML schema [http://www.springframework.org/schema/util/spring-util.xsd] in classpath: org/springframework/beans/factory/xml/spring-util-4.3.xsd
+2017-08-29 16:02:26 DEBUG PluggableSchemaResolver: Found XML schema [http://www.springframework.org/schema/tool/spring-tool-4.3.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-4.3.xsd
+2017-08-29 16:02:26 DEBUG DefaultBeanDefinitionDocumentReader: Loading bean definitions
+2017-08-29 16:02:26 DEBUG DefaultBeanDefinitionDocumentReader: Imported 9 bean definitions from relative location [net-service-context.xml]
+2017-08-29 16:02:26 INFO  XmlBeanDefinitionReader: Loading XML bean definitions from class path resource [META-INF/context/network-utils-context.xml]
+2017-08-29 16:02:26 DEBUG DefaultDocumentLoader: Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2017-08-29 16:02:26 DEBUG PluggableSchemaResolver: Found XML schema [http://www.springframework.org/schema/beans/spring-beans.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-4.3.xsd
+2017-08-29 16:02:26 DEBUG DefaultBeanDefinitionDocumentReader: Loading bean definitions
+2017-08-29 16:02:26 DEBUG DefaultBeanDefinitionDocumentReader: Imported 6 bean definitions from relative location [network-utils-context.xml]
+2017-08-29 16:02:26 DEBUG XmlBeanDefinitionReader: Loaded 29 bean definitions from location pattern [META-INF/context/main-context.xml]
+2017-08-29 16:02:26 INFO  GenericXmlApplicationContext: Refreshing org.springframework.context.support.GenericXmlApplicationContext@7e0b37bc: startup date [Tue Aug 29 16:02:26 MSK 2017]; root of context hierarchy
+2017-08-29 16:02:26 DEBUG GenericXmlApplicationContext: Bean factory for org.springframework.context.support.GenericXmlApplicationContext@7e0b37bc: org.springframework.beans.factory.support.DefaultListableBeanFactory@47f6473: defining beans [controller,packetCapture,mediators,networkFactory,informMediator,pieMediator,pieViews,speedMediator,speedViews,informGraph,pieGraph,speedGraph,initialFrame,mainFrame,networkServiceName,tcpService,tcpMap,udpService,udpMap,ipService,ipMap,etherService,etherMap,externalAddress,requestParameters,linuxNetworkFactory,windowsNetworkFactory,linuxNetworkUtils,windowsNetworkUtils]; root of factory hierarchy
+2017-08-29 16:02:26 DEBUG GenericXmlApplicationContext: Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@5cb9f472]
+2017-08-29 16:02:26 DEBUG GenericXmlApplicationContext: Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@4bec1f0c]
+2017-08-29 16:02:26 DEBUG DefaultListableBeanFactory: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@47f6473: defining beans [controller,packetCapture,mediators,networkFactory,informMediator,pieMediator,pieViews,speedMediator,speedViews,informGraph,pieGraph,speedGraph,initialFrame,mainFrame,networkServiceName,tcpService,tcpMap,udpService,udpMap,ipService,ipMap,etherService,etherMap,externalAddress,requestParameters,linuxNetworkFactory,windowsNetworkFactory,linuxNetworkUtils,windowsNetworkUtils]; root of factory hierarchy
+2017-08-29 16:02:26 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'controller'
+2017-08-29 16:02:26 DEBUG DefaultListableBeanFactory: Creating instance of bean 'controller'
+2017-08-29 16:02:26 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'controller' to allow for resolving potential circular references
+2017-08-29 16:02:26 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'informMediator'
+2017-08-29 16:02:26 DEBUG DefaultListableBeanFactory: Creating instance of bean 'informMediator'
+2017-08-29 16:02:26 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'informMediator' to allow for resolving potential circular references
+2017-08-29 16:02:26 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'informGraph'
+2017-08-29 16:02:26 DEBUG DefaultListableBeanFactory: Creating instance of bean 'informGraph'
+2017-08-29 16:02:26 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'informGraph' to allow for resolving potential circular references
+2017-08-29 16:02:26 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'informGraph'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'networkFactory'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'networkFactory'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'networkFactory' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'linuxNetworkFactory'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'linuxNetworkFactory'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'linuxNetworkFactory' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'linuxNetworkUtils'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'linuxNetworkUtils'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'linuxNetworkUtils' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'linuxNetworkUtils'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'externalAddress'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'externalAddress'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'externalAddress' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'requestParameters'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'requestParameters'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning eagerly cached instance of singleton bean 'externalAddress' that is not fully initialized yet - a consequence of a circular reference
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'requestParameters' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'requestParameters'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'externalAddress'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'linuxNetworkFactory'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'windowsNetworkFactory'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'windowsNetworkFactory'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'windowsNetworkFactory' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'windowsNetworkUtils'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'windowsNetworkUtils'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'windowsNetworkUtils' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'windowsNetworkUtils'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'externalAddress'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'windowsNetworkFactory'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Invoking afterPropertiesSet() on bean with name 'networkFactory'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'networkFactory'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'informMediator'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'pieMediator'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'pieMediator'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'pieMediator' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'networkServiceName'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'networkServiceName'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'networkServiceName' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'tcpService'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'tcpService'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'tcpService' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'tcpMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'tcpMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'tcpMap' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Invoking afterPropertiesSet() on bean with name 'tcpMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'tcpMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'tcpService'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'udpService'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'udpService'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'udpService' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'udpMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'udpMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'udpMap' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Invoking afterPropertiesSet() on bean with name 'udpMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'udpMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'udpService'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'ipService'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'ipService'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'ipService' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'ipMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'ipMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'ipMap' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Invoking afterPropertiesSet() on bean with name 'ipMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'ipMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'ipService'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'etherService'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'etherService'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'etherService' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'etherMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'etherMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'etherMap' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Invoking afterPropertiesSet() on bean with name 'etherMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'etherMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'etherService'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'networkServiceName'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'pieViews'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'pieViews'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'pieViews' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'pieGraph'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'pieGraph'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'pieGraph' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'pieGraph'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Invoking afterPropertiesSet() on bean with name 'pieViews'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'pieViews'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'pieMediator'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'speedMediator'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'speedMediator'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'speedMediator' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'speedViews'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'speedViews'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'speedViews' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'speedGraph'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'speedGraph'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'speedGraph' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'speedGraph'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'informGraph'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Invoking afterPropertiesSet() on bean with name 'speedViews'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'speedViews'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'speedMediator'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'informGraph'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'pieGraph'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'speedGraph'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'initialFrame'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'initialFrame'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning eagerly cached instance of singleton bean 'controller' that is not fully initialized yet - a consequence of a circular reference
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'initialFrame' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'initialFrame'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'mainFrame'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'mainFrame'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'pieGraph'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'informGraph'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'speedGraph'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'mainFrame' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'mainFrame'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'packetCapture'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'packetCapture'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'packetCapture' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'mediators'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Creating instance of bean 'mediators'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'mediators' to allow for resolving potential circular references
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'pieMediator'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'speedMediator'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Invoking afterPropertiesSet() on bean with name 'mediators'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'mediators'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'packetCapture'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'controller'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'packetCapture'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'mediators'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'networkFactory'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'informMediator'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'pieMediator'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'pieViews'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'speedMediator'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'speedViews'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'informGraph'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'pieGraph'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'speedGraph'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'initialFrame'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'mainFrame'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'networkServiceName'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'tcpService'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'tcpMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'udpService'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'udpMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'ipService'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'ipMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'etherService'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'etherMap'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'externalAddress'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'requestParameters'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'linuxNetworkFactory'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'windowsNetworkFactory'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'linuxNetworkUtils'
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'windowsNetworkUtils'
+2017-08-29 16:02:27 DEBUG GenericXmlApplicationContext: Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@17497425]
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'lifecycleProcessor'
+2017-08-29 16:02:27 DEBUG PropertySourcesPropertyResolver: Could not find key 'spring.liveBeansView.mbeanDomain' in any property source
+2017-08-29 16:02:27 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'controller'
+2017-08-29 16:02:32 INFO  LinuxNetworkFactory: java.lang.NullPointerException at monitor.network.OSNetworkFactory.lambda$getNetworkMask$1(OSNetworkFactory.java:99)
+2017-09-01 10:07:17 DEBUG StandardEnvironment: Adding [systemProperties] PropertySource with lowest search precedence
+2017-09-01 10:07:17 DEBUG StandardEnvironment: Adding [systemEnvironment] PropertySource with lowest search precedence
+2017-09-01 10:07:17 DEBUG StandardEnvironment: Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+2017-09-01 10:07:17 INFO  XmlBeanDefinitionReader: Loading XML bean definitions from class path resource [META-INF/context/main-context.xml]
+2017-09-01 10:07:17 DEBUG DefaultDocumentLoader: Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2017-09-01 10:07:17 DEBUG PluggableSchemaResolver: Loading schema mappings from [META-INF/spring.schemas]
+2017-09-01 10:07:17 DEBUG PluggableSchemaResolver: Loaded schema mappings: {http://www.springframework.org/schema/cache/spring-cache-4.2.xsd=org/springframework/cache/config/spring-cache-4.2.xsd, http://www.springframework.org/schema/aop/spring-aop-4.1.xsd=org/springframework/aop/config/spring-aop-4.1.xsd, http://www.springframework.org/schema/context/spring-context-3.1.xsd=org/springframework/context/config/spring-context-3.1.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.2.xsd=org/springframework/aop/config/spring-aop-3.2.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-4.3.xsd, http://www.springframework.org/schema/lang/spring-lang-4.1.xsd=org/springframework/scripting/config/spring-lang-4.1.xsd, http://www.springframework.org/schema/context/spring-context-4.0.xsd=org/springframework/context/config/spring-context-4.0.xsd, http://www.springframework.org/schema/beans/spring-beans-4.2.xsd=org/springframework/beans/factory/xml/spring-beans-4.2.xsd, http://www.springframework.org/schema/tool/spring-tool-4.1.xsd=org/springframework/beans/factory/xml/spring-tool-4.1.xsd, http://www.springframework.org/schema/lang/spring-lang-3.2.xsd=org/springframework/scripting/config/spring-lang-3.2.xsd, http://www.springframework.org/schema/cache/spring-cache-3.2.xsd=org/springframework/cache/config/spring-cache-3.2.xsd, http://www.springframework.org/schema/jee/spring-jee-4.1.xsd=org/springframework/ejb/config/spring-jee-4.1.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/task/spring-task-4.2.xsd=org/springframework/scheduling/config/spring-task-4.2.xsd, http://www.springframework.org/schema/tool/spring-tool-3.2.xsd=org/springframework/beans/factory/xml/spring-tool-3.2.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-4.3.xsd, http://www.springframework.org/schema/cache/spring-cache-4.1.xsd=org/springframework/cache/config/spring-cache-4.1.xsd, http://www.springframework.org/schema/aop/spring-aop-4.0.xsd=org/springframework/aop/config/spring-aop-4.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.2.xsd=org/springframework/ejb/config/spring-jee-3.2.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/util/spring-util-4.3.xsd=org/springframework/beans/factory/xml/spring-util-4.3.xsd, http://www.springframework.org/schema/beans/spring-beans-3.2.xsd=org/springframework/beans/factory/xml/spring-beans-3.2.xsd, http://www.springframework.org/schema/aop/spring-aop-3.1.xsd=org/springframework/aop/config/spring-aop-3.1.xsd, http://www.springframework.org/schema/lang/spring-lang-4.0.xsd=org/springframework/scripting/config/spring-lang-4.0.xsd, http://www.springframework.org/schema/beans/spring-beans-4.1.xsd=org/springframework/beans/factory/xml/spring-beans-4.1.xsd, http://www.springframework.org/schema/tool/spring-tool-4.0.xsd=org/springframework/beans/factory/xml/spring-tool-4.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.1.xsd=org/springframework/scripting/config/spring-lang-3.1.xsd, http://www.springframework.org/schema/cache/spring-cache-3.1.xsd=org/springframework/cache/config/spring-cache-3.1.xsd, http://www.springframework.org/schema/jee/spring-jee-4.0.xsd=org/springframework/ejb/config/spring-jee-4.0.xsd, http://www.springframework.org/schema/task/spring-task-4.1.xsd=org/springframework/scheduling/config/spring-task-4.1.xsd, http://www.springframework.org/schema/tool/spring-tool-3.1.xsd=org/springframework/beans/factory/xml/spring-tool-3.1.xsd, http://www.springframework.org/schema/cache/spring-cache-4.0.xsd=org/springframework/cache/config/spring-cache-4.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.1.xsd=org/springframework/ejb/config/spring-jee-3.1.xsd, http://www.springframework.org/schema/task/spring-task-3.2.xsd=org/springframework/scheduling/config/spring-task-3.2.xsd, http://www.springframework.org/schema/util/spring-util-4.2.xsd=org/springframework/beans/factory/xml/spring-util-4.2.xsd, http://www.springframework.org/schema/beans/spring-beans-3.1.xsd=org/springframework/beans/factory/xml/spring-beans-3.1.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-4.3.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-4.0.xsd=org/springframework/beans/factory/xml/spring-beans-4.0.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-4.3.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/context/spring-context-4.3.xsd=org/springframework/context/config/spring-context-4.3.xsd, http://www.springframework.org/schema/task/spring-task-4.0.xsd=org/springframework/scheduling/config/spring-task-4.0.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/util/spring-util-4.1.xsd=org/springframework/beans/factory/xml/spring-util-4.1.xsd, http://www.springframework.org/schema/task/spring-task-3.1.xsd=org/springframework/scheduling/config/spring-task-3.1.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-4.3.xsd, http://www.springframework.org/schema/aop/spring-aop-4.3.xsd=org/springframework/aop/config/spring-aop-4.3.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/util/spring-util-3.2.xsd=org/springframework/beans/factory/xml/spring-util-3.2.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-4.3.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/lang/spring-lang-4.3.xsd=org/springframework/scripting/config/spring-lang-4.3.xsd, http://www.springframework.org/schema/context/spring-context-4.2.xsd=org/springframework/context/config/spring-context-4.2.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-4.3.xsd=org/springframework/beans/factory/xml/spring-tool-4.3.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee-4.3.xsd=org/springframework/ejb/config/spring-jee-4.3.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/util/spring-util-4.0.xsd=org/springframework/beans/factory/xml/spring-util-4.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/cache/spring-cache-4.3.xsd=org/springframework/cache/config/spring-cache-4.3.xsd, http://www.springframework.org/schema/aop/spring-aop-4.2.xsd=org/springframework/aop/config/spring-aop-4.2.xsd, http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-4.3.xsd, http://www.springframework.org/schema/context/spring-context-3.2.xsd=org/springframework/context/config/spring-context-3.2.xsd, http://www.springframework.org/schema/util/spring-util-3.1.xsd=org/springframework/beans/factory/xml/spring-util-3.1.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/cache/spring-cache.xsd=org/springframework/cache/config/spring-cache-4.3.xsd, http://www.springframework.org/schema/lang/spring-lang-4.2.xsd=org/springframework/scripting/config/spring-lang-4.2.xsd, http://www.springframework.org/schema/context/spring-context-4.1.xsd=org/springframework/context/config/spring-context-4.1.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-4.3.xsd=org/springframework/beans/factory/xml/spring-beans-4.3.xsd, http://www.springframework.org/schema/tool/spring-tool-4.2.xsd=org/springframework/beans/factory/xml/spring-tool-4.2.xsd, http://www.springframework.org/schema/jee/spring-jee-4.2.xsd=org/springframework/ejb/config/spring-jee-4.2.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-4.3.xsd, http://www.springframework.org/schema/task/spring-task-4.3.xsd=org/springframework/scheduling/config/spring-task-4.3.xsd}
+2017-09-01 10:07:17 DEBUG PluggableSchemaResolver: Found XML schema [http://www.springframework.org/schema/beans/spring-beans.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-4.3.xsd
+2017-09-01 10:07:17 DEBUG DefaultBeanDefinitionDocumentReader: Loading bean definitions
+2017-09-01 10:07:17 INFO  XmlBeanDefinitionReader: Loading XML bean definitions from class path resource [META-INF/context/app-context.xml]
+2017-09-01 10:07:17 DEBUG DefaultDocumentLoader: Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2017-09-01 10:07:17 DEBUG PluggableSchemaResolver: Found XML schema [http://www.springframework.org/schema/beans/spring-beans.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-4.3.xsd
+2017-09-01 10:07:18 DEBUG PluggableSchemaResolver: Found XML schema [http://www.springframework.org/schema/util/spring-util.xsd] in classpath: org/springframework/beans/factory/xml/spring-util-4.3.xsd
+2017-09-01 10:07:18 DEBUG PluggableSchemaResolver: Found XML schema [http://www.springframework.org/schema/tool/spring-tool-4.3.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-4.3.xsd
+2017-09-01 10:07:18 DEBUG DefaultBeanDefinitionDocumentReader: Loading bean definitions
+2017-09-01 10:07:18 DEBUG DefaultNamespaceHandlerResolver: Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/cache=org.springframework.cache.config.CacheNamespaceHandler, http://www.springframework.org/schema/c=org.springframework.beans.factory.xml.SimpleConstructorNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+2017-09-01 10:07:18 DEBUG DefaultBeanDefinitionDocumentReader: Imported 14 bean definitions from relative location [app-context.xml]
+2017-09-01 10:07:18 INFO  XmlBeanDefinitionReader: Loading XML bean definitions from class path resource [META-INF/context/net-service-context.xml]
+2017-09-01 10:07:18 DEBUG DefaultDocumentLoader: Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2017-09-01 10:07:18 DEBUG PluggableSchemaResolver: Found XML schema [http://www.springframework.org/schema/beans/spring-beans.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-4.3.xsd
+2017-09-01 10:07:18 DEBUG PluggableSchemaResolver: Found XML schema [http://www.springframework.org/schema/util/spring-util.xsd] in classpath: org/springframework/beans/factory/xml/spring-util-4.3.xsd
+2017-09-01 10:07:18 DEBUG PluggableSchemaResolver: Found XML schema [http://www.springframework.org/schema/tool/spring-tool-4.3.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-4.3.xsd
+2017-09-01 10:07:18 DEBUG DefaultBeanDefinitionDocumentReader: Loading bean definitions
+2017-09-01 10:07:18 DEBUG DefaultBeanDefinitionDocumentReader: Imported 9 bean definitions from relative location [net-service-context.xml]
+2017-09-01 10:07:18 INFO  XmlBeanDefinitionReader: Loading XML bean definitions from class path resource [META-INF/context/network-utils-context.xml]
+2017-09-01 10:07:18 DEBUG DefaultDocumentLoader: Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2017-09-01 10:07:18 DEBUG PluggableSchemaResolver: Found XML schema [http://www.springframework.org/schema/beans/spring-beans.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-4.3.xsd
+2017-09-01 10:07:18 DEBUG DefaultBeanDefinitionDocumentReader: Loading bean definitions
+2017-09-01 10:07:18 DEBUG DefaultBeanDefinitionDocumentReader: Imported 6 bean definitions from relative location [network-utils-context.xml]
+2017-09-01 10:07:18 DEBUG XmlBeanDefinitionReader: Loaded 29 bean definitions from location pattern [META-INF/context/main-context.xml]
+2017-09-01 10:07:18 INFO  GenericXmlApplicationContext: Refreshing org.springframework.context.support.GenericXmlApplicationContext@7e0b37bc: startup date [Fri Sep 01 10:07:18 MSK 2017]; root of context hierarchy
+2017-09-01 10:07:18 DEBUG GenericXmlApplicationContext: Bean factory for org.springframework.context.support.GenericXmlApplicationContext@7e0b37bc: org.springframework.beans.factory.support.DefaultListableBeanFactory@47f6473: defining beans [controller,packetCapture,mediators,networkFactory,informMediator,pieMediator,pieViews,speedMediator,speedViews,informGraph,pieGraph,speedGraph,initialFrame,mainFrame,networkServiceName,tcpService,tcpMap,udpService,udpMap,ipService,ipMap,etherService,etherMap,externalAddress,requestParameters,linuxNetworkFactory,windowsNetworkFactory,linuxNetworkUtils,windowsNetworkUtils]; root of factory hierarchy
+2017-09-01 10:07:18 DEBUG GenericXmlApplicationContext: Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@5cb9f472]
+2017-09-01 10:07:18 DEBUG GenericXmlApplicationContext: Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@4bec1f0c]
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@47f6473: defining beans [controller,packetCapture,mediators,networkFactory,informMediator,pieMediator,pieViews,speedMediator,speedViews,informGraph,pieGraph,speedGraph,initialFrame,mainFrame,networkServiceName,tcpService,tcpMap,udpService,udpMap,ipService,ipMap,etherService,etherMap,externalAddress,requestParameters,linuxNetworkFactory,windowsNetworkFactory,linuxNetworkUtils,windowsNetworkUtils]; root of factory hierarchy
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'controller'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Creating instance of bean 'controller'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'controller' to allow for resolving potential circular references
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'informMediator'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Creating instance of bean 'informMediator'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'informMediator' to allow for resolving potential circular references
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'informGraph'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Creating instance of bean 'informGraph'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'informGraph' to allow for resolving potential circular references
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'informGraph'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'networkFactory'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Creating instance of bean 'networkFactory'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'networkFactory' to allow for resolving potential circular references
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'linuxNetworkFactory'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Creating instance of bean 'linuxNetworkFactory'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'linuxNetworkFactory' to allow for resolving potential circular references
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'linuxNetworkUtils'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Creating instance of bean 'linuxNetworkUtils'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'linuxNetworkUtils' to allow for resolving potential circular references
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'linuxNetworkUtils'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'externalAddress'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Creating instance of bean 'externalAddress'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'externalAddress' to allow for resolving potential circular references
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'requestParameters'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Creating instance of bean 'requestParameters'
+2017-09-01 10:07:18 DEBUG DefaultListableBeanFactory: Returning eagerly cached instance of singleton bean 'externalAddress' that is not fully initialized yet - a consequence of a circular reference
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'requestParameters' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'requestParameters'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'externalAddress'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'linuxNetworkFactory'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'windowsNetworkFactory'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'windowsNetworkFactory'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'windowsNetworkFactory' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'windowsNetworkUtils'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'windowsNetworkUtils'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'windowsNetworkUtils' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'windowsNetworkUtils'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'externalAddress'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'windowsNetworkFactory'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Invoking afterPropertiesSet() on bean with name 'networkFactory'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'networkFactory'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'informMediator'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'pieMediator'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'pieMediator'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'pieMediator' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'networkServiceName'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'networkServiceName'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'networkServiceName' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'tcpService'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'tcpService'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'tcpService' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'tcpMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'tcpMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'tcpMap' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Invoking afterPropertiesSet() on bean with name 'tcpMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'tcpMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'tcpService'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'udpService'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'udpService'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'udpService' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'udpMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'udpMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'udpMap' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Invoking afterPropertiesSet() on bean with name 'udpMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'udpMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'udpService'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'ipService'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'ipService'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'ipService' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'ipMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'ipMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'ipMap' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Invoking afterPropertiesSet() on bean with name 'ipMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'ipMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'ipService'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'etherService'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'etherService'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'etherService' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'etherMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'etherMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'etherMap' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Invoking afterPropertiesSet() on bean with name 'etherMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'etherMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'etherService'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'networkServiceName'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'pieViews'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'pieViews'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'pieViews' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'pieGraph'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'pieGraph'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'pieGraph' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'pieGraph'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Invoking afterPropertiesSet() on bean with name 'pieViews'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'pieViews'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'pieMediator'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'speedMediator'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'speedMediator'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'speedMediator' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'speedViews'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'speedViews'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'speedViews' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'speedGraph'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'speedGraph'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'speedGraph' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'speedGraph'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'informGraph'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Invoking afterPropertiesSet() on bean with name 'speedViews'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'speedViews'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'speedMediator'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'informGraph'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'pieGraph'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'speedGraph'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'initialFrame'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'initialFrame'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning eagerly cached instance of singleton bean 'controller' that is not fully initialized yet - a consequence of a circular reference
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'initialFrame' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'initialFrame'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'mainFrame'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'mainFrame'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'pieGraph'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'informGraph'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'speedGraph'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'mainFrame' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'mainFrame'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'packetCapture'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'packetCapture'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'packetCapture' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating shared instance of singleton bean 'mediators'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Creating instance of bean 'mediators'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Eagerly caching bean 'mediators' to allow for resolving potential circular references
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'pieMediator'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'speedMediator'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Invoking afterPropertiesSet() on bean with name 'mediators'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'mediators'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'packetCapture'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Finished creating instance of bean 'controller'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'packetCapture'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'mediators'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'networkFactory'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'informMediator'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'pieMediator'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'pieViews'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'speedMediator'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'speedViews'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'informGraph'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'pieGraph'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'speedGraph'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'initialFrame'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'mainFrame'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'networkServiceName'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'tcpService'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'tcpMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'udpService'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'udpMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'ipService'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'ipMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'etherService'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'etherMap'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'externalAddress'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'requestParameters'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'linuxNetworkFactory'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'windowsNetworkFactory'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'linuxNetworkUtils'
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'windowsNetworkUtils'
+2017-09-01 10:07:19 DEBUG GenericXmlApplicationContext: Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@10959ece]
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'lifecycleProcessor'
+2017-09-01 10:07:19 DEBUG PropertySourcesPropertyResolver: Could not find key 'spring.liveBeansView.mbeanDomain' in any property source
+2017-09-01 10:07:19 DEBUG DefaultListableBeanFactory: Returning cached instance of singleton bean 'controller'
+2017-09-01 10:07:23 INFO  LinuxNetworkFactory: java.lang.NullPointerException at monitor.network.OSNetworkFactory.lambda$getNetworkMask$1(OSNetworkFactory.java:99)

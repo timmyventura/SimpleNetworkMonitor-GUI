@@ -12,27 +12,85 @@ import monitor.logging.Logging.MessageType;
 
 public class ExternalAddress {
 
-	private static HttpURLConnection hpcon;
-	private static final String request = "https://myexternalip.com/raw";
-	private static final String method = "GET";
-	private static String ext_ip;
+	private HttpURLConnection hpcon;
+    private HTTPRequestParameters requestParameters;
+	
+	private String externalIp;
+    
+	public class HTTPRequestParameters{
+		
+		private String requestURL;
+		private String method;
+		private String accept;
+		private String acceptEncoding;
+		private String connection;
+		
+		public HTTPRequestParameters() {}
+		
+		public String getRequestURL() {
+			return requestURL;
+		}
+		public void setRequestURL(String requestURL) {
+			this.requestURL = requestURL;
+		}
+		public String getMethod() {
+			return method;
+		}
+		public void setMethod(String method) {
+			this.method = method;
+		}
+		public String getAccept() {
+			return accept;
+		}
+		public void setAccept(String accept) {
+			this.accept = accept;
+		}
+		public String getAcceptEncoding() {
+			return acceptEncoding;
+		}
+		public void setAcceptEncoding(String acceptEncoding) {
+			this.acceptEncoding = acceptEncoding;
+		}
+
+		public String getConnection() {
+			return connection;
+		}
+
+		public void setConnection(String connection) {
+			this.connection = connection;
+		}
+		
+		
+	}
+
+	public HTTPRequestParameters getRequestParameters() {
+		return requestParameters;
+	}
+
+	public void setRequestParameters(HTTPRequestParameters requestParameters) {
+		this.requestParameters = requestParameters;
+	}
+	
+	public ExternalAddress() {
+		
+	}
 	
 	
-	public static String getExternalIP()
+	public String getExternalIP()
     {
  
          try {  
         	 
-	    	 hpcon = (HttpURLConnection)new URL(request).openConnection();
+	    	 hpcon = (HttpURLConnection)new URL(getRequestParameters().getRequestURL()).openConnection();
              hpcon.setUseCaches(false);
-             hpcon.setRequestMethod(method);
-             hpcon.setRequestProperty("Accept", "text/html");
-             hpcon.setRequestProperty("Accept-Encoding", "utf-8");
-             hpcon.setRequestProperty("Connection", "close");
+             hpcon.setRequestMethod(getRequestParameters().getMethod());
+             hpcon.setRequestProperty("Accept", getRequestParameters().getAccept());
+             hpcon.setRequestProperty("Accept-Encoding", getRequestParameters().getAcceptEncoding());
+             hpcon.setRequestProperty("Connection", getRequestParameters().getConnection());
 
         try(BufferedReader in = new BufferedReader(new InputStreamReader(hpcon.getInputStream()))){
   
-		      ext_ip = in.readLine();
+		      externalIp = in.readLine();
 		      
         }
         
@@ -44,7 +102,7 @@ public class ExternalAddress {
        	
        	return "NULL";
 	}
-		return ext_ip;
+		return externalIp;
    
     }
 	

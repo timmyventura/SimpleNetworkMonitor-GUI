@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project default="create_win64_dir" name="Create distribute directory for OS Windows 64 Bit Architecture">
     <property name="dir.buildfile" value="."/>
-    <property name="dir.workspace" value="/root/workspace"/>
+    <property name="dir.workspace" value="/home/tpetrov/workspace_oxygen"/>
     <property name="dir.build.classes" value="${dir.buildfile}/build/classes"/>
     <property name="dir.dist" value="${dir.buildfile}/dist"/>
     <property name="dir.jarfile" value="${dir.dist}/jar"/>
@@ -9,6 +9,7 @@
     <property name="dir.native.library" value="${dir.buildfile}/library"/>
     <property name="jar.filename" value="SimpleNetworkMonitor.jar"/>
     <property name="classpath" value="${dir.buildfile}"/>
+    <property name="launch4j.dir" location="${dir.buildfile}/lib/launch4j" />
     <target name="create_win64_dir" depends="clean">
       <mkdir dir="${dir.build.classes}"/>
       <mkdir dir="${dir.win64}"/>
@@ -26,6 +27,7 @@
       <copy todir="${dir.win64}">
         <fileset dir="${dir.workspace}/SimpleNetworkMonitor/executable">
           <include name="win64/config.xml"/>
+          <include name="win64/SimpleNetworkMonitor.exe"/>
           <include name="WinPcap_4_1_3.exe"/>
         </fileset>
       </copy>
@@ -40,6 +42,18 @@
        </fileset>  
       </copy>
     </target>
+    <taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask">
+      <classpath>
+         <pathelement location="${launch4j.dir}/launch4j.jar"/>
+         <pathelement location="${launch4j.dir}/lib/xstream.jar"/>
+      </classpath>
+    </taskdef>
+    <launch4j configFile="${dir.buildfile}/executable/win64/config.xml" />
+     <target name="create_zip" depends="clean">
+        <zip destfile="${dir.dist}/simple_network_monitor_win64.zip">
+            <fileset dir="${dir.win64}"/>
+        </zip>
+     </target>
     <target name="clean">
       <delete dir="${dir.win64}"/>
     </target>
