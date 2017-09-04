@@ -1,0 +1,74 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+        
+  <!--Initialize FrameModelController оbject and to link objects initialFrame, mainFrame, packetCapture with him-->
+  <bean class = "monitor.controller.FrameModelController" id="controller">
+    <property name = "informMediator" ref = "informMediator"/>
+    <property name = "pieMediator" ref = "pieMediator"/>
+    <property name = "speedMediator" ref = "speedMediator"/>
+    <property name = "informGraph" ref = "informGraph"/>
+    <property name = "pieGraph" ref = "pieGraph"/>
+    <property name = "speedGraph" ref = "speedGraph"/>
+    <property name = "initialFrame" ref = "initialFrame"/>
+    <property name = "mainFrame" ref = "mainFrame"/>
+    <property name = "packetCapture" ref = "packetCapture"/>
+  </bean>
+
+   <!--Initialize PacketCapture оbject and add mediators object in list-->
+  <bean class = "monitor.capture.PacketCapture" id="packetCapture">
+     <property name="mediators" ref="mediators"/>
+  </bean>
+  <util:list id="mediators" list-class="java.util.ArrayList">
+    <ref bean="pieMediator"/>
+    <ref bean="speedMediator"/>
+  </util:list>
+
+   <!--Initialize InformMediator object and add views object in list-->
+  <bean class = "monitor.network.NetworkUtilsBeanFactory" id="networkFactory">
+      <property name="linuxFactory" ref="linuxNetworkFactory"/>
+      <property name="windowsFactory" ref="windowsNetworkFactory"/>
+  </bean>
+  <bean class = "monitor.model.InformMediator" id="informMediator">
+   <property name="graph" ref="informGraph"/>
+   <property name="networkFactory" ref="networkFactory"/>
+  </bean>
+
+  <!--Initialize PieMediator object and add views object in list-->
+  <bean class = "monitor.model.PieMediator" id="pieMediator">
+     <property name="serviceName" ref="networkServiceName"/>
+     <property name="views" ref="pieViews"/>
+  </bean>
+  <util:list id="pieViews" list-class="java.util.ArrayList">
+    <ref bean="pieGraph"/>
+  </util:list>
+
+  <!--Initialize SpeedMediator object and add views object in list-->
+  <bean class = "monitor.model.SpeedMediator" id="speedMediator">
+     <property name="views" ref="speedViews"/>
+  </bean>
+  <util:list id="speedViews" list-class="java.util.ArrayList">
+    <ref bean="speedGraph"/>
+    <ref bean="informGraph"/>
+  </util:list>
+
+  <!--Initialize All Chart objects-->
+  <bean class = "monitor.view.swing.InformGraph" id="informGraph"/>
+  <bean class = "monitor.view.swing.PieGraph" id="pieGraph"/>
+  <bean class = "monitor.view.swing.SpeedGraph" id="speedGraph"/>
+  
+  <!--Initialize Main, Initial frame objects-->
+  <bean class = "monitor.view.swing.InitialFrame" id="initialFrame">
+     <constructor-arg index="0" ref="controller"/>
+  </bean>
+  <bean class = "monitor.view.swing.MainFrame" id="mainFrame">
+    <constructor-arg index="0" ref="pieGraph"/>
+    <constructor-arg index="1" ref="informGraph"/>
+    <constructor-arg index="2" ref="speedGraph"/>
+  </bean>
+ 
+</beans>

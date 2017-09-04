@@ -1,0 +1,121 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+  <bean class = "monitor.protocols.NetworkServiceName" id="networkServiceName">
+    <property name="tcpService" ref="tcpService"/>
+    <property name="udpService" ref="udpService"/>
+    <property name="ipService"  ref="ipService"/>
+    <property name="etherService"  ref="etherService"/>
+  </bean>
+  <bean class = "monitor.protocols.TCPService" id="tcpService">
+    <property name="portNameMap" ref="tcpMap"/>
+  </bean>
+  <util:map id="tcpMap" map-class="java.util.HashMap">
+    <!--============Web Services=============-->
+      <entry key="80" value="Web" /><!--HTTP-->
+      <entry key="443" value="Web" /><!--HTTPS-->
+    <!--=============Post Services=============-->
+      <entry key="25" value="Mail" /><!--SMTP-->
+      <entry key="143" value="Mail" /><!--IMAP-->
+      <entry key="993" value="Mail" /><!--IMAPS-->
+      <entry key="465" value="Mail" /><!--SMTPS-->
+    <!--==============FTP Services==============-->
+      <entry key="20" value="FTP" /><!--FTP Data-->
+      <entry key="21" value="FTP" /><!--FTP Service Traffic-->
+    <!--=============SSH, TELNET Services==========-->
+      <entry key="22" value="SSH" />
+      <entry key="23" value="Telnet" />
+    <!--==========Messangers==========-->
+                   <!--Viber-->
+      <entry key="5242" value="Viber" />
+      <entry key="4244" value="Viber" />
+    <!--=============Unknown Services==========-->
+      <entry key="0" value="Unknown TCP" />
+  </util:map>
+
+  <bean class = "monitor.protocols.UDPService" id="udpService">
+    <property name="portNameMap" ref="udpMap"/>
+  </bean>
+  <util:map id="udpMap" map-class="java.util.HashMap">
+     <!--===========SNMP Services==========-->
+      <entry key="161" value="SNMP" /><!--SNMP Agent-->
+      <entry key="162" value="SNMP" /><!--SNMP Traps-->
+    <!--========Post Services==========-->
+      <entry key="25" value="Mail" /><!--SMTP-->
+      <entry key="143" value="Mail" /><!--IMAP-->
+    <!--==========DHCP, DNS, NBNS Services==========-->
+      <entry key="67" value="DHCP" /><!--DHCP Server-->
+      <entry key="68" value="DHCP" /><!--DHCP Client-->
+      <entry key="53" value="DNS" />
+      <entry key="53" value="NBNS" /><!--NetBios Name Service-->
+    <!--==========SSH, TELNET Services==========-->
+      <entry key="22" value="SSH" />
+      <entry key="23" value="Telnet" />
+    <!--==========TFTP Services==========-->
+      <entry key="69" value="TFTP" />
+    <!--==========Messangers==========-->
+               <!--Viber-->
+      <entry key="5243" value="Viber" />
+      <entry key="9785" value="Viber" />
+    <!--=============Unknown Services==========-->
+      <entry key="0" value="Unknown UDP" />
+  </util:map>
+
+  <bean class = "monitor.protocols.IPService" id="ipService">
+    <property name="portNameMap" ref="ipMap"/>
+  </bean>
+  <util:map id="ipMap" map-class="java.util.HashMap">
+     <!--===========Security, Tunnel Services==========-->
+      <entry key="50" value="Secure" /><!--ESP IPSec-->
+      <entry key="47" value="Tunnel" /><!--GRE-->
+      <entry key="45" value="Tunnel" /><!--IPv4 over IP-->
+    <!--========ICMP, IGMP Services==========-->
+      <entry key="1" value="ICMP" />
+      <entry key="88" value="IGMP" />
+    <!--==========TCP, UDP Services==========-->
+      <entry key="6" value="TCP" />
+      <entry key="17" value="UDP" />
+    <!--=============Unknown Services==========-->
+      <entry key="0" value="Unknown IP" />
+  </util:map>
+
+  <bean class = "monitor.protocols.EthernetService" id="etherService">
+    <property name="portNameMap" ref="etherMap"/>
+  </bean>
+  <util:map id="etherMap" map-class="java.util.HashMap">
+     <!--========Other L3 protocols ============-->
+      <entry key="-30695" value="CobraNet"/>
+      <entry key="24579" value="Decnet"/>
+      <entry key="-32613" value="AppleTalk"/>
+      <entry key="-32457" value="IPX"/>
+     <!--=============RARP, ARP, VLAN Services==========-->
+      <entry key="2054" value="ARP"/>
+      <entry key="-32715" value="RARP"/>
+      <entry key="-32512" value="802.1Q tag"/><!--VLAN-->
+     <!--=============IP Services==========-->
+      <entry key="2048" value="IPv4"/>
+      <entry key="-31011" value="IPv6"/>
+     <!--=============Flow Control, Wake on Lan Services==========-->
+      <entry key="-30712" value="EthFlowCon"/>
+      <entry key="2114" value="WakeOnLan"/>
+     <!--=============MPLS Services==========-->
+      <entry key="-30649" value="MPLS"/><!--MPLSUNICAST-->
+      <entry key="-30648" value="MPLS"/><!--MPLSMULTICAST-->
+     <!--=============PPPoE Services==========-->
+      <entry key="-30621" value="PPPoE"/><!--PPPOEDISCOVERY-->
+      <entry key="-30620" value="PPPoE"/><!--PPPOESESSION-->
+     <!--=============L2 Auth Services==========-->
+      <entry key="-30578" value="IEEE8021X"/><!--GRE-->
+      <entry key="-30516" value="LLDP"/>
+      <entry key="-28672" value="Test"/>
+    <!--=============Unknown Services==========-->
+      <entry key="0" value="Unknown EtherType"/>
+  </util:map>
+  
+  
+</beans>

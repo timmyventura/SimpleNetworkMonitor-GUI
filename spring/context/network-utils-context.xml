@@ -1,0 +1,48 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--Initialize ExternalAddress object-->
+  <bean class = "monitor.network.utils.ExternalAddress" id="externalAddress">
+     <property name="requestParameters" ref="requestParameters"/>
+  </bean>
+  <bean class = "monitor.network.utils.ExternalAddress$HTTPRequestParameters" id="requestParameters">
+     <constructor-arg index="0" ref="externalAddress"/>
+     <property name="requestURL" value="https://myexternalip.com/raw"/>
+     <property name="method" value="GET"/>
+     <property name="accept" value="text/html"/>
+     <property name="acceptEncoding" value="utf-8"/>
+     <property name="connection" value="close"/>
+  </bean>
+    <!--Initialize LinuxNetworkFactory object-->
+  <bean class = "monitor.network.LinuxNetworkFactory" id="linuxNetworkFactory">
+     <property name="linuxNetworkUtils" ref="linuxNetworkUtils"/>
+     <property name="externalAddress" ref="externalAddress"/>
+     <property name="ipPattern" value="((\d*\.){3}\d*)"/>
+  </bean>
+    <!--Initialize WindowsNetworkFactory object-->
+  <bean class = "monitor.network.WindowsNetworkFactory" id="windowsNetworkFactory">
+     <property name="windowsNetworkUtils" ref="windowsNetworkUtils"/>
+     <property name="externalAddress" ref="externalAddress"/>
+     <property name="ipPattern" value="((\d*\.){3}\d*)"/>
+  </bean>
+    <!--Initialize LinuxNetworkUtils object and routingTable, resolvePath, gatewayPattern, dnsPattern private fields-->
+  <bean class = "monitor.network.utils.LinuxNetworkUtils" id="linuxNetworkUtils">
+     <property name="routingTableCommand" value="netstat -rn"/>
+     <property name="resolverPath" value="/etc/resolv.conf"/>
+     <property name="gatewayPattern" value="0.0.0.0"/>
+     <property name="dnsPattern" value="nameserver"/>
+  </bean>
+   <!--Initialize WindowsNetworkUtils object and and routingTable, resolvePath, gatewayPattern, ipPattern private fields-->
+  <bean class = "monitor.network.utils.WindowsNetworkUtils" id="windowsNetworkUtils">
+     <property name="routingTableCommand" value="netsh interface ipv4 show route"/>
+     <property name="nameServersCommand" value="netsh interface ipv4 show dnsservers"/>
+     <property name="gatewayPattern" value="0.0.0.0/0"/>
+     <property name="ipPattern" value="((\d*\.){3}\d*)"/>
+  </bean>
+  
+</beans>
