@@ -10,22 +10,23 @@ import monitor.network.utils.LinuxNetworkUtils;
 
 public class LinuxNetworkFactory extends OSNetworkFactory {
 	
-	private String defaultGateway;
-	private List<String> dnsServers = new ArrayList<>();
-	private LinuxNetworkUtils linuxNetworkUtils;
+   private String defaultGateway;
+   private List<String> dnsServers = new ArrayList<>();
+   private LinuxNetworkUtils linuxNetworkUtils;
 	
-	public LinuxNetworkFactory(PcapIf device) {
+   public LinuxNetworkFactory(PcapIf device) {
 		
 		setDevice(device);
 		
-	}
-    public LinuxNetworkFactory() {
+   }
+	
+   public LinuxNetworkFactory() {
 	
 		
-	}
+   }
 	
-	@Override
-	public String getDefaultGateway() {
+   @Override
+   public String getDefaultGateway() {
 		
 		if(defaultGateway==null) {
 			defaultGateway = getLinuxNetworkUtils().getGateway();
@@ -33,17 +34,17 @@ public class LinuxNetworkFactory extends OSNetworkFactory {
 		}
 		else
 		  return defaultGateway;
-	}
+  }
 
-	@Override
-	public void setDefaultGateway(String defaultGateway) {
+  @Override
+  public void setDefaultGateway(String defaultGateway) {
 		
 		this.defaultGateway = defaultGateway;
 
-	}
+  }
 
-	@Override
-	public String[] getNameServers() {
+  @Override
+  public String[] getNameServers() {
 		
 		if(dnsServers.size()==0) {
 			dnsServers = getLinuxNetworkUtils().getDnsServers();
@@ -51,20 +52,26 @@ public class LinuxNetworkFactory extends OSNetworkFactory {
 		}
 		else
           return dnsServers.toArray(new String [dnsServers.size()]);
-	}
+  }
 
-	@Override
-	public void setNameServer(String dns) {
+  @Override
+  public void setNameServer(String dns) {
 		
 		dnsServers.add(dns);
 
-	}
-	public LinuxNetworkUtils getLinuxNetworkUtils() {
+  }
+	
+  public LinuxNetworkUtils getLinuxNetworkUtils() {
+	  
 		return linuxNetworkUtils;
-	}
-	public void setLinuxNetworkUtils(LinuxNetworkUtils linuxNetworkUtils) {
+  
+  }
+	
+  public void setLinuxNetworkUtils(LinuxNetworkUtils linuxNetworkUtils) {
+	  
 		this.linuxNetworkUtils = linuxNetworkUtils;
-	}
+  
+  }
 
 
 }
