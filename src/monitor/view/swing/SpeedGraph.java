@@ -41,7 +41,7 @@ public class SpeedGraph extends JPanel implements View {
 	private String dateLabel;
 	
 
-    public SpeedGraph(String speedLabel, String axisLabel, String dateLabel) {
+     public SpeedGraph(String speedLabel, String axisLabel, String dateLabel) {
 		
 		super(new BorderLayout());
 		
@@ -51,26 +51,26 @@ public class SpeedGraph extends JPanel implements View {
 		
 		init();
 		
-	}
+      }
 	
-	public SpeedGraph(int maxAge) {
+      public SpeedGraph(int maxAge) {
 		
 		super(new BorderLayout());
 		this.maxAge = maxAge;
 		init();
 		
-	}
+      }
     
-	private void createDataSeries() {
+      private void createDataSeries() {
 		
 		this.in_rate = new TimeSeries("Current inbound speed 0 bit/s");
 		this.out_rate = new TimeSeries("Current outbound speed 0 bit/s");
 		this.in_rate.setMaximumItemAge(maxAge);
 		this.out_rate.setMaximumItemAge(maxAge);
 		
-	}
+      }
 	
-	private TimeSeriesCollection createDataSet() {
+      private TimeSeriesCollection createDataSet() {
 		
 		TimeSeriesCollection dataset = new TimeSeriesCollection();
 		dataset.addSeries(this.in_rate);
@@ -78,14 +78,14 @@ public class SpeedGraph extends JPanel implements View {
 		
 		return dataset;
 		
-	}
+      }
 	
-	private DateAxis createDateAxis(String dateLabel) {
+      private DateAxis createDateAxis(String dateLabel) {
 		
 	  return new DateAxis(dateLabel);
-	}
+      }
 	
-	private DateAxis getDateAxisWithParameters(DateAxis domain) {
+      private DateAxis getDateAxisWithParameters(DateAxis domain) {
 		
 		setFont(domain);
 		domain.setAutoRange(true);
@@ -94,38 +94,38 @@ public class SpeedGraph extends JPanel implements View {
 		domain.setTickLabelsVisible(true);
 		
 	  return domain;
-	}
+       }
 	
-	private NumberAxis createNumberAxis(String axisLabel) {
+       private NumberAxis createNumberAxis(String axisLabel) {
 		
 		return new NumberAxis(axisLabel);
 	   
-	}
+       }
 	
-	private NumberAxis getNumberAxisWithParameters(NumberAxis range) {
+       private NumberAxis getNumberAxisWithParameters(NumberAxis range) {
 		
 		setFont(range);
 		range.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 		
 		return range;
-	}
+       }
 	
-	private void setFont(ValueAxis axis) {
+       private void setFont(ValueAxis axis) {
 		
 		axis.setTickLabelFont(new Font("SansSerif", Font.PLAIN, 12));
 		axis.setLabelFont(new Font("SansSerif", Font.PLAIN, 14));
 		
-	}
+       }
 	
-	private XYItemRenderer createXYItemRenderer(boolean lines, boolean shape) {
+       private XYItemRenderer createXYItemRenderer(boolean lines, boolean shape) {
 
-	  return new XYLineAndShapeRenderer(true, false);
+	         return new XYLineAndShapeRenderer(true, false);
 	  
-	}
+       }
 	
-    private XYItemRenderer getXYItemRendererWithParameters(XYItemRenderer renderer) {
+       private XYItemRenderer getXYItemRendererWithParameters(XYItemRenderer renderer) {
 		
-    	renderer.setSeriesPaint(0, Color.BLUE);
+    	        renderer.setSeriesPaint(0, Color.BLUE);
 		renderer.setSeriesPaint(1, Color.GREEN);
 		renderer.setBaseStroke(new BasicStroke(3f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL));
 		
@@ -135,21 +135,21 @@ public class SpeedGraph extends JPanel implements View {
 	private XYPlot createXYPlot(String axisLabel, String dateLabel, boolean lines, boolean shape) {
 		 
 		
-	  return new XYPlot(createDataSet(), 
+	           return new XYPlot(createDataSet(), 
 			            getDateAxisWithParameters(createDateAxis(dateLabel)), 
 			            getNumberAxisWithParameters(createNumberAxis(axisLabel)), 
 			            getXYItemRendererWithParameters(createXYItemRenderer(lines, shape)));
 		
 	}
 	
-    private XYPlot getPlotWithParameters(XYPlot plot) {
+        private XYPlot getPlotWithParameters(XYPlot plot) {
 		
-    	plot.setBackgroundPaint(Color.lightGray);
+    	        plot.setBackgroundPaint(Color.lightGray);
 		plot.setDomainGridlinePaint(Color.white);
 		plot.setRangeGridlinePaint(Color.white);
 		plot.setAxisOffset(new RectangleInsets(5.0, 5.0, 5.0, 5.0));
 		
-	  return plot;
+	      return plot;
        
 	}
 	
