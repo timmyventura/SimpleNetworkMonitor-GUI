@@ -10,7 +10,7 @@ import monitor.view.View;
 
 public class InformMediator extends AbstractModel {
 
-	private InformGraph graph;
+    private InformGraph graph;
     private NetworkFactory networkFactory;
 	
     public InformMediator() {
@@ -34,7 +34,7 @@ public class InformMediator extends AbstractModel {
     }
 
 	@Override
-	public void addView(View view) {
+    public void addView(View view) {
 		
 	  if(view instanceof monitor.view.swing.InformGraph) 
 		{
@@ -42,44 +42,52 @@ public class InformMediator extends AbstractModel {
      
 		}
 
-	}
+     }
 
-	@Override
-	public boolean removeView(View view) {
+     @Override
+     public boolean removeView(View view) {
 		
 		graph = null;
 		
 		return graph==null;
-	}
+     }
 
-	@Override
-	public void execute(PcapPacket packet) {
+     @Override
+     public void execute(PcapPacket packet) {
 		
-       throw new UnsupportedOperationException();
+             throw new UnsupportedOperationException();
 		
-	}
+      }
 
-	@Override
-	public void run() {
+      @Override
+      public void run() {
 		
-		 throw new UnsupportedOperationException();
+	    throw new UnsupportedOperationException();
 		
-	}
+      }
 
-	public View getGraph() {
+      public View getGraph() {
+	      
 		return graph;
-	}
+	      
+      }
 
-	public void setGraph(InformGraph graph) {
+      public void setGraph(InformGraph graph) {
+	      
 		this.graph = graph;
-	}
+	      
+      }
 
-	public NetworkFactory getNetworkFactory() {
+      public NetworkFactory getNetworkFactory() {
+	      
 		return networkFactory;
-	}
+	      
+      }
 
-	public void setNetworkFactory(NetworkFactory networkFactory) {
+      public void setNetworkFactory(NetworkFactory networkFactory) {
+	      
 		this.networkFactory = networkFactory;
-	}
+	      
+      }
 
 }
