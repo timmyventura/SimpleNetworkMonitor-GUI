@@ -14,14 +14,10 @@ import monitor.view.View;
 
 public class MainFrame extends Frame {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	private View pieGraph;
-	private View informGraph;
-	private View speedGraph;
+    private static final long serialVersionUID = 1L;
+    private View pieGraph;
+    private View informGraph;
+    private View speedGraph;
 
     public MainFrame(View pieGraph, View informGraph, View speedGraph ) {
 		
@@ -29,23 +25,23 @@ public class MainFrame extends Frame {
 		this.informGraph = informGraph;
 		this.speedGraph = speedGraph;
 		
-	}
+    }
 	
-	public void init() {
+    public void init() {
 		
-		setPreferredSize(new Dimension(900, 600));
-		setTitle("Simple Network Monitor");
-		GroupLayout layout = new GroupLayout(getContentPane());
+	    setPreferredSize(new Dimension(900, 600));
+	    setTitle("Simple Network Monitor");
+	    GroupLayout layout = new GroupLayout(getContentPane());
 	    getContentPane().setLayout(layout);
 	    setHorizontalGroup(layout);
 	    setVerticalGroup(layout);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		pack();
-		setVisible(true);
+	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    pack();
+	    setVisible(true);
 		
-	}
+    }
 	
-	public void setHorizontalGroup(GroupLayout layout) {
+    public void setHorizontalGroup(GroupLayout layout) {
 		
 		layout.setHorizontalGroup(
 		           layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -53,9 +49,8 @@ public class MainFrame extends Frame {
 		               .addComponent((Component)pieGraph, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 		               .addComponent((Component)informGraph, GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
 		           .addComponent((Component)speedGraph, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-		       );
-		
-	}
+		       ); 
+    }
 	
     public void setVerticalGroup(GroupLayout layout) {
 		
@@ -70,30 +65,42 @@ public class MainFrame extends Frame {
  	               .addContainerGap())
  	       );
     	
-	}
+     }
 
-	public View getInformGraph() {
+     public View getInformGraph() {
+	     
 		return informGraph;
-	}
+	     
+     }
 
-	public void setInformGraph(View informGraph) {
+    public void setInformGraph(View informGraph) {
+	    
 		this.informGraph = informGraph;
-	}
+	    
+    }
 
-	public View getPieGraph() {
+    public View getPieGraph() {
+	    
 		return pieGraph;
-	}
+	    
+    }
 
-	public void setPieGraph(View pieGraph) {
+    public void setPieGraph(View pieGraph) {
+	    
 		this.pieGraph = pieGraph;
-	}
+	    
+    }
 
-	public View getSpeedGraph() {
+    public View getSpeedGraph() {
+	    
 		return speedGraph;
-	}
+	    
+    }
 
-	public void setSpeedGraph(View speedGraph) {
+    public void setSpeedGraph(View speedGraph) {
+	    
 		this.speedGraph = speedGraph;
-	}
+	    
+    }
 	
 }
