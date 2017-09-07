@@ -11,30 +11,29 @@ public class EthernetService implements NetworkService{
 		
     public Map<Short, String> getPortNameMap() {
 		return portNameMap;
-	}
+    }
 
-	public void setPortNameMap(Map<Short, String> portNameMap) {
+    public void setPortNameMap(Map<Short, String> portNameMap) {
 		
 		this.portNameMap = portNameMap;
-	}
+    }
 	
-	public String getService(short port) {
+    public String getService(short port) {
 		
 		return portNameMap.getOrDefault(port, portNameMap.get(NULL));		
 		
-	}
+    }
 
-	@Override
-	public String getService(int port) {
-
-		throw new UnsupportedOperationException(" Usinig getService(int port) method");
-	}
-
-	
-	@Override
-	public String getService(int src_port, int dst_port) {
+    @Override
+    public String getService(int port) {
 
 		throw new UnsupportedOperationException(" Usinig getService(int port) method");
-	}
+    }
+
+    @Override
+    public String getService(int src_port, int dst_port) {
+
+		throw new UnsupportedOperationException(" Usinig getService(int port) method");
+    }
 	
 }
