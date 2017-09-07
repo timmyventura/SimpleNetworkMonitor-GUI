@@ -24,14 +24,14 @@ public class PieGraph extends JPanel implements View {
 
 	
 
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
 	
-	private DefaultPieDataset dataset;
+   private DefaultPieDataset dataset;
 	
-	private String pieLabel;
+   private String pieLabel;
 
 	
-    public PieGraph(String pieLabel) {
+   public PieGraph(String pieLabel) {
 		
 		super(new BorderLayout());
 		
@@ -39,103 +39,102 @@ public class PieGraph extends JPanel implements View {
 
 		init();
 		
-	}
+   }
 	
-	private void init() {
+   private void init() {
 		
 		       				
-        add(getChartPanelWithParameters(createChartPanel(getJFreeChartObjectWithParameters(createJFreeChartObject(getPieLabel(),
-                                                                                                                  new Font("SansSerif", 
-                                                                                                                           Font.BOLD, 
-                                                                                                                           16),
-                                                                                                                  getPiePlotWithParameters(createPiePlot(createDataset())),
-                                                                                                                  true)))));
-	}
+            add(getChartPanelWithParameters(createChartPanel(getJFreeChartObjectWithParameters(createJFreeChartObject(getPieLabel(),
+                                                                                                                      new Font("SansSerif", 
+                                                                                                                               Font.BOLD, 
+                                                                                                                                16),
+                                                                                                                      getPiePlotWithParameters(createPiePlot(createDataset())),
+                                                                                                                                                             true)))));
+    }
 	
-     private JFreeChart createJFreeChartObject(String title, Font titleFont, Plot plot, boolean createLegend) {
+    private JFreeChart createJFreeChartObject(String title, Font titleFont, Plot plot, boolean createLegend) {
 		
 		return new JFreeChart(title, titleFont, plot, createLegend);
 		
-	}
+    }
 	
-	private JFreeChart getJFreeChartObjectWithParameters(JFreeChart chart) {
+    private JFreeChart getJFreeChartObjectWithParameters(JFreeChart chart) {
 		
 		chart.setBackgroundPaint(Color.white);
 		
 		return chart;
-	}
+    }
 	
-	private ChartPanel createChartPanel(JFreeChart chart) {
+    private ChartPanel createChartPanel(JFreeChart chart) {
 		
 		return new ChartPanel(chart);
 		
-	}
+    }
 	
-	private ChartPanel getChartPanelWithParameters(ChartPanel chartPanel) {
+    private ChartPanel getChartPanelWithParameters(ChartPanel chartPanel) {
 		
 		
 		chartPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4),
 		                                                        BorderFactory.createLineBorder(Color.black)));
 		
 		return chartPanel;
-	}
+    }
 	
 	
-	private  PiePlot createPiePlot(DefaultPieDataset dataset) {
+    private  PiePlot createPiePlot(DefaultPieDataset dataset) {
 		
-       return new PiePlot(dataset);
+         return new PiePlot(dataset);
         
-	}
+    }
 	
-	private PiePlot getPiePlotWithParameters(PiePlot plot) {
+    private PiePlot getPiePlotWithParameters(PiePlot plot) {
 		
 		plot.setLabelFont(new Font("SansSerif", Font.PLAIN, 12));
-        plot.setNoDataMessage("No data available");
-        plot.setCircular(false);
-        plot.setLabelGap(0.02);
-        plot.setLegendLabelGenerator(new StandardPieSectionLabelGenerator("{0} = {2}", 
+                plot.setNoDataMessage("No data available");
+                plot.setCircular(false);
+                plot.setLabelGap(0.02);
+                plot.setLegendLabelGenerator(new StandardPieSectionLabelGenerator("{0} = {2}", 
         		                                                           NumberFormat.getNumberInstance(), 
         		                                                           NumberFormat.getPercentInstance()));
-       return plot;
-       
-	}
+                return plot;
+        
+    }
 	
 	
-	private DefaultPieDataset createDataset() {
+    private DefaultPieDataset createDataset() {
         
 		dataset = new DefaultPieDataset();
  
-        return dataset;        
+               return dataset;        
     }
 	
 	
 
-	@Override
-	public void addObservation(Map<Object, Object> param) {
+    @Override
+    public void addObservation(Map<Object, Object> param) {
 		
 		  dataset.clear();
-          param.forEach((k, v) -> dataset.setValue((String)k, (Double)v));
+                  param.forEach((k, v) -> dataset.setValue((String)k, (Double)v));
 
-	}
+    }
 
-		@Override
-	public void addObservation(double input_length, double output_length, double max_input_length,
-			double max_output_length) {
+    @Override
+    public void addObservation(double input_length, double output_length, double max_input_length, double max_output_length) {
 		
-		
-	}
+		throw new UnsupportedOperationException("Using addObservation(Map<Object, Object> param) method");
+    }
 
     public String getPieLabel() {
     	
-			return pieLabel;
+	      return pieLabel;
 			
     }
 
-	public void setPieLabel(String pieLabel) {
+    public void setPieLabel(String pieLabel) {
 		
 			this.pieLabel = pieLabel;
 			
-	}
+    }
 
 		
 }
