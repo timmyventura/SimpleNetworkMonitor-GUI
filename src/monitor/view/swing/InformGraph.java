@@ -52,8 +52,8 @@ public class InformGraph extends JPanel implements View {
 		
 		super(new BorderLayout());
 		if(panel==null) setPanel(new JPanel());
-    	initLabels();
-    	initFields();
+    	        initLabels();
+    	        initFields();
 		
 	}
 	
@@ -85,8 +85,8 @@ public class InformGraph extends JPanel implements View {
 		setLabelFieldParameters(max_input_speedlabel);
 		max_output_speedlabel = new JLabel("Max Output Speed:");
 		setLabelFieldParameters(max_output_speedlabel);
-	    hostnamelabel = new JLabel("Hostname:");
-	    setLabelFieldParameters(hostnamelabel);
+	        hostnamelabel = new JLabel("Hostname:");
+	        setLabelFieldParameters(hostnamelabel);
 	    
 	}
 	
@@ -125,41 +125,41 @@ public class InformGraph extends JPanel implements View {
 
 	}
 	
-    public void init() {
+        public void init() {
     	
-        GridLayout layout = new GridLayout(0,2,8,8);
-        getPanel().setLayout(layout);
-        getPanel().setBackground(new Color(211,211,211));
-        getPanel().setBorder(BorderFactory.createTitledBorder(BorderFactory.createEmptyBorder(8,0,0,0),
-        		                                             "Brief network info",
-        		                                              TitledBorder.CENTER,
-        		                                              TitledBorder.TOP,
-        		                                              new Font("SansSerif", Font.BOLD, 16) ));
+              GridLayout layout = new GridLayout(0,2,8,8);
+              getPanel().setLayout(layout);
+              getPanel().setBackground(new Color(211,211,211));
+              getPanel().setBorder(BorderFactory.createTitledBorder(BorderFactory.createEmptyBorder(8,0,0,0),
+        		                                                          "Brief network info",
+        		                                                           TitledBorder.CENTER,
+        		                                                           TitledBorder.TOP,
+        		                                                           new Font("SansSerif", Font.BOLD, 16) ));
 
-    	setBorder(BorderFactory.createCompoundBorder(
-				  BorderFactory.createEmptyBorder(4, 4, 4, 4),
-				  BorderFactory.createLineBorder(Color.black)));
-    	getPanel().add(iplocallabel);
-    	getPanel().add(iplocalfield);
-    	getPanel().add(masklabel);
-    	getPanel().add(maskfield);
-    	getPanel().add(gatewaylabel);
-    	getPanel().add(gatewayfield);
-    	getPanel().add(ipexternallabel);
-    	getPanel().add(ipexternalfield);
-    	if(dnsfields != null || dnslabels != null) {
-    	for(int i=0; (i< dnsfields.length)||(i < dnslabels.length); i++) {
-    		getPanel().add(dnslabels[i]);
-    		getPanel().add(dnsfields[i]);
-    	}
-    	}
-    	getPanel().add(hostnamelabel);
-    	getPanel().add(hostnamefield);
-    	getPanel().add(max_input_speedlabel);
-    	getPanel().add(max_input_speedfield);
-    	getPanel().add(max_output_speedlabel);
-    	getPanel().add(max_output_speedfield);
-        add(getPanel());
+    	      setBorder(BorderFactory.createCompoundBorder(
+				                           BorderFactory.createEmptyBorder(4, 4, 4, 4),
+				                           BorderFactory.createLineBorder(Color.black)));
+    	      getPanel().add(iplocallabel);
+    	      getPanel().add(iplocalfield);
+    	      getPanel().add(masklabel);
+    	      getPanel().add(maskfield);
+    	      getPanel().add(gatewaylabel);
+    	      getPanel().add(gatewayfield);
+    	      getPanel().add(ipexternallabel);
+    	      getPanel().add(ipexternalfield);
+    	      if(dnsfields != null || dnslabels != null) {
+    	            for(int i=0; (i< dnsfields.length)||(i < dnslabels.length); i++) {
+    		           getPanel().add(dnslabels[i]);
+    		          getPanel().add(dnsfields[i]);
+    	            }
+    	      }
+    	      getPanel().add(hostnamelabel);
+    	      getPanel().add(hostnamefield);
+    	      getPanel().add(max_input_speedlabel);
+    	      getPanel().add(max_input_speedfield);
+    	      getPanel().add(max_output_speedlabel);
+    	      getPanel().add(max_output_speedfield);
+              add(getPanel());
     }
     
     public void setDNSLabelsFields(String [] label) {
@@ -256,26 +256,20 @@ public class InformGraph extends JPanel implements View {
     	return hostnamefield.getText();
     }
 
-	
-    
-	@Override
-	public void addObservation(Map<Object, Object> param) throws UnsupportedOperationException{
+    @Override
+    public void addObservation(Map<Object, Object> param) throws UnsupportedOperationException{
 		  
 		throw new UnsupportedOperationException("Using addObservation(double input_length, double output_length, double max_input_length, " + 
 				"double max_output_length) method");
 
-	}
+    }
 
-	@Override
-	public void addObservation(double input_length, double output_length, double max_input_length,
-			double max_output_length) {
+    @Override
+    public void addObservation(double input_length, double output_length, double max_input_length, double max_output_length) {
+	    
 		max_input_speedfield.setText( (((int)(max_input_length/1024)==0) ? String.format("%.2f kbits/s", max_input_length) : String.format("%.2f Mbits/s", max_input_length/1024)));
 		max_output_speedfield.setText(((int)(max_output_length/1024)==0) ? String.format("%.2f kbits/s",  max_output_length) : String.format("%.2f Mbits/s",  max_output_length/1024));
 		
-	}
-
-
-
-
+    }
 
 }
