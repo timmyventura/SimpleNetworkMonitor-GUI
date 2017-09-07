@@ -115,7 +115,7 @@ public class PacketCapture implements MediatorStorage, Runnable {
 		return mediators;
 	}
 	
-    public void setDefaultSnaplen(int defaultSnaplen) {
+        public void setDefaultSnaplen(int defaultSnaplen) {
 		
 		DEFAULT_SNAPLEN = defaultSnaplen;
 		
@@ -126,7 +126,7 @@ public class PacketCapture implements MediatorStorage, Runnable {
 		return DEFAULT_SNAPLEN;
 	}
 	
-    public void setDefaultTimeout(int defaultTimeout) {
+        public void setDefaultTimeout(int defaultTimeout) {
 		
 		DEFAULT_TIMEOUT = defaultTimeout;
 		
@@ -137,7 +137,7 @@ public class PacketCapture implements MediatorStorage, Runnable {
 		return DEFAULT_TIMEOUT;
 	}
 	
-   public void setDefaultFlag(int defaultFlag) {
+        public void setDefaultFlag(int defaultFlag) {
 		
 		DEFAULT_FLAG = defaultFlag;
 		
