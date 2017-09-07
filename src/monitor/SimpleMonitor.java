@@ -22,7 +22,7 @@ public class SimpleMonitor {
 		@SuppressWarnings("resource")
 		ApplicationContext context = new FileSystemXmlApplicationContext("context/main-context.xml");
 		FrameModelController controller = (FrameModelController)context.getBean(FrameModelController.class);   
-        controller.runningInitialFrame();
+                controller.runningInitialFrame();
 
 	      
 		 
