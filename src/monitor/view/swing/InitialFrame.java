@@ -12,29 +12,25 @@ import monitor.view.Frame;
 
 public class InitialFrame extends Frame{
 	
+
+    private static final long serialVersionUID = 1455189770787016714L;
 	
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1455189770787016714L;
-	
-	private JButton cancel;
+    private JButton cancel;
     private JButton ready;
     private JComboBox<String> interface_list;
     private JLabel select_label;
     private FrameModelController controller;
 	
-	public InitialFrame(FrameModelController controller) {
+    public InitialFrame(FrameModelController controller) {
 		
 		this.controller = controller;
 
-	}
+   }
         
 
 	
-	@SuppressWarnings("unchecked")
-	
-	public void init() {
+   @SuppressWarnings("unchecked")	
+   public void init() {
 
         select_label = new JLabel();
         interface_list = new JComboBox<>();
@@ -78,7 +74,7 @@ public class InitialFrame extends Frame{
         pack();
     }
 	
-      private void setHorizontalGroup(GroupLayout layout) {
+   private void setHorizontalGroup(GroupLayout layout) {
     	  layout.setHorizontalGroup(
     	            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
     	            .addGroup(layout.createSequentialGroup()
@@ -95,7 +91,7 @@ public class InitialFrame extends Frame{
     	                .addContainerGap())
     	        );
 		
-	}
+    }
 	
     private void setVerticalGroup(GroupLayout layout) {
 		
@@ -114,7 +110,7 @@ public class InitialFrame extends Frame{
     	        );
 
     	
-	}
+    }
     
     public void setComboModel(String [] interfaces) {
     	
@@ -123,6 +119,4 @@ public class InitialFrame extends Frame{
     	
     }
 
-	
-	
 }
