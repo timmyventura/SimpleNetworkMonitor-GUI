@@ -82,7 +82,7 @@ public class Logging {
 
 	}
 	
-    public static void viewLogMessage(Throwable throwable, MessageType type) {
+        public static void viewLogMessage(Throwable throwable, MessageType type) {
 
 			viewLogMessage(throwable.toString() + " at " + throwable.getStackTrace()[0], type);
 
