@@ -4,17 +4,15 @@ import java.util.Map;
 
 public class UDPService implements NetworkService {
 
-      private  Map<Integer, String> portNameMap;
+     private  Map<Integer, String> portNameMap;
 
-      private static final Integer NULL = 0;
-
-      
+     private static final Integer NULL = 0;
 	
-	public String getService(int port) {
+    public String getService(int port) {
 		
 		return portNameMap.getOrDefault(port, portNameMap.get(NULL));
 		
-	}
+    }
 	 
     public  String getService(int src_port, int dst_port) {
 		
@@ -25,7 +23,7 @@ public class UDPService implements NetworkService {
 			 return portNameMap.get(dst_port);
 			else
 				return portNameMap.get(NULL);
-	}
+    }
      
     public  Map<Integer, String> getPortNameMap() {
 	       return portNameMap;
@@ -36,10 +34,10 @@ public class UDPService implements NetworkService {
     }
 
 
-	@Override
-	public String getService(short port) {
+    @Override 
+    public String getService(short port) {
 		
-		throw new UnsupportedOperationException(" Usinig getService(int src_port, int dst_port) or getService(int port) methods");
-	} 
+		throw new UnsupportedOperationException(" Usinig getService(int src_port, int dst_port) or getService(int port) methods"); 
+    } 
 	
 }
