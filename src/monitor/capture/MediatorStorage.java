@@ -18,11 +18,11 @@ public interface MediatorStorage {
 	/*
 	 * This method is allow to remove intermediates objects
 	 */
-	public boolean removeMediator(Mediator mediator);
+    public boolean removeMediator(Mediator mediator);
 	/*
 	 * This method is allow to return intermediates objects
 	 */
-	public List<Mediator> getMediators();
+    public List<Mediator> getMediators();
 	
 	
 }
