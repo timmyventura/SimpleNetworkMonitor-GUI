@@ -52,14 +52,6 @@ public class SpeedGraph extends JPanel implements View {
 		init();
 		
       }
-	
-      public SpeedGraph(int maxAge) {
-		
-		super(new BorderLayout());
-		this.maxAge = maxAge;
-		init();
-		
-      }
     
       private void createDataSeries() {
 		
