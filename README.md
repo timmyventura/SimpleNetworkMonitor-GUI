@@ -8,7 +8,7 @@ A simple network monitor is an application with a GUI that includes three graphi
 
 2. The "Brief network info"" is an abstract factory that collects information about the internal ip-address, mask, gateway, external ip-address, DNS server ip-address from the network interface. Also, the field displays the maximum incoming / outgoing speed on the interface.
 
-3. The "Current speed rate" is a linear chart showing the current speed on the interface in 1 second in real time. The update interval is 60 seconds.
+3. The "Current speed rate" is a linear chart showing the current speed of the interface in 1 second in real time. The update interval is 60 seconds.
 
 ![GitHub Logo](/images/Selection_006.png)
 
@@ -27,7 +27,7 @@ At the core of the application are [jNetPcap](https://github.com/ruedigergad/clj
 
 ### Note
 
-**The project is designed for the practical apply of theoretical knowledges of the Java language. Main using technology is Java SE**
+**The project is designed for the practical application of theoretical knowledges of the Java language. Main using technology is Java SE**
 
 **The project does not pretend to be unique.**
 
